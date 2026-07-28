@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>ASYMMETRICA — Безпілотні системи для реальних задач</title>
+  <meta name="description" content="Український виробник літаків та НРК: безпілотні літальні та наземні роботизовані апарати для розвідки, перехоплення, ударних і логістичних задач." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="asymmetrica.css" />
+</head>
+<body>
+  <div class="site">
+
+    <!-- ============ HERO ============ -->
+    <section class="hero">
+      <div class="hero__bg">
+        <img src="assets/hero-bg.png" alt="" />
+        <span class="hero__dim"></span>
+        <span class="hero__fade"></span>
+      </div>
+
+      <header class="hero__topbar">
+        <div class="brandbar">
+          <img class="brandbar__logo js-hover" src="assets/logo.png" alt="Asymmetrica" />
+          <img class="brandbar__icon js-hover" src="assets/header-icon-1.png" alt="" />
+          <img class="brandbar__icon js-hover" src="assets/header-icon-2.png" alt="" />
+          <img class="brandbar__icon js-hover" src="assets/header-icon-3.png" alt="" />
+        </div>
+        <nav class="menu" aria-label="Головна навігація">
+          <a class="js-nav" href="#about">ПРО НАС</a>
+          <a class="js-nav" href="#products">ПРОДУКТИ</a>
+          <a class="js-nav" href="#contact">КОНТАКТИ</a>
+        </nav>
+      </header>
+
+      <div class="hero__center">
+        <img class="hero__wordmark" src="assets/hero-wordmark.png" alt="ASYMMETRICA" />
+      </div>
+
+      <div class="hero__badges">
+        <img class="js-hover" src="assets/hero-badge-1.png" alt="" />
+        <img class="js-hover" src="assets/hero-badge-2.png" alt="" />
+        <img class="js-hover" src="assets/hero-badge-3.png" alt="" />
+      </div>
+    </section>
+
+    <!-- ============ INTRO ============ -->
+    <section id="about" class="intro">
+      <div class="intro__text reveal">
+        <p>УКРАЇНСЬКИЙ ВИРОБНИК ЛІТАКІВ ТА НРК, ЩО РОЗРОБЛЯЄ ТА ВИГОТОВЛЯЄ БЕЗПІЛОТНІ ЛІТАЛЬНІ ТА НАЗЕМНІ РОБОТИЗОВАНІ АПАРАТИ ДЛЯ РОЗВІДУВАЛЬНИХ МІСІЙ, ПЕРЕХОПЛЕННЯ ВОРОЖИХ ЦІЛЕЙ, УДАРНИХ ТА ЛОГІСТИЧНИХ ЗАДАЧ, А ТАКОЖ НАЗЕМНІ СТАНЦІЇ КЕРУВАННЯ, АКУМУЛЯТОРИ ТА ІНШЕ СУПУТНЄ ОБЛАДНАННЯ.</p>
+        <p>ПОВНИЙ ЦИКЛ ВИРОБНИЦТВА, ТЕСТУВАННЯ ТА СЕРВІСУ ЗДІЙСНЮЄТЬСЯ В УКРАЇНІ, НАВЧАННЯ ПІЛОТІВ ПРОХОДИТЬ НА СПЕЦІАЛЬНО ОБЛАШТОВАНОМУ ПОЛІГОНІ ПІДПРИЄМСТВА</p>
+      </div>
+      <img class="intro__scene" src="assets/intro-bg.png" alt="" />
+      <img class="intro__uav" src="assets/intro-uav.png" alt="Asymmetrica UAV" />
+    </section>
+
+    <!-- ============ PRODUCTS ============ -->
+    <section id="products" class="products">
+      <div class="products__grid reveal">
+        <article class="card">
+          <h2 class="card__title">КРИЛА</h2>
+          <div class="card__media">
+            <img src="assets/product-kryla.png" alt="КРИЛА" />
+            <svg class="card__arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 7l10 10" /><path d="M17 8v9h-9" /></svg>
+          </div>
+        </article>
+        <article class="card">
+          <h2 class="card__title">НРК</h2>
+          <div class="card__media">
+            <img src="assets/product-nrk.png" alt="НРК" />
+            <svg class="card__arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 7l10 10" /><path d="M17 8v9h-9" /></svg>
+          </div>
+        </article>
+        <article class="card">
+          <h2 class="card__title">ДОДАТКОВО</h2>
+          <div class="card__media">
+            <img src="assets/product-dodatkovo.png" alt="ДОДАТКОВО" />
+            <svg class="card__arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 7l10 10" /><path d="M17 8v9h-9" /></svg>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- ============ UGV WIREFRAMES ============ -->
+    <section class="schemes reveal">
+      <img class="js-hover" src="assets/ugv-scheme-1.png" alt="НРК схема 1" />
+      <img class="js-hover" src="assets/ugv-scheme-2.png" alt="НРК схема 2" />
+      <img class="js-hover" src="assets/ugv-scheme-3.png" alt="НРК схема 3" />
+    </section>
+
+    <!-- ============ PANORAMA CAROUSEL ============ -->
+    <section class="marquee js-drag" data-track="pano">
+      <div class="marquee__track" data-role="track">
+        <!-- track content injected by script.js -->
+      </div>
+    </section>
+
+    <!-- ============ MANIFESTO ============ -->
+    <section class="manifesto">
+      <img class="manifesto__bg" src="assets/manifesto-bg.png" alt="" />
+      <div class="manifesto__row reveal">
+        <div class="manifesto__lines">
+          <p>ТАМ, ДЕ НЕБЕЗПЕЧНО ДЛЯ ЛЮДИНИ, МАЄ ПРАЦЮВАТИ СИСТЕМА.</p>
+          <p>ТАМ, ДЕ РИЗИК ЗАНАДТО ВИСОКИЙ, ОПЕРАТОР МАЄ ЗАЛИШАТИСЯ НА ВІДСТАНІ.</p>
+          <p>ТАМ, ДЕ ВОРОГ НАВ'ЯЗУЄ СИЛУ, МИ ВІДПОВІДАЄМО ТОЧНІСТЮ, АДАПТАЦІЄЮ ТА ІНЖЕНЕРІЄЮ.</p>
+        </div>
+        <img class="manifesto__icon" src="assets/manifesto-icon.png" alt="" />
+      </div>
+      <img class="manifesto__uav" src="assets/manifesto-uav.png" alt="Asymmetrica UAV" />
+    </section>
+
+    <!-- ============ WHY US + TRAINING ============ -->
+    <section class="why">
+      <div class="why__intro reveal">
+        <h2 class="why__title">ЧОМУ ВАРТО ОБРАТИ НАС?</h2>
+        <p class="why__body">
+          <b>МИ БЛИЖЧЕ ДО ЗАДАЧІ. </b>АСИМЕТРИКА ПОЄДНУЄ РОЗРОБКУ, ВИРОБНИЦТВО, ТЕСТУВАННЯ ТА АДАПТАЦІЮ В ОДНОМУ ПРОЦЕСІ. МИ СТВОРЮЄМО СИСТЕМИ ДЛЯ РЕАЛЬНИХ УМОВ, ШВИДКО ЗМІНЮЄМО ПРОДУКТ ПІД ЗАПИТИ ЗАСТОСУВАННЯ МИСЛИМО НЕ ОКРЕМИМИ ВИРОБАМИ, А ПОВНИМ КОНТУРОМ: <b>ЗЕМЛЯ, ПОВІТРЯ, ЗВ'ЯЗОК</b>. ДИСТАНЦІЯ ЗБЕРІГАЄ ЖИТТЯ. ІНЖЕНЕРІЯ СТВОРЮЄ ПЕРЕВАГУ. АСИМЕТРИКА ВТІЛЮЄ ЦЕ У ЖИТТЯ.
+        </p>
+        <img class="why__icon" src="assets/why-icon.png" alt="" />
+      </div>
+      <div class="training reveal">
+        <img class="training__bg" src="assets/training-bg.png" alt="" />
+        <div class="training__text">
+          <h2 class="training__title">НАВЧАННЯ</h2>
+          <p>МИ ЗАБЕЗПЕЧУЄМО ПОВНИЙ ЦИКЛ ПІДГОТОВКИ ПІЛОТІВ. ТРЕНУВАННЯ ВІДБУВАЮТЬСЯ НА ВЛАСНОМУ СПЕЦІАЛІЗОВАНОМУ ПОЛІГОНІ ПІДПРИЄМСТВА, ЩО ДОЗВОЛЯЄ ЕФЕКТИВНО ОПАНОВУВАТИ СУЧАСНІ МЕТОДИ РОБОТИ З БЕЗПІЛОТНИМИ СИСТЕМАМИ.</p>
+        </div>
+        <img class="training__badge" src="assets/training-badge.png" alt="" />
+      </div>
+    </section>
+
+    <!-- ============ GRID CAROUSEL ============ -->
+    <section class="marquee marquee--grid js-drag" data-track="grid">
+      <div class="marquee__track" data-role="track">
+        <!-- track content injected by script.js -->
+      </div>
+    </section>
+
+    <!-- ============ PARTNERS ============ -->
+    <section class="partners">
+      <h2 class="section-title">НАШІ ПАРТНЕРИ ТА СПОНСОРИ</h2>
+      <div class="partners__row reveal">
+        <div class="partner"><img src="assets/partner-zsu.png" alt="ЗСУ" /></div>
+        <div class="partner"><img src="assets/partner-gur.png" alt="ГУР" /></div>
+        <div class="partner"><img src="assets/partner-rozvidka.png" alt="Військова розвідка України" /></div>
+        <div class="partner partner--round"><img src="assets/partner-syly-oborony.png" alt="Сили оборони" /></div>
+        <div class="partner partner--round"><img src="assets/partner-brave1.png" alt="BRAVE1" /></div>
+        <div class="partner partner--round"><img src="assets/partner-army-of-drones.png" alt="Army of Drones" /></div>
+      </div>
+    </section>
+
+    <!-- ============ FULL IMAGE ============ -->
+    <section class="showcase">
+      <img class="showcase__img reveal" src="assets/showcase-drone.png" alt="Дрон-камікадзе на схематичній сітці" />
+    </section>
+
+    <!-- ============ MEDIA MENTIONS ============ -->
+    <section class="media">
+      <h2 class="section-title section-title--lg">згадки в медіа:</h2>
+      <div class="media__row reveal">
+        <div class="media__item" style="background:#0f2a5c"><img src="assets/media-guardian.png" alt="The Guardian" /></div>
+        <div class="media__item"><img src="assets/media-apostrof.png" alt="Апостроф" /></div>
+        <div class="media__item"><img src="assets/media-nyt.png" alt="The New York Times" /></div>
+        <div class="media__item media__item--text">Міноборони України</div>
+        <div class="media__item" style="background:#0aa8e0"><img src="assets/media-france24.png" alt="FRANCE 24" /></div>
+        <div class="media__item" style="background:#0e1b3a"><img src="assets/media-militarnyi.png" alt="Militarnyi" /></div>
+        <div class="media__item"><img src="assets/media-focus.png" alt="ФОКУС" /></div>
+        <div class="media__item" style="background:#fefefe"><img src="assets/media-kyivpost.png" alt="Kyiv Post" /></div>
+        <div class="media__item media__item--text">KOLO</div>
+      </div>
+    </section>
+
+    <!-- ============ FOOTER MANIFESTO ============ -->
+    <section class="credo reveal">
+      <img class="credo__bg" src="assets/footer-bg.png" alt="" />
+      <img class="credo__wordmark" src="assets/footer-wordmark.png" alt="ASYMMETRICA" />
+      <p class="credo__line">СТВОРЮЄМО ІНСТРУМЕНТИ ДЛЯ РЕАЛЬНИХ ЗАДАЧ, РЕАЛЬНИХ УМОВ І РЕАЛЬНОЇ ВІЙНИ.</p>
+    </section>
+
+    <!-- ============ CONTACT + FOOTER ============ -->
+    <section id="contact" class="contact">
+      <img class="contact__bg" src="assets/contact-bg.png" alt="" />
+
+      <div class="contact__panel reveal">
+        <img class="contact__panel-bg" src="assets/contact-panel-bg.png" alt="" />
+        <form class="form js-form" novalidate>
+          <div class="form__head">
+            <b class="form__heading">ЗВ'ЯЗАТИСЬ З НАМИ</b>
+            <button type="submit" class="cta">НАДІСЛАТИ</button>
+          </div>
+          <div class="form__cols">
+            <div class="form__col form__col--msg">
+              <b class="form__label">ЗАПИТ</b>
+              <textarea name="message" required class="field field--area" placeholder="Опишіть вашу задачу"></textarea>
+            </div>
+            <div class="form__col">
+              <label class="field-group">
+                <b class="form__label">ПІБ</b>
+                <input name="name" required class="field" placeholder="Прізвище, ім'я" />
+              </label>
+              <label class="field-group">
+                <b class="form__label">EMAIL</b>
+                <input name="email" type="email" required class="field" placeholder="name@email.com" />
+              </label>
+              <label class="field-group">
+                <b class="form__label">НАЗВА ОРГАНІЗАЦІЇ</b>
+                <input name="org" class="field" placeholder="Компанія / підрозділ" />
+              </label>
+              <label class="field-group">
+                <b class="form__label">КРАЇНА</b>
+                <input name="country" class="field" placeholder="Україна" />
+              </label>
+            </div>
+          </div>
+        </form>
+      </div>
+
+      <div class="contact__footer">
+        <div class="contact__info">
+          <b>ТЕЛЕФОН: +38 000 0000 000</b>
+          <b>GMAIL:</b>
+        </div>
+        <div class="socials">
+          <a class="social" href="#contact" aria-label="TikTok">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M16.5 3c.3 2.1 1.5 3.6 3.5 3.9v2.4c-1.2.1-2.3-.2-3.5-.8v5.6c0 3.2-2.3 5.9-5.6 5.9-2.9 0-5.1-2.1-5.1-4.9 0-3 2.5-5 5.7-4.6v2.6c-.5-.2-1-.2-1.5-.1-1.1.2-1.8 1-1.7 2.2.1 1.1 1 1.9 2.1 1.9 1.3 0 2.2-1 2.2-2.5V3h3.4z"/></svg>
+          </a>
+          <a class="social" href="#contact" aria-label="Threads">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.3 11.2c-.1 0-.2-.1-.3-.1-.2-3-1.8-4.7-4.5-4.7-1.6 0-3 .7-3.8 2l1.5 1c.6-.9 1.5-1.1 2.3-1.1 1 0 1.8.3 2.2 1 .3.4.5 1 .5 1.7-.7-.1-1.4-.2-2.2-.1-2.4.1-3.9 1.5-3.8 3.4.1 1 .6 1.8 1.4 2.3.7.4 1.6.6 2.5.6 1.2-.1 2.2-.5 2.8-1.4.5-.6.8-1.4.9-2.4.6.4 1.1.9 1.3 1.5.5 1.1.5 2.8-.9 4.2-1.2 1.2-2.7 1.8-4.9 1.8-2.4 0-4.2-.8-5.4-2.3C4.6 17 4 15 4 12.5s.6-4.5 1.7-5.9C6.9 5.1 8.7 4.3 11.1 4.3c2.4 0 4.3.8 5.4 2.4.6.8 1 1.8 1.2 3l1.9-.5c-.3-1.5-.8-2.8-1.6-3.8C17.5 3.1 14.9 2 11.9 2h-.8C8.1 2 5.8 3 4.3 4.9 2.9 6.6 2.2 9 2.1 11.9v.2c0 2.9.7 5.3 2.2 7 1.5 1.9 3.8 2.9 6.8 2.9h.8c2.7 0 4.6-.7 6.2-2.3 2.1-2.1 2-4.7 1.3-6.3-.5-1.1-1.4-2-2.6-2.7l-.5-.4z"/></svg>
+          </a>
+          <a class="social" href="#contact" aria-label="Instagram">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1.2" fill="currentColor" stroke="none"/></svg>
+          </a>
+          <a class="social" href="#contact" aria-label="Facebook">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M14 8.5V7c0-.7.5-1 1.2-1H17V3h-2.5C11.9 3 11 4.6 11 6.4v2.1H9v3h2V21h3v-9.5h2.3l.4-3H14z"/></svg>
+          </a>
+        </div>
+      </div>
+    </section>
+
+  </div>
+
+  <button class="to-top js-top" aria-label="Нагору">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M18 15l-6-6-6 6" /></svg>
+  </button>
+
+  <div class="toast js-toast" role="status" aria-live="polite">
+    <svg viewBox="0 0 24 24" fill="none" stroke="#FFCA08" stroke-width="2.2"><path d="M20 6L9 17l-5-5" /></svg>
+    <span>Запит надіслано. Інженерна команда зв'яжеться з вами.</span>
+  </div>
+
+  <script src="asymmetrica.js"></script>
+</body>
+</html>
