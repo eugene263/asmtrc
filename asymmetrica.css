@@ -42,12 +42,12 @@ a:hover { color: #fff; }
 
 /* shared ------------------------------------------------------------ */
 .section-title {
-  font-size: 48px;
+  font-size: 36px;
   line-height: 1;
   font-weight: 800;
   text-transform: uppercase;
 }
-.section-title--lg { font-size: 56px; line-height: 64px; font-weight: 700; }
+.section-title--lg { font-size: 40px; line-height: 46px; font-weight: 700; }
 
 /* generic hover affordances from the design */
 .js-hover { transition: transform .2s ease, opacity .2s ease; cursor: pointer; }
@@ -86,7 +86,7 @@ a:hover { color: #fff; }
   position: relative; z-index: 3;
   width: 100%; max-width: var(--maxw);
   display: flex; align-items: center; justify-content: space-between; gap: 20px;
-  font-size: 24px;
+  font-size: 17px;
 }
 .brandbar { display: flex; align-items: center; gap: 32px; }
 .brandbar__logo { height: 40px; width: auto; object-fit: contain; }
@@ -98,7 +98,7 @@ a:hover { color: #fff; }
 .menu a {
   position: relative;
   color: var(--ink);
-  font-size: 24px; font-weight: 500; line-height: 32px;
+  font-size: 17px; font-weight: 500; line-height: 24px;
   text-shadow: 0 2px 4px rgba(0,0,0,.35);
   transition: color .18s;
 }
@@ -145,7 +145,7 @@ a:hover { color: #fff; }
 }
 .intro__text p {
   max-width: 1220px;
-  font-size: 24px; font-weight: 500; line-height: 44px;
+  font-size: 17px; font-weight: 500; line-height: 32px;
 }
 .intro__scene {
   position: absolute; right: 0; top: 0; z-index: 0;
@@ -183,7 +183,7 @@ a:hover { color: #fff; }
 }
 .card:hover { transform: translateY(-6px); }
 .card__title {
-  font-size: 32px; line-height: 1; font-weight: 800;
+  font-size: 24px; line-height: 1; font-weight: 800;
   color: #fff; text-transform: uppercase;
 }
 .card__media {
@@ -257,7 +257,7 @@ a:hover { color: #fff; }
   width: 998px; max-width: 100%;
   display: flex; flex-direction: column; align-items: flex-start; gap: 40px;
 }
-.manifesto__lines p { font-size: 24px; font-weight: 500; line-height: 44px; }
+.manifesto__lines p { font-size: 17px; font-weight: 500; line-height: 32px; }
 .manifesto__icon {
   flex: none; width: 340px; max-width: 30%; object-fit: contain;
   animation: drift 6.5s ease-in-out infinite;
@@ -283,11 +283,11 @@ a:hover { color: #fff; }
 }
 .why__title {
   margin: 0 0 28px;
-  font-size: 56px; line-height: 1.1; font-weight: 800; text-transform: uppercase;
+  font-size: 40px; line-height: 1.1; font-weight: 800; text-transform: uppercase;
 }
 .why__body {
   max-width: 1300px;
-  font-size: 22px; line-height: 1.7; font-weight: 500;
+  font-size: 16px; line-height: 1.7; font-weight: 500;
 }
 .why__body b { font-weight: 700; }
 .why__icon {
@@ -307,8 +307,8 @@ a:hover { color: #fff; }
   max-width: 600px;
   display: flex; flex-direction: column; gap: 20px;
 }
-.training__title { font-size: 48px; line-height: 1; font-weight: 800; text-transform: uppercase; }
-.training__text p { font-size: 20px; line-height: 1.6; font-weight: 500; }
+.training__title { font-size: 36px; line-height: 1; font-weight: 800; text-transform: uppercase; }
+.training__text p { font-size: 15px; line-height: 1.6; font-weight: 500; }
 .training__badge {
   position: relative; z-index: 1;
   margin-left: auto; width: 64px; height: 64px; flex-shrink: 0;
@@ -371,7 +371,7 @@ a:hover { color: #fff; }
 .media__item:hover { transform: translateY(-5px) scale(1.06); opacity: 1; }
 .media__item img { width: 100%; height: 100%; object-fit: contain; padding: 24px; }
 .media__item--text {
-  font-weight: 800; font-size: 26px; letter-spacing: .02em;
+  font-weight: 800; font-size: 20px; letter-spacing: .02em;
   color: var(--ink); text-align: center;
 }
 
@@ -391,7 +391,7 @@ a:hover { color: #fff; }
 .credo__line {
   position: relative; z-index: 1;
   width: 600px; max-width: 100%;
-  font-size: 32px; line-height: 44px; font-weight: 500; text-transform: uppercase;
+  font-size: 24px; line-height: 32px; font-weight: 500; text-transform: uppercase;
 }
 
 /* =====================================================================
@@ -430,11 +430,11 @@ a:hover { color: #fff; }
   width: 100%;
   display: flex; align-items: center; justify-content: space-between; gap: 20px;
 }
-.form__heading { font-size: 44px; line-height: 1; }
+.form__heading { font-size: 32px; line-height: 1; }
 .form__cols {
   width: 100%;
   display: flex; align-items: stretch; gap: 16px; flex-wrap: wrap;
-  font-size: 18px; color: #fff;
+  font-size: 14px; color: #fff;
 }
 .form__col { display: flex; flex-direction: column; gap: 16px; width: 672px; max-width: 100%; }
 .form__col--msg { max-width: 100%; }
@@ -444,7 +444,7 @@ a:hover { color: #fff; }
 .field {
   width: 100%; height: 60px; padding: 0 16px;
   background: #000; border: 2px solid var(--field-bd); outline: none;
-  color: #fff; font-family: var(--font); font-size: 16px;
+  color: #fff; font-family: var(--font); font-size: 14px;
   transition: border-color .18s;
 }
 .field--area { height: 372px; padding: 16px; resize: none; }
@@ -455,7 +455,7 @@ a:hover { color: #fff; }
 
 .cta {
   background: var(--accent); color: #000; border: none;
-  font-family: var(--font); font-weight: 700; font-size: 16px;
+  font-family: var(--font); font-weight: 700; font-size: 14px;
   letter-spacing: .08em; text-transform: uppercase;
   padding: 18px 40px; cursor: pointer;
   transition: background .18s, transform .12s;
@@ -468,7 +468,7 @@ a:hover { color: #fff; }
   width: 100%; max-width: var(--maxw);
   display: flex; align-items: center; justify-content: space-between; gap: 20px;
   flex-wrap: wrap;
-  font-size: 18px; color: var(--panel);
+  font-size: 14px; color: var(--panel);
 }
 .contact__info { display: flex; align-items: center; gap: 40px; flex-wrap: wrap; }
 .contact__info b { line-height: 44px; }
@@ -509,7 +509,7 @@ a:hover { color: #fff; }
 }
 .toast svg { width: 18px; height: 18px; flex: none; }
 .toast span {
-  font-size: 14px; letter-spacing: .04em; text-transform: uppercase;
+  font-size: 12px; letter-spacing: .04em; text-transform: uppercase;
   color: #e6e6e3; line-height: 1.5;
 }
 .toast.is-show { opacity: 1; transform: translate(-50%, 0); }
@@ -523,9 +523,9 @@ a:hover { color: #fff; }
    ===================================================================== */
 @media (max-width: 1100px) {
   .hero { min-height: 82vh; }
-  .hero__topbar { font-size: 20px; }
+  .hero__topbar { font-size: 15px; }
   .menu { gap: 32px; }
-  .menu a { font-size: 18px; }
+  .menu a { font-size: 14px; }
   /* the UAV leaves its absolute layer here, so the section must stack —
      otherwise it becomes a flex sibling and crushes the text column */
   .intro { min-height: 0; flex-direction: column; }
@@ -542,9 +542,9 @@ a:hover { color: #fff; }
   .schemes img { max-width: 46%; }
   .why__icon { position: relative; right: auto; top: auto; width: 260px; max-width: 60%;
                margin-top: 32px; }
-  .section-title, .training__title { font-size: 36px; }
-  .why__title, .section-title--lg { font-size: 40px; line-height: 1.1; }
-  .form__heading { font-size: 32px; }
+  .section-title, .training__title { font-size: 28px; }
+  .why__title, .section-title--lg { font-size: 30px; line-height: 1.1; }
+  .form__heading { font-size: 24px; }
 }
 
 @media (max-width: 720px) {
@@ -554,21 +554,21 @@ a:hover { color: #fff; }
   .brandbar { gap: 16px; }
   .brandbar__logo, .brandbar__icon { height: 30px; width: auto; }
   .menu { width: 100%; justify-content: space-between; gap: 12px; flex-wrap: nowrap; }
-  .menu a { font-size: 14px; letter-spacing: .02em; white-space: nowrap; }
+  .menu a { font-size: 12px; letter-spacing: .02em; white-space: nowrap; }
   .hero__center { padding: 0; }
   .hero__badges { flex-wrap: nowrap; gap: 8px; padding: 0; }
   .hero__badges img { width: auto; max-width: 32%; }
 
   /* --- intro --- */
   .intro__text { padding-top: 56px; }
-  .intro__text p { font-size: 17px; line-height: 30px; }
+  .intro__text p { font-size: 13px; line-height: 22px; }
   .intro__uav { margin: 24px 0 56px; }
 
   /* --- products / schemes --- */
   .products { padding: 40px var(--pad); }
   .card, .card__media { width: 100%; }
   .card__media { height: auto; aspect-ratio: 1 / 1; }
-  .card__title { font-size: 26px; }
+  .card__title { font-size: 20px; }
   .schemes { padding: 48px var(--pad); gap: 24px; }
   .schemes img { max-width: 100%; }
 
@@ -582,7 +582,7 @@ a:hover { color: #fff; }
   .manifesto__row { flex-direction: column; gap: 24px; }
   .manifesto__icon { width: 150px; max-width: 50%; }
   .manifesto__uav { margin-top: 24px; }
-  .manifesto__lines p, .why__body, .training__text p { font-size: 17px; line-height: 1.6; }
+  .manifesto__lines p, .why__body, .training__text p { font-size: 13px; line-height: 1.6; }
   .manifesto__lines { gap: 22px; }
   .why__intro { padding: 56px var(--pad) 32px; }
   .training { padding: 48px var(--pad) 56px; flex-direction: column; align-items: flex-start; gap: 24px; }
@@ -596,14 +596,14 @@ a:hover { color: #fff; }
   .media__row { gap: 20px; justify-content: space-between; }
   .media__item { width: calc(50% - 10px); height: auto; aspect-ratio: 1 / 1; }
   .media__item img { padding: 14px; }
-  .media__item--text { font-size: 18px; }
+  .media__item--text { font-size: 14px; }
 
   /* --- showcase / credo --- */
   .showcase { min-height: 0; }
   .showcase__img { position: relative; top: 0; left: 0; right: 0;
                    width: 100%; height: auto; }
   .credo { padding: 80px var(--pad) 64px; gap: 32px; }
-  .credo__line { font-size: 20px; line-height: 30px; }
+  .credo__line { font-size: 15px; line-height: 22px; }
 
   /* --- contact --- */
   .contact { padding: 48px 20px; gap: 24px; }
@@ -611,13 +611,13 @@ a:hover { color: #fff; }
   .contact__panel:hover { transform: none; }
   /* stacked so the CTA can't be pushed outside the panel */
   .form__head { flex-direction: column; align-items: stretch; gap: 20px; }
-  .form__heading { font-size: 26px; }
+  .form__heading { font-size: 20px; }
   .cta { width: 100%; padding: 16px 24px; }
   .form__inner { gap: 24px; }
   .form__col { width: 100%; }
   .form__label { line-height: 1.4; }
   .field--area, .form__col--msg .field--area { height: 200px; min-height: 200px; }
-  .contact__footer { gap: 20px; font-size: 15px; }
+  .contact__footer { gap: 20px; font-size: 12px; }
   .contact__info { gap: 8px 24px; }
   .contact__info b { line-height: 1.5; }
 
