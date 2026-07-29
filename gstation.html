@@ -7,7 +7,7 @@
   <meta name="description" content="G STATION 369 — система керування БПЛА: передача команд, прийом відео й телеметрії, збільшення робочої дистанції в складних умовах." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;800&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="gstation.css" />
 </head>
 <body>
@@ -17,54 +17,87 @@
     <section class="gs-hero">
       <img class="gs-hero__bg" src="assets/gs-hero.png" alt="G Station 369" />
       <span class="gs-hero__scrim"></span>
+      <span class="gs-hero__tick gs-hero__tick--left"></span>
+      <span class="gs-hero__tick gs-hero__tick--right"></span>
 
       <a class="gs-back" href="index.html#products">← НА ГОЛОВНУ</a>
 
-      <div class="gs-hero__text">
-        <p>
-          <span class="gs-accent">G STATION 369</span> — ЦЕ СИСТЕМА, ЩО РОЗШИРЮЄ МОЖЛИВОСТІ БПЛА, ЗАБЕЗПЕЧУЮЧИ СТАБІЛЬНУ ВЗАЄМОДІЮ МІЖ ОПЕРАТОРОМ І ЛІТАЛЬНИМ АПАРАТОМ.
+      <div class="gs-hero__row">
+        <p class="gs-hero__tagline">
+          <span>MILLITARY</span>
+          <span>ROBOTICS</span>
+          <span>TECHNOLOGY</span>
         </p>
-        <p class="gs-hero__sub">
-          ВОНА ВИКОРИСТОВУЄТЬСЯ ДЛЯ КЕРУВАННЯ БПЛА, ПЕРЕДАЧІ КОМАНД, ПРИЙОМУ ВІДЕО Й ТЕЛЕМЕТРІЇ, А ТАКОЖ ДЛЯ ЗБІЛЬШЕННЯ РОБОЧОЇ ДИСТАНЦІЇ СИСТЕМИ В СКЛАДНИХ УМОВАХ ЗАСТОСУВАННЯ. ТАКЕ РІШЕННЯ ДОЗВОЛЯЄ ОПЕРАТОРУ ПРАЦЮВАТИ ДАЛІ, БАЧИТИ БІЛЬШЕ Й ЗАЛИШАТИСЯ У БЕЗПЕЧНІШОМУ МІСЦІ.
-        </p>
-      </div>
-    </section>
 
-    <!-- ============ 02 MODULES ============ -->
-    <section class="gs-modules">
-      <div class="gs-modules__grid">
+        <img class="gs-hero__logo" src="assets/k2-logo.png" alt="SPEXTR" />
 
-        <article class="gs-module">
-          <h2 class="gs-module__title">НАЗЕМНА СТАНЦІЯ КЕРУВАННЯ ТА СИСТЕМА ПОДОВЖЕННЯ ЗВ'ЯЗКУ</h2>
-          <img class="gs-module__img" src="assets/gs-station.png" alt="Наземна станція керування" />
-          <svg class="gs-module__arrow" viewBox="0 0 24 24" fill="none">
-            <path d="M6 6l12 12M18 18H8M18 18V8" stroke="#fff" stroke-width="1.6" />
-          </svg>
-        </article>
-
-        <article class="gs-module">
-          <h2 class="gs-module__title gs-module__title--narrow">РЕТРАНСЛЯТОР MR-2</h2>
-          <img class="gs-module__img gs-module__img--mr2" src="assets/gs-mr2.png" alt="Ретранслятор MR-2" />
-          <svg class="gs-module__arrow" viewBox="0 0 24 24" fill="none">
-            <path d="M6 6l12 12M18 18H8M18 18V8" stroke="#fff" stroke-width="1.6" />
-          </svg>
-        </article>
-
-      </div>
-    </section>
-
-    <!-- ============ 03 FIELD GALLERY ============ -->
-    <section class="gs-gallery">
-      <div class="gs-gallery__viewport">
-        <div class="gs-gallery__track">
-          <img src="assets/gs-shot-1.png" alt="Ретранслятор в польоті" />
-          <img src="assets/gs-shot-2.png" alt="Збірка на місцевості" />
-          <img src="assets/gs-shot-3.png" alt="Антена MR-2" />
-          <img src="assets/gs-shot-1.png" alt="" aria-hidden="true" />
-          <img src="assets/gs-shot-2.png" alt="" aria-hidden="true" />
-          <img src="assets/gs-shot-3.png" alt="" aria-hidden="true" />
+        <div class="gs-socials">
+          <a class="gs-social" href="#" aria-label="Instagram">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5" /><circle cx="12" cy="12" r="4" /><circle cx="17.5" cy="6.5" r="1.2" fill="currentColor" stroke="none" /></svg>
+          </a>
+          <a class="gs-social" href="#" aria-label="Facebook">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M14 8.5V7c0-.7.5-1 1.2-1H17V3h-2.5C11.9 3 11 4.6 11 6.4v2.1H9v3h2V21h3v-9.5h2.3l.4-3H14z" /></svg>
+          </a>
+          <a class="gs-social" href="#" aria-label="TikTok">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M16.5 3c.3 2.1 1.5 3.6 3.5 3.9v2.4c-1.2.1-2.3-.2-3.5-.8v5.6c0 3.2-2.3 5.9-5.6 5.9-2.9 0-5.1-2.1-5.1-4.9 0-3 2.5-5 5.7-4.6v2.6c-.5-.2-1-.2-1.5-.1-1.1.2-1.8 1-1.7 2.2.1 1.1 1 1.9 2.1 1.9 1.3 0 2.2-1 2.2-2.5V3h3.4z" /></svg>
+          </a>
+          <a class="gs-social" href="#" aria-label="Threads">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.3 11.2c-.1 0-.2-.1-.3-.1-.2-3-1.8-4.7-4.5-4.7-1.6 0-3 .7-3.8 2l1.5 1c.6-.9 1.5-1.1 2.3-1.1 1 0 1.8.3 2.2 1 .3.4.5 1 .5 1.7-.7-.1-1.4-.2-2.2-.1-2.4.1-3.9 1.5-3.8 3.4.1 1 .6 1.8 1.4 2.3.7.4 1.6.6 2.5.6 1.2-.1 2.2-.5 2.8-1.4.5-.6.8-1.4.9-2.4.6.4 1.1.9 1.3 1.5.5 1.1.5 2.8-.9 4.2-1.2 1.2-2.7 1.8-4.9 1.8-2.4 0-4.2-.8-5.4-2.3C4.6 17 4 15 4 12.5s.6-4.5 1.7-5.9C6.9 5.1 8.7 4.3 11.1 4.3c2.4 0 4.3.8 5.4 2.4.6.8 1 1.8 1.2 3l1.9-.5c-.3-1.5-.8-2.8-1.6-3.8C17.5 3.1 14.9 2 11.9 2h-.8C8.1 2 5.8 3 4.3 4.9 2.9 6.6 2.2 9 2.1 11.9v.2c0 2.9.7 5.3 2.2 7 1.5 1.9 3.8 2.9 6.8 2.9h.8c2.7 0 4.6-.7 6.2-2.3 2.1-2.1 2-4.7 1.3-6.3-.5-1.1-1.4-2-2.6-2.7l-.5-.4z" /></svg>
+          </a>
         </div>
       </div>
+    </section>
+
+    <!-- ============ 02 INTRO ============ -->
+    <section class="gs-intro">
+      <p><span class="gs-accent">G STATION 369</span> — ЦЕ СИСТЕМА, ЩО РОЗШИРЮЄ МОЖЛИВОСТІ БПЛА, ЗАБЕЗПЕЧУЮЧИ СТАБІЛЬНУ ВЗАЄМОДІЮ МІЖ ОПЕРАТОРОМ І ЛІТАЛЬНИМ АПАРАТОМ. ВОНА ВИКОРИСТОВУЄТЬСЯ ДЛЯ КЕРУВАННЯ БПЛА, ПЕРЕДАЧІ КОМАНД, ПРИЙОМУ ВІДЕО Й ТЕЛЕМЕТРІЇ, А ТАКОЖ ДЛЯ ЗБІЛЬШЕННЯ РОБОЧОЇ ДИСТАНЦІЇ СИСТЕМИ В СКЛАДНИХ УМОВАХ ЗАСТОСУВАННЯ. ТАКЕ РІШЕННЯ ДОЗВОЛЯЄ ОПЕРАТОРУ ПРАЦЮВАТИ ДАЛІ, БАЧИТИ БІЛЬШЕ Й ЗАЛИШАТИСЯ У БЕЗПЕЧНІШОМУ МІСЦІ.</p>
+    </section>
+
+    <!-- ============ 03 GROUND STATION MODULE ============ -->
+    <section class="gs-mod">
+      <div class="gs-mod__head">
+        <img class="gs-mod__unit gs-mod__unit--a" src="assets/gs-station.png" alt="Наземна станція керування" />
+        <div class="gs-mod__lead">
+          <h2 class="gs-mod__title">НАЗЕМНА СТАНЦІЯ<br />КЕРУВАННЯ</h2>
+          <p class="gs-mod__sub">СИСТЕМА ПОДОВЖЕННЯ ЗВ'ЯЗКУ.</p>
+          <svg class="gs-mod__arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 7L7 17" /><path d="M7 8v9h9" /></svg>
+        </div>
+      </div>
+
+      <dl class="gs-specs">
+        <div class="gs-spec"><dt>ДАЛЬНІСТЬ ЗВ'ЯЗКУ</dt><span class="gs-spec__rule"></span><dd>—</dd></div>
+        <div class="gs-spec"><dt>ЧАС АВТОНОМНОЇ РОБОТИ</dt><span class="gs-spec__rule"></span><dd>—</dd></div>
+        <div class="gs-spec"><dt>РОБОЧИЙ ДІАПАЗОН ЧАСТОТ</dt><span class="gs-spec__rule"></span><dd>—</dd></div>
+        <div class="gs-spec"><dt>ВАГА КОМПЛЕКТУ</dt><span class="gs-spec__rule"></span><dd>—</dd></div>
+        <div class="gs-spec"><dt>СТУПІНЬ ЗАХИСТУ</dt><span class="gs-spec__rule"></span><dd>—</dd></div>
+      </dl>
+    </section>
+
+    <!-- ============ 04 MR-2 MODULE ============ -->
+    <section class="gs-mod">
+      <div class="gs-mod__head">
+        <img class="gs-mod__unit gs-mod__unit--b" src="assets/gs-mr2.png" alt="Ретранслятор MR-2" />
+        <div class="gs-mod__lead">
+          <h2 class="gs-mod__title gs-mod__title--accent">РЕТРАНСЛЯТОР MR-2</h2>
+          <p class="gs-mod__sub">ПІДСИЛЮЄ СИГНАЛ ТА ЗБІЛЬШУЄ РОБОЧУ ДИСТАНЦІЮ СИСТЕМИ.</p>
+          <svg class="gs-mod__arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 7L7 17" /><path d="M7 8v9h9" /></svg>
+        </div>
+      </div>
+
+      <dl class="gs-specs">
+        <div class="gs-spec"><dt>РОЗМІР</dt><span class="gs-spec__rule"></span><dd>—</dd></div>
+        <div class="gs-spec"><dt>ВАГА</dt><span class="gs-spec__rule"></span><dd>—</dd></div>
+        <div class="gs-spec"><dt>ЧАС ПОЛЬОТУ</dt><span class="gs-spec__rule"></span><dd>—</dd></div>
+        <div class="gs-spec"><dt>ДАЛЬНІСТЬ РЕТРАНСЛЯЦІЇ</dt><span class="gs-spec__rule"></span><dd>—</dd></div>
+        <div class="gs-spec"><dt>КЕРУВАННЯ</dt><span class="gs-spec__rule"></span><dd>—</dd></div>
+      </dl>
+    </section>
+
+    <!-- ============ 05 MR-2 GALLERY ============ -->
+    <section class="gs-gallery gs-gallery--3">
+      <img class="gs-shot" src="assets/gs-shot-1.png" alt="Ретранслятор в польоті" />
+      <img class="gs-shot" src="assets/gs-shot-2.png" alt="Збірка на місцевості" />
+      <img class="gs-shot" src="assets/gs-shot-3.png" alt="Антена MR-2" />
     </section>
 
   </div>
