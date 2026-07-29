@@ -12,7 +12,7 @@
   --ink-spec: #e8e8e8;
   --accent:   #FFCA08;
 
-  --gutter: clamp(20px, 20.8vw, 400px);   /* 400px side padding at 1920 */
+  --gutter: clamp(20px, 7.3vw, 140px);   /* standard side padding, shared site-wide */
   --font:   'Montserrat', -apple-system, BlinkMacSystemFont, sans-serif;
 }
 
@@ -254,11 +254,6 @@ a:hover { color: #fff; }
 /* =====================================================================
    RESPONSIVE
    ===================================================================== */
-@media (max-width: 1700px) {
-  /* keep readable measure instead of scaling the 400px design gutter */
-  :root { --gutter: clamp(20px, 8vw, 160px); }
-}
-
 @media (max-width: 1400px) {
   .k2-hero { height: 78vh; min-height: 620px; }
   .k2-hero__row { padding-top: 140px; }
