@@ -4,8 +4,8 @@
    ===================================================================== */
 
 :root {
-  --bg:        #030303;
-  --bg-alt:    #050505;
+  --bg:        #070707;
+  --bg-alt:    #070707;
   --panel:     #0a0a0a;
   --ink:       #fefefe;
   --ink-dim:   #c4c4c4;
@@ -279,7 +279,7 @@ a:hover { color: #fff; }
 .why__intro {
   position: relative;
   padding: 80px var(--pad) 40px;
-  background: linear-gradient(180deg, #050505, #3a3a3a);
+  background: linear-gradient(180deg, #070707, #3a3a3a);
 }
 .why__title {
   margin: 0 0 28px;
