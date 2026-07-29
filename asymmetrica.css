@@ -200,6 +200,11 @@ a:hover { color: #fff; }
   position: absolute; right: 20px; bottom: 16px; z-index: 2;
   width: 44px; height: 44px; color: #fff;
 }
+/* cards that navigate to a product page */
+.card--link { color: inherit; text-decoration: none; }
+.card--link:hover { color: inherit; }
+.card--link:hover .card__title { color: var(--accent); }
+.card--link:focus-visible { outline: 2px solid var(--accent); outline-offset: 6px; }
 
 /* =====================================================================
    UGV WIREFRAME SCHEMES

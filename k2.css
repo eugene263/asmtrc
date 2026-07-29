@@ -1,0 +1,306 @@
+/* =====================================================================
+   SPEXTR K2 — product page
+   Design tokens + component styles. Reference canvas: 1920px wide.
+   ===================================================================== */
+
+:root {
+  --bg:       #050505;
+  --bg-deep:  #030303;
+  --bg-soft:  #0a0a0a;
+  --ink:      #fefefe;
+  --ink-mute: #c9c9c9;
+  --ink-spec: #e8e8e8;
+  --accent:   #FFCA08;
+
+  --gutter: clamp(20px, 20.8vw, 400px);   /* 400px side padding at 1920 */
+  --font:   'Montserrat', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--font);
+  overflow-x: hidden;
+}
+
+img { display: block; }
+button { appearance: none; -webkit-appearance: none; font: inherit; }
+
+a { color: var(--accent); text-decoration: none; }
+a:hover { color: #fff; }
+
+.k2 { position: relative; width: 100%; overflow: hidden; background: var(--bg); }
+
+:where(a, button):focus-visible {
+  outline: 2px solid var(--accent); outline-offset: 3px;
+}
+
+/* =====================================================================
+   01 HERO
+   ===================================================================== */
+.k2-hero {
+  position: relative;
+  height: 1060px;
+  overflow: hidden;
+}
+.k2-hero__bg {
+  position: absolute; inset: 0;
+  width: 100%; height: 100%; object-fit: cover;
+}
+.k2-hero__scrim {
+  position: absolute; inset: 0;
+  background: linear-gradient(180deg,
+    rgba(5,5,5,.35) 0%, transparent 30%, rgba(5,5,5,.55) 82%, var(--bg) 100%);
+}
+.k2-hero__tick {
+  position: absolute; top: 64px;
+  height: 5px; background: #fff; opacity: .85;
+}
+.k2-hero__tick--left  { left: 19.8%; width: 180px; }
+.k2-hero__tick--right { left: 67.7%; width: 250px; }
+
+.k2-hero__row {
+  position: relative; z-index: 2;
+  display: flex; align-items: flex-start; justify-content: space-between;
+  gap: 40px;
+  padding: 190px var(--gutter) 0;
+}
+
+.k2-back {
+  position: absolute; z-index: 3;
+  left: var(--gutter); top: 110px;
+  font-size: 15px; font-weight: 600; letter-spacing: .12em;
+  color: var(--ink); text-transform: uppercase;
+  text-shadow: 0 2px 6px rgba(0,0,0,.5);
+  transition: color .18s;
+}
+.k2-back:hover { color: var(--accent); }
+
+.k2-hero__tagline {
+  font-size: 22px; font-weight: 600; line-height: 1.5; letter-spacing: .08em;
+}
+.k2-hero__tagline span { display: block; }
+
+.k2-hero__logo {
+  width: 120px; height: auto; object-fit: contain; margin-top: -14px;
+}
+
+.k2-socials {
+  display: grid; grid-template-columns: repeat(2, 34px); gap: 8px;
+}
+.k2-social {
+  width: 34px; height: 34px; object-fit: contain; opacity: .9;
+  transition: opacity .18s, transform .18s;
+}
+.k2-social:hover { opacity: 1; transform: translateY(-2px); }
+
+/* =====================================================================
+   02 INTRO
+   ===================================================================== */
+.k2-intro {
+  position: relative;
+  background: var(--bg);
+  padding: 80px var(--gutter) 120px;
+}
+.k2-intro p {
+  font-size: 24px; line-height: 1.75; font-weight: 500; letter-spacing: .03em;
+  text-align: justify; text-wrap: pretty;
+}
+
+/* =====================================================================
+   03 FIELD PROOF
+   ===================================================================== */
+.k2-field {
+  position: relative;
+  background: var(--bg-soft);
+  padding: 0 var(--gutter) 160px;
+}
+.k2-field__bg {
+  position: absolute; left: 0; top: 120px;
+  width: 100%; height: 820px; object-fit: cover; opacity: .5;
+}
+.k2-field__scrim {
+  position: absolute; inset: 0;
+  background: linear-gradient(180deg,
+    var(--bg) 0%, rgba(5,5,5,.55) 22%, rgba(5,5,5,.75) 70%, var(--bg) 100%);
+}
+.k2-field__inner { position: relative; z-index: 2; }
+
+.k2-video {
+  position: relative;
+  width: 1240px; max-width: 100%; height: 560px; margin: 0 auto;
+  border: 1px solid rgba(255,255,255,.14);
+  overflow: hidden;
+}
+.k2-video img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+
+.k2-play {
+  position: absolute; left: 50%; top: 50%;
+  transform: translate(-50%, -50%);
+  width: 96px; height: 96px; border-radius: 50%; border: none;
+  background: rgba(255,255,255,.28);
+  display: flex; align-items: center; justify-content: center;
+  cursor: pointer;
+  transition: background .2s, transform .2s;
+}
+.k2-play svg { width: 34px; height: 34px; }
+.k2-play:hover {
+  background: rgba(255,255,255,.5);
+  transform: translate(-50%, -50%) scale(1.06);
+}
+
+.k2-field__row {
+  display: flex; align-items: flex-start; justify-content: space-between;
+  gap: 80px;
+  padding-top: 110px;
+}
+.k2-field__text {
+  width: 1000px; max-width: 100%;
+  display: flex; flex-direction: column; gap: 44px;
+  font-size: 24px; line-height: 1.7; font-weight: 500; letter-spacing: .03em;
+  text-align: justify;
+}
+.k2-field__text b { color: var(--accent); font-weight: 800; }
+.k2-field__mark {
+  width: 230px; height: auto; object-fit: contain; margin-top: 120px; flex: none;
+}
+
+/* =====================================================================
+   04 / 06 MODULE SECTIONS
+   ===================================================================== */
+.k2-mod {
+  position: relative;
+  background: var(--bg-deep);
+  padding: 120px var(--gutter) 90px;
+}
+.k2-mod + .k2-mod { padding-top: 130px; }
+
+.k2-mod__head {
+  display: flex; align-items: flex-start; justify-content: space-between; gap: 70px;
+}
+.k2-mod__unit { width: 640px; max-width: 100%; object-fit: contain; flex: none; }
+.k2-mod__unit--a { animation: k2-float 6.5s ease-in-out infinite; }
+.k2-mod__unit--b { animation: k2-float 5.6s ease-in-out infinite; animation-delay: -1.8s; }
+@keyframes k2-float {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(-16px); }
+}
+
+.k2-mod__lead {
+  flex: 1;
+  display: flex; flex-direction: column; align-items: flex-start; gap: 34px;
+  padding-top: 36px;
+}
+.k2-mod__title {
+  font-size: 52px; line-height: 1.1; font-weight: 800; letter-spacing: .02em;
+}
+.k2-mod__title--accent { color: var(--accent); }
+.k2-mod__sub {
+  max-width: 520px;
+  font-size: 19px; line-height: 1.7; font-weight: 500; letter-spacing: .06em;
+  color: var(--ink-mute); text-align: justify;
+}
+.k2-mod__arrow { width: 78px; height: 78px; color: var(--accent); margin-top: 24px; }
+
+.k2-mod__body {
+  display: flex; flex-direction: column; gap: 38px;
+  padding-top: 70px;
+  font-size: 19px; line-height: 1.75; font-weight: 500; letter-spacing: .05em;
+  text-align: justify;
+}
+
+/* spec table ------------------------------------------------------- */
+.k2-specs {
+  display: flex; flex-direction: column; gap: 14px;
+  padding-top: 70px;
+}
+.k2-spec {
+  display: flex; align-items: baseline; gap: 16px;
+  font-size: 17px; font-weight: 600; letter-spacing: .1em; color: var(--ink-spec);
+}
+.k2-spec dt { white-space: nowrap; }
+.k2-spec dd { margin: 0; white-space: nowrap; }
+.k2-spec__rule { flex: 1; height: 1px; background: rgba(255,255,255,.32); }
+
+.k2-ip {
+  padding-top: 26px;
+  font-size: 17px; font-weight: 600; letter-spacing: .1em; color: var(--ink-spec);
+}
+
+/* =====================================================================
+   05 / 07 GALLERIES
+   ===================================================================== */
+.k2-gallery {
+  background: var(--bg-deep);
+  display: grid; gap: 22px;
+  padding: 70px 0 0;
+}
+.k2-gallery--3 { grid-template-columns: repeat(3, 1fr); }
+.k2-gallery--2 { grid-template-columns: repeat(2, 1fr); }
+
+.k2-shot {
+  width: 100%; height: 520px; object-fit: cover;
+  transition: transform .35s cubic-bezier(.2,0,.1,1), filter .35s;
+}
+.k2-shot:hover { transform: scale(1.03); filter: brightness(1.08); }
+
+/* =====================================================================
+   RESPONSIVE
+   ===================================================================== */
+@media (max-width: 1700px) {
+  /* keep readable measure instead of scaling the 400px design gutter */
+  :root { --gutter: clamp(20px, 8vw, 160px); }
+}
+
+@media (max-width: 1400px) {
+  .k2-hero { height: 78vh; min-height: 620px; }
+  .k2-hero__row { padding-top: 140px; }
+  .k2-hero__tick { display: none; }
+  .k2-field__row { gap: 40px; }
+  .k2-field__mark { width: 160px; margin-top: 60px; }
+  .k2-mod__head { gap: 48px; }
+  .k2-mod__unit { width: 50%; }
+  .k2-mod__title { font-size: 42px; }
+  .k2-video { height: 420px; }
+}
+
+@media (max-width: 900px) {
+  .k2-hero__row {
+    flex-wrap: wrap; align-items: center; gap: 24px; padding-top: 120px;
+  }
+  .k2-back { top: 70px; }
+  .k2-hero__tagline { font-size: 18px; }
+  .k2-hero__logo { width: 84px; margin-top: 0; }
+  .k2-intro p, .k2-field__text { font-size: 18px; line-height: 1.7; }
+  .k2-intro { padding-bottom: 80px; }
+  .k2-field { padding-bottom: 90px; }
+  .k2-field__row { flex-direction: column; padding-top: 60px; }
+  .k2-field__text { gap: 28px; width: 100%; }
+  .k2-field__mark { margin: 0; }
+  .k2-video { height: 300px; }
+  .k2-play { width: 68px; height: 68px; }
+  .k2-play svg { width: 24px; height: 24px; }
+
+  .k2-mod { padding: 70px var(--gutter) 60px; }
+  .k2-mod + .k2-mod { padding-top: 70px; }
+  .k2-mod__head { flex-direction: column; gap: 32px; }
+  .k2-mod__unit { width: 100%; }
+  .k2-mod__lead { padding-top: 0; }
+  .k2-mod__title { font-size: 32px; }
+  .k2-mod__sub, .k2-mod__body { font-size: 17px; text-align: left; }
+  .k2-mod__body { padding-top: 48px; gap: 26px; }
+  .k2-mod__arrow { width: 52px; height: 52px; margin-top: 8px; }
+  .k2-specs { padding-top: 48px; }
+  .k2-spec { font-size: 15px; letter-spacing: .06em; }
+
+  .k2-gallery--3, .k2-gallery--2 { grid-template-columns: 1fr; gap: 12px; }
+  .k2-shot { height: 260px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * { animation: none !important; scroll-behavior: auto !important; }
+}
