@@ -275,7 +275,16 @@ a:hover { color: #fff; }
   .k2-back { top: 70px; }
   .k2-hero__tagline { font-size: 18px; }
   .k2-hero__logo { width: 84px; margin-top: 0; }
-  .k2-intro p, .k2-field__text { font-size: 18px; line-height: 1.7; }
+  /* socials get their own row instead of crowding the tagline */
+  .k2-socials {
+    flex-basis: 100%; margin-top: 4px;
+    grid-template-columns: repeat(4, 30px); gap: 10px; justify-content: start;
+  }
+  .k2-social { width: 30px; height: 30px; }
+  .k2-hero__row { row-gap: 16px; }
+  /* justified text opens ugly rivers at phone widths */
+  .k2-intro p, .k2-field__text, .k2-field__text p { text-align: left; }
+  .k2-intro p, .k2-field__text { font-size: 17px; line-height: 1.65; }
   .k2-intro { padding-bottom: 80px; }
   .k2-field { padding-bottom: 90px; }
   .k2-field__row { flex-direction: column; padding-top: 60px; }
@@ -292,6 +301,7 @@ a:hover { color: #fff; }
   .k2-mod__lead { padding-top: 0; }
   .k2-mod__title { font-size: 32px; }
   .k2-mod__sub, .k2-mod__body { font-size: 17px; text-align: left; }
+  .k2-mod__sub { max-width: none; }
   .k2-mod__body { padding-top: 48px; gap: 26px; }
   .k2-mod__arrow { width: 52px; height: 52px; margin-top: 8px; }
   .k2-specs { padding-top: 48px; }

@@ -526,11 +526,18 @@ a:hover { color: #fff; }
   .hero__topbar { font-size: 20px; }
   .menu { gap: 32px; }
   .menu a { font-size: 18px; }
-  .intro { min-height: 0; }
-  .intro__text { padding: 72px var(--pad); }
+  /* the UAV leaves its absolute layer here, so the section must stack —
+     otherwise it becomes a flex sibling and crushes the text column */
+  .intro { min-height: 0; flex-direction: column; }
+  .intro__text { padding: 72px var(--pad) 0; gap: 32px; }
   .intro__scene { opacity: .35; }
   .intro__uav { position: relative; left: 0; top: 0; transform: none;
-                width: 100%; margin: 40px 0 72px; animation: none; }
+                width: 100%; max-width: 100%; margin: 40px 0 72px;
+                padding: 0 var(--pad); animation: none; }
+  /* two product cards per row instead of one full-width column */
+  .products__grid { justify-content: flex-start; gap: 24px; }
+  .card { width: calc(50% - 12px); }
+  .card__media { width: 100%; height: auto; aspect-ratio: 1 / 1; }
   .schemes { flex-wrap: wrap; justify-content: center; }
   .schemes img { max-width: 46%; }
   .why__icon { position: relative; right: auto; top: auto; width: 260px; max-width: 60%;
@@ -541,27 +548,82 @@ a:hover { color: #fff; }
 }
 
 @media (max-width: 720px) {
-  .hero__topbar { flex-direction: column; align-items: flex-start; gap: 20px; }
-  .menu { width: 100%; justify-content: flex-start; flex-wrap: wrap; }
-  .hero__badges { flex-wrap: wrap; justify-content: center; gap: 16px; padding: 0; }
-  .hero__badges img { width: 140px; max-width: 44%; }
-  .intro__text p { font-size: 19px; line-height: 32px; }
+  /* --- hero --- */
+  .hero { padding: 28px var(--pad) 40px; gap: 32px; }
+  .hero__topbar { flex-direction: column; align-items: flex-start; gap: 16px; }
+  .brandbar { gap: 16px; }
+  .brandbar__logo, .brandbar__icon { height: 30px; width: auto; }
+  .menu { width: 100%; justify-content: space-between; gap: 12px; flex-wrap: nowrap; }
+  .menu a { font-size: 14px; letter-spacing: .02em; white-space: nowrap; }
+  .hero__center { padding: 0; }
+  .hero__badges { flex-wrap: nowrap; gap: 8px; padding: 0; }
+  .hero__badges img { width: auto; max-width: 32%; }
+
+  /* --- intro --- */
+  .intro__text { padding-top: 56px; }
+  .intro__text p { font-size: 17px; line-height: 30px; }
+  .intro__uav { margin: 24px 0 56px; }
+
+  /* --- products / schemes --- */
+  .products { padding: 40px var(--pad); }
   .card, .card__media { width: 100%; }
   .card__media { height: auto; aspect-ratio: 1 / 1; }
+  .card__title { font-size: 26px; }
+  .schemes { padding: 48px var(--pad); gap: 24px; }
   .schemes img { max-width: 100%; }
+
+  /* --- carousels --- */
   .marquee { height: 420px; }
   .marquee--grid { height: 380px; }
   .marquee--grid .marquee__cell { height: 300px; }
-  .manifesto__lines p, .why__body, .training__text p { font-size: 18px; line-height: 1.6; }
-  .manifesto__lines p { line-height: 30px; }
-  .credo__line { font-size: 22px; line-height: 32px; }
-  .contact { padding: 48px 20px; }
-  .contact__panel { padding: 48px 24px; }
-  .form__col { width: 100%; }
+
+  /* --- manifesto / why / training --- */
+  .manifesto { padding: 64px var(--pad) 48px; gap: 24px; }
+  .manifesto__row { flex-direction: column; gap: 24px; }
+  .manifesto__icon { width: 150px; max-width: 50%; }
+  .manifesto__uav { margin-top: 24px; }
+  .manifesto__lines p, .why__body, .training__text p { font-size: 17px; line-height: 1.6; }
+  .manifesto__lines { gap: 22px; }
+  .why__intro { padding: 56px var(--pad) 32px; }
+  .training { padding: 48px var(--pad) 56px; flex-direction: column; align-items: flex-start; gap: 24px; }
+  .training__badge { margin: 0; width: 48px; height: 48px; }
+
+  /* --- partners / media: two per row instead of one --- */
+  .partners { padding: 16px var(--pad) 64px; gap: 32px; }
+  .partners__row { gap: 16px; justify-content: space-between; }
+  .partner { width: calc(50% - 8px); height: auto; aspect-ratio: 1 / 1; }
+  .media { padding: 48px var(--pad); gap: 32px; }
+  .media__row { gap: 20px; justify-content: space-between; }
+  .media__item { width: calc(50% - 10px); height: auto; aspect-ratio: 1 / 1; }
+  .media__item img { padding: 14px; }
+  .media__item--text { font-size: 18px; }
+
+  /* --- showcase / credo --- */
   .showcase { min-height: 0; }
   .showcase__img { position: relative; top: 0; left: 0; right: 0;
                    width: 100%; height: auto; }
+  .credo { padding: 80px var(--pad) 64px; gap: 32px; }
+  .credo__line { font-size: 20px; line-height: 30px; }
+
+  /* --- contact --- */
+  .contact { padding: 48px 20px; gap: 24px; }
+  .contact__panel { padding: 40px 20px; }
+  .contact__panel:hover { transform: none; }
+  /* stacked so the CTA can't be pushed outside the panel */
+  .form__head { flex-direction: column; align-items: stretch; gap: 20px; }
+  .form__heading { font-size: 26px; }
+  .cta { width: 100%; padding: 16px 24px; }
+  .form__inner { gap: 24px; }
+  .form__col { width: 100%; }
+  .form__label { line-height: 1.4; }
+  .field--area, .form__col--msg .field--area { height: 200px; min-height: 200px; }
+  .contact__footer { gap: 20px; font-size: 15px; }
+  .contact__info { gap: 8px 24px; }
+  .contact__info b { line-height: 1.5; }
+
   .to-top { right: 18px; bottom: 18px; }
+  .toast { left: 16px; right: 16px; bottom: 16px; transform: translateY(16px); max-width: none; }
+  .toast.is-show { transform: none; }
 }
 
 @media (prefers-reduced-motion: reduce) {
