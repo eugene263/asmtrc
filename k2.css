@@ -4,8 +4,8 @@
    ===================================================================== */
 
 :root {
-  --bg:       #050505;
-  --bg-deep:  #030303;
+  --bg:       #070707;
+  --bg-deep:  #070707;
   --bg-soft:  #0a0a0a;
   --ink:      #fefefe;
   --ink-mute: #c9c9c9;
@@ -54,7 +54,7 @@ a:hover { color: #fff; }
 .k2-hero__scrim {
   position: absolute; inset: 0;
   background: linear-gradient(180deg,
-    rgba(5,5,5,.35) 0%, transparent 30%, rgba(5,5,5,.55) 82%, var(--bg) 100%);
+    rgba(7,7,7,.35) 0%, transparent 30%, rgba(7,7,7,.55) 82%, var(--bg) 100%);
 }
 .k2-hero__tick {
   position: absolute; top: 64px;
@@ -129,7 +129,7 @@ a:hover { color: #fff; }
 .k2-field__scrim {
   position: absolute; inset: 0;
   background: linear-gradient(180deg,
-    var(--bg) 0%, rgba(5,5,5,.55) 22%, rgba(5,5,5,.75) 70%, var(--bg) 100%);
+    var(--bg) 0%, rgba(7,7,7,.55) 22%, rgba(7,7,7,.75) 70%, var(--bg) 100%);
 }
 .k2-field__inner { position: relative; z-index: 2; }
 
