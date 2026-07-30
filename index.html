@@ -8,7 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700;800&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="asymmetrica.css?v=3" />
+  <link rel="stylesheet" href="asymmetrica.css?v=4" />
 </head>
 <body>
   <div class="site">
@@ -33,7 +33,24 @@
           <a class="js-nav" href="#products">ПРОДУКТИ</a>
           <a class="js-nav" href="#contact">КОНТАКТИ</a>
         </nav>
+        <button class="burger js-burger" type="button" aria-label="Меню" aria-expanded="false" aria-controls="mobile-menu">
+          <span></span><span></span><span></span>
+        </button>
       </header>
+
+      <span class="menu-backdrop js-menu-backdrop"></span>
+      <nav id="mobile-menu" class="mobile-menu js-mobile-menu" aria-label="Мобільна навігація">
+        <a class="mobile-menu__link js-nav" href="#about">ПРО НАС</a>
+        <div class="mobile-menu__group">
+          <a class="mobile-menu__link js-nav" href="#products">ПРОДУКТИ</a>
+          <div class="mobile-menu__sub">
+            <a class="mobile-menu__sublink" href="kryla.html">КРИЛА</a>
+            <a class="mobile-menu__sublink" href="k2.html">НРК</a>
+            <a class="mobile-menu__sublink" href="gstation.html">ДОДАТКОВО</a>
+          </div>
+        </div>
+        <a class="mobile-menu__link js-nav" href="#contact">КОНТАКТИ</a>
+      </nav>
 
       <div class="hero__center">
         <img class="hero__wordmark" src="assets/hero-wordmark.png" alt="ASYMMETRICA" />
@@ -251,6 +268,6 @@
     <span>Запит надіслано. Інженерна команда зв'яжеться з вами.</span>
   </div>
 
-  <script src="asymmetrica.js?v=3"></script>
+  <script src="asymmetrica.js?v=4"></script>
 </body>
 </html>
