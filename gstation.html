@@ -9,6 +9,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="gstation.css" />
+  <link rel="stylesheet" href="contact-block.css" />
 </head>
 <body>
   <div class="gs">
@@ -100,6 +101,71 @@
       <img class="gs-shot" src="assets/gs-shot-3.png" alt="Антена MR-2" />
     </section>
 
+    <!-- ============ CONTACT (ЗАЯВКА) ============ -->
+    <section id="contact" class="pc-contact">
+      <div class="pc-panel">
+        <form class="pc-form js-pc-form" novalidate>
+          <div class="pc-form__inner">
+            <div class="pc-form__head">
+              <b class="pc-form__heading">ЗВ'ЯЗАТИСЬ З НАМИ</b>
+              <button type="submit" class="pc-cta">НАДІСЛАТИ</button>
+            </div>
+            <div class="pc-form__cols">
+              <div class="pc-form__col pc-form__col--msg">
+                <b class="pc-form__label">ЗАПИТ</b>
+                <textarea name="message" required class="pc-field pc-field--area" placeholder="Опишіть вашу задачу"></textarea>
+              </div>
+              <div class="pc-form__col">
+                <label class="pc-field-group">
+                  <b class="pc-form__label">ПІБ</b>
+                  <input name="name" required class="pc-field" placeholder="Прізвище, ім'я" />
+                </label>
+                <label class="pc-field-group">
+                  <b class="pc-form__label">EMAIL</b>
+                  <input name="email" type="email" required class="pc-field" placeholder="name@email.com" />
+                </label>
+                <label class="pc-field-group">
+                  <b class="pc-form__label">НАЗВА ОРГАНІЗАЦІЇ</b>
+                  <input name="org" class="pc-field" placeholder="Компанія / підрозділ" />
+                </label>
+                <label class="pc-field-group">
+                  <b class="pc-form__label">КРАЇНА</b>
+                  <input name="country" class="pc-field" placeholder="Україна" />
+                </label>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+
+      <div class="pc-footer">
+        <div class="pc-footer-info">
+          <b>ТЕЛЕФОН: +38 000 0000 000</b>
+          <b>GMAIL:</b>
+        </div>
+        <div class="pc-socials">
+          <a class="pc-social" href="#" aria-label="Instagram">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5" /><circle cx="12" cy="12" r="4" /><circle cx="17.5" cy="6.5" r="1.2" fill="currentColor" stroke="none" /></svg>
+          </a>
+          <a class="pc-social" href="#" aria-label="Facebook">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M14 8.5V7c0-.7.5-1 1.2-1H17V3h-2.5C11.9 3 11 4.6 11 6.4v2.1H9v3h2V21h3v-9.5h2.3l.4-3H14z" /></svg>
+          </a>
+          <a class="pc-social" href="#" aria-label="TikTok">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M16.5 3c.3 2.1 1.5 3.6 3.5 3.9v2.4c-1.2.1-2.3-.2-3.5-.8v5.6c0 3.2-2.3 5.9-5.6 5.9-2.9 0-5.1-2.1-5.1-4.9 0-3 2.5-5 5.7-4.6v2.6c-.5-.2-1-.2-1.5-.1-1.1.2-1.8 1-1.7 2.2.1 1.1 1 1.9 2.1 1.9 1.3 0 2.2-1 2.2-2.5V3h3.4z" /></svg>
+          </a>
+          <a class="pc-social" href="#" aria-label="Threads">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.3 11.2c-.1 0-.2-.1-.3-.1-.2-3-1.8-4.7-4.5-4.7-1.6 0-3 .7-3.8 2l1.5 1c.6-.9 1.5-1.1 2.3-1.1 1 0 1.8.3 2.2 1 .3.4.5 1 .5 1.7-.7-.1-1.4-.2-2.2-.1-2.4.1-3.9 1.5-3.8 3.4.1 1 .6 1.8 1.4 2.3.7.4 1.6.6 2.5.6 1.2-.1 2.2-.5 2.8-1.4.5-.6.8-1.4.9-2.4.6.4 1.1.9 1.3 1.5.5 1.1.5 2.8-.9 4.2-1.2 1.2-2.7 1.8-4.9 1.8-2.4 0-4.2-.8-5.4-2.3C4.6 17 4 15 4 12.5s.6-4.5 1.7-5.9C6.9 5.1 8.7 4.3 11.1 4.3c2.4 0 4.3.8 5.4 2.4.6.8 1 1.8 1.2 3l1.9-.5c-.3-1.5-.8-2.8-1.6-3.8C17.5 3.1 14.9 2 11.9 2h-.8C8.1 2 5.8 3 4.3 4.9 2.9 6.6 2.2 9 2.1 11.9v.2c0 2.9.7 5.3 2.2 7 1.5 1.9 3.8 2.9 6.8 2.9h.8c2.7 0 4.6-.7 6.2-2.3 2.1-2.1 2-4.7 1.3-6.3-.5-1.1-1.4-2-2.6-2.7l-.5-.4z" /></svg>
+          </a>
+        </div>
+      </div>
+    </section>
+
   </div>
+  <div class="pc-toast js-pc-toast" role="status" aria-live="polite">
+    <svg viewBox="0 0 24 24" fill="none" stroke="#FFCA08" stroke-width="2.2"><path d="M20 6L9 17l-5-5" /></svg>
+    <span>Запит надіслано. Інженерна команда зв'яжеться з вами.</span>
+  </div>
+
+  <script src="contact-form.js"></script>
 </body>
 </html>
