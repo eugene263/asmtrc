@@ -135,7 +135,7 @@ a:hover { color: #fff; }
   min-height: 900px;
   display: flex;
   align-items: stretch;
-  background: var(--bg);
+  background: #000;
 }
 .intro__text {
   flex: 1; min-width: 0; z-index: 1;
