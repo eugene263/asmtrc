@@ -574,7 +574,7 @@ a:hover { color: #fff; }
   .menu { display: none; }
   .burger {
     display: flex; flex-direction: column; justify-content: space-between;
-    position: absolute; top: 50%; right: 0; z-index: 4;
+    position: absolute; top: 50%; right: var(--pad); z-index: 4;
     transform: translateY(-50%);
     width: 30px; height: 22px; padding: 0;
     background: none; border: none; cursor: pointer;
