@@ -607,6 +607,16 @@ a:hover { color: #fff; }
   }
   .mobile-menu.is-open { transform: translateX(0); }
 
+  .mobile-menu__close {
+    position: absolute; top: 20px; right: 20px;
+    width: 36px; height: 36px;
+    display: flex; align-items: center; justify-content: center;
+    background: none; border: none; color: var(--ink); cursor: pointer;
+    transition: color .18s;
+  }
+  .mobile-menu__close svg { width: 22px; height: 22px; }
+  .mobile-menu__close:hover { color: var(--accent); }
+
   .mobile-menu__link {
     display: block; padding: 14px 0;
     color: var(--ink); font-size: 16px; font-weight: 700;

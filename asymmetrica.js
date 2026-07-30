@@ -111,6 +111,8 @@
     };
     burger.addEventListener('click', toggleMenu);
     if (menuBackdrop) menuBackdrop.addEventListener('click', closeMenu);
+    var menuClose = mobileMenu.querySelector('.js-menu-close');
+    if (menuClose) menuClose.addEventListener('click', closeMenu);
     mobileMenu.querySelectorAll('a').forEach(function (link) {
       link.addEventListener('click', closeMenu);
     });
