@@ -279,7 +279,7 @@ a:hover { color: #fff; }
 .why__intro {
   position: relative;
   padding: 80px var(--pad) 40px;
-  background: linear-gradient(180deg, #070707, #3a3a3a);
+  background: var(--bg);
 }
 .why__title {
   margin: 0 0 28px;
