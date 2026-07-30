@@ -67,6 +67,7 @@ a:hover { color: #fff; }
 .hero {
   position: relative;
   isolation: isolate;
+  z-index: 5; /* keeps the fixed mobile header above later sections once scrolled */
   min-height: 1080px;
   display: flex;
   flex-direction: column;
@@ -554,8 +555,18 @@ a:hover { color: #fff; }
 
 @media (max-width: 720px) {
   /* --- hero --- */
-  .hero { padding: 28px var(--pad) 40px; gap: 32px; }
-  .hero__topbar { flex-direction: column; align-items: flex-start; gap: 16px; }
+  .hero { padding: 74px var(--pad) 40px; gap: 32px; }
+  /* header stays pinned to the top while the page scrolls */
+  .hero__topbar {
+    flex-direction: column; align-items: flex-start; gap: 16px;
+    position: fixed; top: 0; left: 0; right: 0; z-index: 50;
+    max-width: none;
+    padding: 14px var(--pad);
+    background: rgba(7,7,7,.85);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border-bottom: 1px solid rgba(255,255,255,.08);
+  }
   .brandbar { gap: 16px; }
   .brandbar__logo, .brandbar__icon { height: 30px; width: auto; }
 
