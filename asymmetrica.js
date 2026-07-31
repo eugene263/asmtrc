@@ -45,17 +45,53 @@
       track.appendChild(cell);
     });
 
+    // cumulative start position of each item within one (non-duplicated) set
+    var starts = [];
+    items.reduce(function (pos, it) { starts.push(pos); return pos + it.w + GAP; }, 0);
+
     var offset = 0, dragging = false, startX = 0, startOffset = 0;
+    var snapTimer;
 
     function apply() {
       var x = ((offset % setWidth) + setWidth) % setWidth;
       track.style.transform = 'translateX(' + (-x) + 'px)';
     }
 
+    function snapTo(newOffset) {
+      track.classList.add('is-snapping');
+      offset = newOffset;
+      apply();
+      clearTimeout(snapTimer);
+      snapTimer = setTimeout(function () { track.classList.remove('is-snapping'); }, 420);
+    }
+
+    // index of the item each button click is currently aiming at; kept as
+    // an explicit counter rather than re-derived from `offset` each time,
+    // since continuous auto-scroll drift means `offset` almost never sits
+    // exactly on an item boundary (which would make "find the nearest
+    // boundary" ambiguous/flaky about which item counts as "current").
+    var index = 0;
+
+    function next() {
+      index = (index + 1) % items.length;
+      var candidate = Math.floor(offset / setWidth) * setWidth + starts[index];
+      while (candidate <= offset + 1) candidate += setWidth;
+      snapTo(candidate);
+    }
+
+    function prev() {
+      index = (index - 1 + items.length) % items.length;
+      var candidate = Math.floor(offset / setWidth) * setWidth + starts[index];
+      while (candidate >= offset - 1) candidate -= setWidth;
+      snapTo(candidate);
+    }
+
     section.addEventListener('pointerdown', function (e) {
+      if (e.target.closest('.marquee__nav')) return;
       dragging = true;
       startX = e.clientX;
       startOffset = offset;
+      track.classList.remove('is-snapping');
       section.style.cursor = 'grabbing';
       if (section.setPointerCapture) section.setPointerCapture(e.pointerId);
     });
@@ -67,6 +103,11 @@
     function release() { dragging = false; section.style.cursor = 'grab'; }
     section.addEventListener('pointerup', release);
     section.addEventListener('pointerleave', release);
+
+    var prevBtn = section.querySelector('.js-marquee-prev');
+    var nextBtn = section.querySelector('.js-marquee-next');
+    if (prevBtn) prevBtn.addEventListener('click', prev);
+    if (nextBtn) nextBtn.addEventListener('click', next);
 
     return {
       tick: function () { if (!dragging) { offset += SPEED; apply(); } }
