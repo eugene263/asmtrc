@@ -103,7 +103,7 @@ a:hover { color: #fff; }
 
 @media (min-width: 481px) {
 
-  .wg-spec { row-gap: 16px; column-gap: 16px; flex-wrap: initial; }
+  .wg-spec { gap: 16px; flex-wrap: initial; }
 
   .wg-spec dt { font-size: inherit; }
 
@@ -113,7 +113,7 @@ a:hover { color: #fff; }
 
 @media (min-width: 901px) {
 
-  .wg-hero__row { align-items: flex-start; row-gap: 40px; column-gap: 40px; padding-top: 140px; flex-wrap: initial; }
+  .wg-hero__row { gap: 40px; align-items: flex-start; padding-top: 140px; flex-wrap: initial; }
 
   .wg-back { top: 110px; }
 
@@ -121,7 +121,7 @@ a:hover { color: #fff; }
 
   .wg-hero__logo { width: 120px; margin-top: -14px; }
 
-  .wg-socials { grid-template-columns: repeat(2, 34px); row-gap: 8px; column-gap: 8px; flex-basis: initial; justify-content: initial; margin-top: initial; }
+  .wg-socials { gap: 8px; grid-template-columns: repeat(2, 34px); flex-basis: initial; justify-content: initial; margin-top: initial; }
 
   .wg-social { width: 34px; height: 34px; }
 
@@ -131,7 +131,7 @@ a:hover { color: #fff; }
 
   .wg-mod { padding-top: 90px; padding-bottom: 90px; }
 
-  .wg-mod__head { align-items: center; row-gap: 48px; column-gap: 48px; flex-direction: initial; }
+  .wg-mod__head { gap: 48px; align-items: center; flex-direction: initial; }
 
   .wg-mod__unit { width: 50%; }
 
@@ -155,7 +155,7 @@ a:hover { color: #fff; }
 
   .wg-hero__row { padding-top: 190px; }
 
-  .wg-mod__head { row-gap: 70px; column-gap: 70px; }
+  .wg-mod__head { gap: 70px; }
 
   .wg-mod__unit { width: 640px; }
 
