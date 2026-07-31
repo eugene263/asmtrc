@@ -10,14 +10,14 @@
   /* ---- carousel data ------------------------------------------------ */
   var TRACKS = {
     pano: [
-      { src: 'assets/pano-1.png', alt: 'НРК на мховій купині', w: 900 },
-      { src: 'assets/pano-2.png', alt: 'НРК в ангарі',        w: 900 },
-      { src: 'assets/pano-3.png', alt: 'НРК у струмку',        w: 900 }
+      { src: 'assets/pano-1.webp', alt: 'НРК на мховій купині', w: 900 },
+      { src: 'assets/pano-2.webp', alt: 'НРК в ангарі',        w: 900 },
+      { src: 'assets/pano-3.webp', alt: 'НРК у струмку',        w: 900 }
     ],
     grid: [
-      { src: 'assets/grid-1.png', alt: 'Пульт FPV',            w: 1000 },
-      { src: 'assets/grid-2.png', alt: 'Пілоти на полігоні',   w: 1000 },
-      { src: 'assets/grid-3.png', alt: 'FPV-літак на стенді',  w: 1000 }
+      { src: 'assets/grid-1.webp', alt: 'Пульт FPV',            w: 1000 },
+      { src: 'assets/grid-2.webp', alt: 'Пілоти на полігоні',   w: 1000 },
+      { src: 'assets/grid-3.webp', alt: 'FPV-літак на стенді',  w: 1000 }
     ]
   };
 
@@ -39,6 +39,8 @@
       img.src = it.src;
       img.alt = it.alt;
       img.draggable = false;
+      img.loading = 'lazy';
+      img.decoding = 'async';
       cell.appendChild(img);
       track.appendChild(cell);
     });
