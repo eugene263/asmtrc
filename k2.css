@@ -152,7 +152,7 @@ a:hover { color: #fff; }
 
 @media (min-width: 901px) {
 
-  .k2-hero__row { align-items: flex-start; row-gap: 40px; column-gap: 40px; padding-top: 140px; flex-wrap: initial; }
+  .k2-hero__row { gap: 40px; align-items: flex-start; padding-top: 140px; flex-wrap: initial; }
 
   .k2-back { top: 110px; }
 
@@ -160,7 +160,7 @@ a:hover { color: #fff; }
 
   .k2-hero__logo { width: 120px; margin-top: -14px; }
 
-  .k2-socials { grid-template-columns: repeat(2, 34px); row-gap: 8px; column-gap: 8px; flex-basis: initial; justify-content: initial; margin-top: initial; }
+  .k2-socials { gap: 8px; grid-template-columns: repeat(2, 34px); flex-basis: initial; justify-content: initial; margin-top: initial; }
 
   .k2-social, .k2-play svg { width: 34px; height: 34px; }
 
@@ -176,7 +176,7 @@ a:hover { color: #fff; }
 
   .k2-field__row { padding-top: 110px; flex-direction: initial; }
 
-  .k2-field__text { width: 1000px; font-size: 17px; line-height: 1.7; text-align: justify; row-gap: 44px; column-gap: 44px; }
+  .k2-field__text { gap: 44px; width: 1000px; font-size: 17px; line-height: 1.7; text-align: justify; }
 
   .k2-field__mark { margin-top: 60px; margin-right: initial; margin-bottom: initial; margin-left: initial; }
 
@@ -184,7 +184,7 @@ a:hover { color: #fff; }
 
   .k2-mod + .k2-mod { padding-top: 130px; }
 
-  .k2-mod__head { row-gap: 48px; column-gap: 48px; flex-direction: initial; }
+  .k2-mod__head { gap: 48px; flex-direction: initial; }
 
   .k2-mod__unit { width: 50%; }
 
@@ -196,15 +196,15 @@ a:hover { color: #fff; }
 
   .k2-mod__arrow { width: 78px; height: 78px; margin-top: 24px; }
 
-  .k2-mod__body { font-size: 14px; text-align: justify; row-gap: 38px; column-gap: 38px; padding-top: 70px; }
+  .k2-mod__body { gap: 38px; font-size: 14px; text-align: justify; padding-top: 70px; }
 
   .k2-specs { padding-top: 70px; }
 
   .k2-spec { font-size: 13px; letter-spacing: .1em; }
 
-  .k2-gallery--3 { grid-template-columns: repeat(3, 1fr); }
+  .k2-gallery--3 { gap: 22px; grid-template-columns: repeat(3, 1fr); }
 
-  .k2-gallery--2 { grid-template-columns: repeat(2, 1fr); }
+  .k2-gallery--2 { gap: 22px; grid-template-columns: repeat(2, 1fr); }
 
   .k2-shot { height: 520px; }
 
@@ -222,11 +222,11 @@ a:hover { color: #fff; }
 
   .k2-video { height: 560px; }
 
-  .k2-field__row { row-gap: 80px; column-gap: 80px; }
+  .k2-field__row { gap: 80px; }
 
   .k2-field__mark { width: 230px; margin-top: 120px; }
 
-  .k2-mod__head { row-gap: 70px; column-gap: 70px; }
+  .k2-mod__head { gap: 70px; }
 
   .k2-mod__unit { width: 640px; }
 

@@ -68,7 +68,7 @@
 
 @media (min-width: 721px) {
 
-  .pc-contact { gap: 32px; padding: 90px var(--gutter) 64px; }
+  .pc-contact { padding: 90px var(--gutter) 64px; gap: 32px; }
 
   .pc-panel { padding: 56px clamp(24px, 5vw, 90px); }
 
