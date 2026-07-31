@@ -161,6 +161,18 @@ a:hover { color: #fff; }
 
 .marquee__cell img { width: 100%; height: 100%; object-fit: cover; -webkit-user-drag: none; }
 
+.marquee__track.is-snapping { transition: transform .4s cubic-bezier(.2,0,.1,1); }
+
+.marquee__nav { position: absolute; top: 50%; z-index: 2; transform: translateY(-50%); width: 36px; height: 36px; border-radius: 50%; border: 1px solid rgba(255,255,255,.25); background: rgba(7,7,7,.55); color: var(--ink); display: flex; align-items: center; justify-content: center; cursor: pointer; transition: background .2s ease, border-color .2s ease, color .2s ease; }
+
+.marquee__nav svg { width: 18px; height: 18px; }
+
+.marquee__nav:hover { background: rgba(7,7,7,.85); border-color: var(--accent); color: var(--accent); }
+
+.marquee__nav--prev { left: 16px; }
+
+.marquee__nav--next { right: 16px; }
+
 /* =====================================================================
    MANIFESTO
    ===================================================================== */
@@ -400,6 +412,14 @@ a:hover { color: #fff; }
   .marquee--grid { height: 800px; }
 
   .marquee--grid .marquee__cell { height: 600px; }
+
+  .marquee__nav { width: 56px; height: 56px; }
+
+  .marquee__nav svg { width: 26px; height: 26px; }
+
+  .marquee__nav--prev { left: 28px; }
+
+  .marquee__nav--next { right: 28px; }
 
   .manifesto { gap: 38px; padding-top: 140px; padding-bottom: 90px; }
 
