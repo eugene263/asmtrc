@@ -147,7 +147,7 @@ a:hover { color: #fff; }
    MARQUEE CAROUSELS (panorama + grid)
    ===================================================================== */
 
-.marquee { position: relative; isolation: isolate; overflow: hidden; height: 420px; background: var(--bg); cursor: grab; touch-action: pan-y; }
+.marquee { position: relative; isolation: isolate; overflow: hidden; height: min(60vh, 420px); background: var(--bg); cursor: grab; touch-action: pan-y; }
 
 .marquee--grid { height: 380px; }
 
@@ -407,7 +407,7 @@ a:hover { color: #fff; }
 
   .schemes img { max-width: 46%; }
 
-  .marquee { height: 900px; }
+  .marquee { height: min(70vh, 900px); }
 
   .marquee--grid { height: 800px; }
 
