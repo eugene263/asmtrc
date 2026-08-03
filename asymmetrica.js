@@ -5,36 +5,36 @@
   'use strict';
 
   var GAP = 24;   // matches .marquee__track gap
-  var SPEED = 0.4; // px per frame auto-scroll
 
-  /* ---- carousel data ------------------------------------------------ */
+  /* ---- carousel data --------------------------------------------------
+     `ratio` is each image's own width/height so cells can be sized to it
+     (via CSS aspect-ratio) instead of a fixed box that crops the photo. */
   var TRACKS = {
     pano: [
-      { src: 'assets/pano-1.webp', alt: 'НРК на мховій купині', w: 900 },
-      { src: 'assets/pano-2.webp', alt: 'НРК в ангарі',        w: 900 },
-      { src: 'assets/pano-3.webp', alt: 'НРК у струмку',        w: 900 }
+      { src: 'assets/pano-1.webp', alt: 'НРК на мховій купині', ratio: 1133 / 780 },
+      { src: 'assets/pano-2.webp', alt: 'НРК в ангарі',        ratio: 1133 / 780 },
+      { src: 'assets/pano-3.webp', alt: 'НРК у струмку',        ratio: 1121 / 779 }
     ],
     grid: [
-      { src: 'assets/grid-1.webp', alt: 'Пульт FPV',            w: 1000 },
-      { src: 'assets/grid-2.webp', alt: 'Пілоти на полігоні',   w: 1000 },
-      { src: 'assets/grid-3.webp', alt: 'FPV-літак на стенді',  w: 1000 }
+      { src: 'assets/grid-1.webp', alt: 'Пульт FPV',            ratio: 1400 / 800 },
+      { src: 'assets/grid-2.webp', alt: 'Пілоти на полігоні',   ratio: 1400 / 800 },
+      { src: 'assets/grid-3.webp', alt: 'FPV-літак на стенді',  ratio: 1400 / 800 }
     ]
   };
 
-  /* ---- infinite drag/auto-scroll carousel --------------------------- */
+  /* ---- static, manually-browsed carousel (buttons + drag-to-swipe) --- */
   function setupMarquee(section) {
     var key = section.getAttribute('data-track');
     var items = TRACKS[key];
     if (!items) return;
 
     var track = section.querySelector('[data-role="track"]');
-    var setWidth = items.reduce(function (a, it) { return a + it.w + GAP; }, 0);
 
-    // duplicate the set so the loop is seamless
+    // duplicate the set so wrapping past the last/first item is seamless
     items.concat(items).forEach(function (it) {
       var cell = document.createElement('div');
       cell.className = 'marquee__cell';
-      cell.style.width = it.w + 'px';
+      cell.style.aspectRatio = it.ratio;
       var img = document.createElement('img');
       img.src = it.src;
       img.alt = it.alt;
@@ -45,9 +45,20 @@
       track.appendChild(cell);
     });
 
-    // cumulative start position of each item within one (non-duplicated) set
-    var starts = [];
-    items.reduce(function (pos, it) { starts.push(pos); return pos + it.w + GAP; }, 0);
+    var cells = track.children;
+    var starts = [], setWidth = 0; // recomputed by measure(), since cell
+                                    // width depends on aspect-ratio + the
+                                    // container's current (breakpoint) height
+
+    function measure() {
+      starts = [];
+      var pos = 0;
+      for (var i = 0; i < items.length; i++) {
+        starts.push(pos);
+        pos += cells[i].offsetWidth + GAP;
+      }
+      setWidth = pos;
+    }
 
     var offset = 0, dragging = false, startX = 0, startOffset = 0;
     var snapTimer;
@@ -67,9 +78,7 @@
 
     // index of the item each button click is currently aiming at; kept as
     // an explicit counter rather than re-derived from `offset` each time,
-    // since continuous auto-scroll drift means `offset` almost never sits
-    // exactly on an item boundary (which would make "find the nearest
-    // boundary" ambiguous/flaky about which item counts as "current").
+    // so repeated clicks always land on the next/previous item in order.
     var index = 0;
 
     function next() {
@@ -100,7 +109,23 @@
       offset = startOffset - (e.clientX - startX);
       apply();
     });
-    function release() { dragging = false; section.style.cursor = 'grab'; }
+    function release() {
+      if (!dragging) return;
+      dragging = false;
+      section.style.cursor = 'grab';
+      // snap to whichever item boundary ended up closest to the drop point
+      var x = ((offset % setWidth) + setWidth) % setWidth;
+      var best = 0, bestDist = Infinity;
+      for (var i = 0; i < starts.length; i++) {
+        var d = Math.min(Math.abs(starts[i] - x), setWidth - Math.abs(starts[i] - x));
+        if (d < bestDist) { bestDist = d; best = i; }
+      }
+      index = best;
+      var candidate = Math.floor(offset / setWidth) * setWidth + starts[index];
+      if (candidate - offset > setWidth / 2) candidate -= setWidth;
+      if (offset - candidate > setWidth / 2) candidate += setWidth;
+      snapTo(candidate);
+    }
     section.addEventListener('pointerup', release);
     section.addEventListener('pointerleave', release);
 
@@ -109,20 +134,21 @@
     if (prevBtn) prevBtn.addEventListener('click', prev);
     if (nextBtn) nextBtn.addEventListener('click', next);
 
-    return {
-      tick: function () { if (!dragging) { offset += SPEED; apply(); } }
-    };
+    measure();
+    apply();
+    var resizeQueued = false;
+    window.addEventListener('resize', function () {
+      if (resizeQueued) return;
+      resizeQueued = true;
+      requestAnimationFrame(function () {
+        resizeQueued = false;
+        measure();
+        apply();
+      });
+    });
   }
 
-  var marquees = [];
-  document.querySelectorAll('.js-drag').forEach(function (s) {
-    var m = setupMarquee(s);
-    if (m) marquees.push(m);
-  });
-  (function loop() {
-    marquees.forEach(function (m) { m.tick(); });
-    requestAnimationFrame(loop);
-  })();
+  document.querySelectorAll('.js-drag').forEach(setupMarquee);
 
   /* ---- smooth anchor navigation ------------------------------------- */
   document.querySelectorAll('.js-nav').forEach(function (link) {
