@@ -134,41 +134,77 @@
      (kryla/k2/gstation) so the rules only live in one place. Every
      [required] field must be non-empty ("Заповніть це поле"); some
      fields additionally have to match a format. */
+  var COUNTRIES_LOWER = COUNTRIES.map(function (c) { return c.toLowerCase(); });
+  var errorIdSeq = 0;
+
   var RULES = {
-    name: { re: /^[A-Za-zА-Яа-яЁёІіЇїЄєҐґ' -]{2,}$/, msg: 'Некоректне ім’я' },
-    email: { re: /^[^\s@]+@[^\s@]+\.[^\s@]+$/, msg: 'Некоректний email' },
-    message: { re: /\S{3,}/, msg: 'Занадто короткий опис' },
+    name: {
+      re: /^[A-Za-zА-Яа-яЁёІіЇїЄєҐґ'-]+(?:\s+[A-Za-zА-Яа-яЁёІіЇїЄєҐґ'-]+)+$/,
+      msg: 'Вкажіть прізвище та ім’я'
+    },
+    email: {
+      re: /^[^\s@]+@[^\s@]+\.[a-zA-Z]{2,}$/,
+      msg: 'Некоректний email'
+    },
+    message: {
+      validate: function (v) { return v.replace(/\s+/g, '').length >= 8; },
+      msg: 'Опишіть задачу детальніше (мінімум 8 символів)'
+    },
     country: {
-      validate: function (v) { return COUNTRIES.indexOf(v) !== -1; },
+      validate: function (v) { return COUNTRIES_LOWER.indexOf(v.toLowerCase()) !== -1; },
       msg: 'Оберіть країну зі списку'
     }
   };
 
+  function fieldError(field) {
+    var group = field.closest('.field-group, .pc-field-group') || field.parentElement;
+    return group && group.querySelector('.field-error, .pc-field-error');
+  }
+
+  /* Validates one field and updates its error UI + aria attributes.
+     Returns true if the field is valid. */
+  window.SPEXTR_validateField = function (field) {
+    var value = field.value.trim();
+    var rule = RULES[field.name];
+    var errorEl = fieldError(field);
+    var valid = true;
+    var msg = '';
+
+    if (!value) {
+      valid = false;
+      msg = 'Заповніть це поле';
+    } else if (rule) {
+      if (rule.re && !rule.re.test(value)) { valid = false; msg = rule.msg; }
+      else if (rule.validate && !rule.validate(value)) { valid = false; msg = rule.msg; }
+    }
+
+    field.classList.toggle('is-error', !valid);
+    field.setAttribute('aria-invalid', valid ? 'false' : 'true');
+    if (errorEl) {
+      errorEl.textContent = msg;
+      errorEl.classList.toggle('is-show', !valid);
+      if (!errorEl.id) errorEl.id = 'spextr-error-' + (++errorIdSeq);
+      field.setAttribute('aria-describedby', errorEl.id);
+    }
+    return valid;
+  };
+
+  /* Validates every required field, focuses + scrolls to the first
+     invalid one so the visitor isn't left hunting for what's wrong. */
   window.SPEXTR_validateForm = function (form) {
     var ok = true;
+    var firstInvalid = null;
     form.querySelectorAll('[required]').forEach(function (field) {
-      var value = field.value.trim();
-      var rule = RULES[field.name];
-      var group = field.closest('.field-group, .pc-field-group') || field.parentElement;
-      var errorEl = group && group.querySelector('.field-error, .pc-field-error');
-      var valid = true;
-      var msg = '';
-
-      if (!value) {
-        valid = false;
-        msg = 'Заповніть це поле';
-      } else if (rule) {
-        if (rule.re && !rule.re.test(value)) { valid = false; msg = rule.msg; }
-        else if (rule.validate && !rule.validate(value)) { valid = false; msg = rule.msg; }
+      var valid = window.SPEXTR_validateField(field);
+      if (!valid) {
+        ok = false;
+        if (!firstInvalid) firstInvalid = field;
       }
-
-      field.classList.toggle('is-error', !valid);
-      if (errorEl) {
-        errorEl.textContent = msg;
-        errorEl.classList.toggle('is-show', !valid);
-      }
-      if (!valid) ok = false;
     });
+    if (firstInvalid) {
+      firstInvalid.focus();
+      firstInvalid.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }
     return ok;
   };
 })();
