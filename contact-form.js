@@ -9,18 +9,26 @@
   if (!form) return;
 
   var toastTimer;
+  var touched = {};
   form.querySelectorAll('[required]').forEach(function (f) {
+    // first pass: only validate once the visitor leaves the field, so
+    // errors don't pop up while they're still mid-typing on first pass
+    f.addEventListener('blur', function () {
+      touched[f.name] = true;
+      window.SPEXTR_validateField(f);
+    });
+    // after that first blur (or a failed submit), keep validating live
+    // so a fix is confirmed immediately and a new mistake is caught too
     f.addEventListener('input', function () {
-      f.classList.remove('is-error');
-      var group = f.closest('.pc-field-group') || f.parentElement;
-      var errorEl = group && group.querySelector('.pc-field-error');
-      if (errorEl) errorEl.classList.remove('is-show');
+      if (touched[f.name]) window.SPEXTR_validateField(f);
     });
   });
   form.addEventListener('submit', function (e) {
     e.preventDefault();
+    form.querySelectorAll('[required]').forEach(function (f) { touched[f.name] = true; });
     if (!window.SPEXTR_validateForm(form)) return;
     form.reset();
+    touched = {};
     if (toast) {
       toast.classList.add('is-show');
       clearTimeout(toastTimer);
