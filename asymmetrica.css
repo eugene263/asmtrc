@@ -304,7 +304,9 @@ a:hover { color: #fff; }
 
 .form__heading { font-size: 20px; line-height: 1; order: 1; }
 
-.form__cols { width: 100%; display: flex; align-items: stretch; gap: 16px; flex-wrap: wrap; font-size: 14px; color: #fff; order: 2; }
+.form__subheading { width: 100%; margin: 0; font-size: 13px; color: var(--ink-dim); order: 2; }
+
+.form__cols { width: 100%; display: flex; align-items: stretch; gap: 16px; flex-wrap: wrap; font-size: 14px; color: #fff; order: 3; }
 
 .form__col { display: flex; flex-direction: column; gap: 16px; width: 100%; max-width: 100%; }
 
@@ -326,7 +328,11 @@ a:hover { color: #fff; }
 
 .field.is-error { border-color: var(--danger); }
 
-.cta { background: var(--accent); color: #000; border: none; font-family: var(--font); font-weight: 700; font-size: 14px; letter-spacing: .08em; text-transform: uppercase; padding: 16px 24px; cursor: pointer; transition: background .18s, transform .12s; order: 3; width: 100%; margin-top: 4px; }
+.field-error { display: none; font-size: 12px; color: var(--danger); line-height: 1.3; }
+
+.field-error.is-show { display: block; }
+
+.cta { background: var(--accent); color: #000; border: none; font-family: var(--font); font-weight: 700; font-size: 14px; letter-spacing: .08em; text-transform: uppercase; padding: 16px 24px; cursor: pointer; transition: background .18s, transform .12s; order: 4; width: 100%; margin-top: 4px; }
 
 .cta:hover, .to-top:hover { background: #fff; }
 
@@ -491,6 +497,8 @@ a:hover { color: #fff; }
   .contact__panel:hover { transform: translateY(-3px); }
 
   .form__heading { font-size: 24px; order: initial; }
+
+  .form__subheading { order: initial; font-size: 14px; }
 
   .form__cols { order: initial; }
 

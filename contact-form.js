@@ -9,16 +9,17 @@
   if (!form) return;
 
   var toastTimer;
+  form.querySelectorAll('[required]').forEach(function (f) {
+    f.addEventListener('input', function () {
+      f.classList.remove('is-error');
+      var group = f.closest('.pc-field-group') || f.parentElement;
+      var errorEl = group && group.querySelector('.pc-field-error');
+      if (errorEl) errorEl.classList.remove('is-show');
+    });
+  });
   form.addEventListener('submit', function (e) {
     e.preventDefault();
-    var ok = true;
-    form.querySelectorAll('[required]').forEach(function (f) {
-      var valid = f.value.trim() &&
-        (f.type !== 'email' || /.+@.+\..+/.test(f.value));
-      f.classList.toggle('is-error', !valid);
-      if (!valid) ok = false;
-    });
-    if (!ok) return;
+    if (!window.SPEXTR_validateForm(form)) return;
     form.reset();
     if (toast) {
       toast.classList.add('is-show');
