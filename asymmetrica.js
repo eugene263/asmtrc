@@ -150,6 +150,82 @@
 
   document.querySelectorAll('.js-drag').forEach(setupMarquee);
 
+  /* ---- auto-scrolling logo/illustration tickers ----------------------
+     Continuously scrolls sideways on its own, but can also be grabbed
+     and dragged left/right at any time; auto-scroll resumes from wherever
+     it was released. Track content is duplicated once in the HTML (2
+     identical sets back to back) so wrapping the offset at half the
+     track's width loops seamlessly. */
+  var prefersReducedMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  function setupAutoScroller(row, speed) {
+    var track = row.querySelector('[data-role="track"]');
+    if (!track) return;
+    if (prefersReducedMotion) speed = 0;
+
+    var setWidth = 0;
+    function measure() { setWidth = track.getBoundingClientRect().width / 2; }
+
+    var offset = 0, dragging = false, paused = false, startX = 0, startOffset = 0;
+
+    function apply() {
+      var x = ((offset % setWidth) + setWidth) % setWidth;
+      track.style.transform = 'translateX(' + (-x) + 'px)';
+    }
+
+    row.addEventListener('pointerdown', function (e) {
+      dragging = true;
+      startX = e.clientX;
+      startOffset = offset;
+      row.classList.add('is-dragging');
+      if (row.setPointerCapture) row.setPointerCapture(e.pointerId);
+    });
+    row.addEventListener('pointermove', function (e) {
+      if (!dragging) return;
+      offset = startOffset - (e.clientX - startX);
+      apply();
+    });
+    function release() { dragging = false; row.classList.remove('is-dragging'); }
+    row.addEventListener('pointerup', release);
+    row.addEventListener('pointerleave', function () { release(); paused = false; });
+    row.addEventListener('pointerenter', function () { paused = true; });
+
+    measure();
+    apply();
+    var resizeQueued = false;
+    window.addEventListener('resize', function () {
+      if (resizeQueued) return;
+      resizeQueued = true;
+      requestAnimationFrame(function () {
+        resizeQueued = false;
+        measure();
+        apply();
+      });
+    });
+
+    return {
+      tick: function () { if (!dragging && !paused) { offset += speed; apply(); } }
+    };
+  }
+
+  var autoScrollers = [];
+  [
+    { row: '.partners__row', speed: 0.5 },
+    { row: '.media__row', speed: 0.4 },
+    { row: '.schemes__row', speed: 0.45 }
+  ].forEach(function (cfg) {
+    var row = document.querySelector(cfg.row);
+    if (!row) return;
+    var scroller = setupAutoScroller(row, cfg.speed);
+    if (scroller) autoScrollers.push(scroller);
+  });
+  if (autoScrollers.length) {
+    (function loop() {
+      autoScrollers.forEach(function (s) { s.tick(); });
+      requestAnimationFrame(loop);
+    })();
+  }
+
   /* ---- smooth anchor navigation ------------------------------------- */
   document.querySelectorAll('.js-nav').forEach(function (link) {
     link.addEventListener('click', function (e) {
