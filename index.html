@@ -8,7 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700;800&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="asymmetrica.css?v=14" />
+  <link rel="stylesheet" href="asymmetrica.css?v=15" />
 </head>
 <body>
   <div class="site">
@@ -105,9 +105,16 @@
 
     <!-- ============ UGV WIREFRAMES ============ -->
     <section class="schemes reveal">
-      <img class="js-hover" src="assets/ugv-scheme-1.webp" alt="НРК схема 1" loading="lazy" decoding="async" />
-      <img class="js-hover" src="assets/ugv-scheme-2.webp" alt="НРК схема 2" loading="lazy" decoding="async" />
-      <img class="js-hover" src="assets/ugv-scheme-3.webp" alt="НРК схема 3" loading="lazy" decoding="async" />
+      <div class="schemes__row">
+        <div class="schemes__track" data-role="track">
+          <img class="js-hover" src="assets/ugv-scheme-1.webp" alt="НРК схема 1" loading="lazy" decoding="async" />
+          <img class="js-hover" src="assets/ugv-scheme-2.webp" alt="НРК схема 2" loading="lazy" decoding="async" />
+          <img class="js-hover" src="assets/ugv-scheme-3.webp" alt="НРК схема 3" loading="lazy" decoding="async" />
+          <img class="js-hover" src="assets/ugv-scheme-1.webp" alt="" loading="lazy" decoding="async" aria-hidden="true" />
+          <img class="js-hover" src="assets/ugv-scheme-2.webp" alt="" loading="lazy" decoding="async" aria-hidden="true" />
+          <img class="js-hover" src="assets/ugv-scheme-3.webp" alt="" loading="lazy" decoding="async" aria-hidden="true" />
+        </div>
+      </div>
     </section>
 
     <!-- ============ PANORAMA CAROUSEL ============ -->
@@ -173,7 +180,7 @@
     <section class="partners">
       <h2 class="section-title">НАШІ ПАРТНЕРИ ТА СПОНСОРИ</h2>
       <div class="partners__row reveal">
-        <div class="partners__track">
+        <div class="partners__track" data-role="track">
           <div class="partner"><img src="assets/partner-zsu.webp" alt="ЗСУ" loading="lazy" decoding="async" /></div>
           <div class="partner"><img src="assets/partner-gur.webp" alt="ГУР" loading="lazy" decoding="async" /></div>
           <div class="partner"><img src="assets/partner-rozvidka.webp" alt="Військова розвідка України" loading="lazy" decoding="async" /></div>
@@ -199,7 +206,7 @@
     <section class="media">
       <h2 class="section-title section-title--lg">згадки в медіа:</h2>
       <div class="media__row reveal">
-        <div class="media__track">
+        <div class="media__track" data-role="track">
           <div class="media__item" style="background:#0f2a5c"><img src="assets/media-guardian.webp" alt="The Guardian" loading="lazy" decoding="async" /></div>
           <div class="media__item"><img src="assets/media-apostrof.webp" alt="Апостроф" loading="lazy" decoding="async" /></div>
           <div class="media__item"><img src="assets/media-nyt.webp" alt="The New York Times" loading="lazy" decoding="async" /></div>
@@ -302,6 +309,6 @@
     <span>Запит надіслано. Інженерна команда зв'яжеться з вами.</span>
   </div>
 
-  <script src="asymmetrica.js?v=9"></script>
+  <script src="asymmetrica.js?v=10"></script>
 </body>
 </html>
