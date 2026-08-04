@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="k2.css?v=4" />
-  <link rel="stylesheet" href="contact-block.css?v=3" />
+  <link rel="stylesheet" href="contact-block.css?v=4" />
 </head>
 <body>
   <div class="k2">
@@ -156,27 +156,34 @@
               <b class="pc-form__heading">ЗВ'ЯЗАТИСЬ З НАМИ</b>
               <button type="submit" class="pc-cta">НАДІСЛАТИ</button>
             </div>
+            <p class="pc-form__subheading">Заповніть всі поля</p>
             <div class="pc-form__cols">
               <div class="pc-form__col pc-form__col--msg">
                 <b class="pc-form__label">ЗАПИТ</b>
                 <textarea name="message" required class="pc-field pc-field--area" placeholder="Опишіть вашу задачу"></textarea>
+                <span class="pc-field-error">Заповніть це поле</span>
               </div>
               <div class="pc-form__col">
                 <label class="pc-field-group">
                   <b class="pc-form__label">ПІБ</b>
                   <input name="name" required class="pc-field" placeholder="Прізвище, ім'я" />
+                  <span class="pc-field-error">Заповніть це поле</span>
                 </label>
                 <label class="pc-field-group">
                   <b class="pc-form__label">EMAIL</b>
                   <input name="email" type="email" required class="pc-field" placeholder="name@email.com" />
+                  <span class="pc-field-error">Заповніть це поле</span>
                 </label>
                 <label class="pc-field-group">
                   <b class="pc-form__label">НАЗВА ОРГАНІЗАЦІЇ</b>
-                  <input name="org" class="pc-field" placeholder="Компанія / підрозділ" />
+                  <input name="org" required class="pc-field" placeholder="Компанія / підрозділ" />
+                  <span class="pc-field-error">Заповніть це поле</span>
                 </label>
                 <label class="pc-field-group">
                   <b class="pc-form__label">КРАЇНА</b>
-                  <input name="country" class="pc-field" placeholder="Україна" />
+                  <input name="country" required class="pc-field" placeholder="Почніть вводити назву країни" list="country-list-k2" autocomplete="off" />
+                  <datalist id="country-list-k2" data-role="countries"></datalist>
+                  <span class="pc-field-error">Заповніть це поле</span>
                 </label>
               </div>
             </div>
@@ -212,6 +219,7 @@
     <span>Запит надіслано. Інженерна команда зв'яжеться з вами.</span>
   </div>
 
-  <script src="contact-form.js?v=2"></script>
+  <script src="countries.js?v=1"></script>
+  <script src="contact-form.js?v=3"></script>
 </body>
 </html>
