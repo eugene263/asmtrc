@@ -181,8 +181,10 @@
                 </label>
                 <label class="pc-field-group">
                   <b class="pc-form__label">КРАЇНА</b>
-                  <input name="country" required class="pc-field" placeholder="Почніть вводити назву країни" list="country-list-k2" autocomplete="off" />
-                  <datalist id="country-list-k2" data-role="countries"></datalist>
+                  <div class="country-auto">
+                    <input name="country" required class="pc-field" placeholder="Почніть вводити назву країни" autocomplete="off" role="combobox" aria-expanded="false" aria-autocomplete="list" />
+                    <ul class="country-auto__list" role="listbox"></ul>
+                  </div>
                   <span class="pc-field-error">Заповніть це поле</span>
                 </label>
               </div>
@@ -219,7 +221,7 @@
     <span>Запит надіслано. Інженерна команда зв'яжеться з вами.</span>
   </div>
 
-  <script src="countries.js?v=1"></script>
+  <script src="countries.js?v=2"></script>
   <script src="contact-form.js?v=3"></script>
 </body>
 </html>
