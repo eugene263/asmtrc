@@ -273,8 +273,10 @@
                 </label>
                 <label class="field-group">
                   <b class="form__label">КРАЇНА</b>
-                  <input name="country" required class="field" placeholder="Почніть вводити назву країни" list="country-list-index" autocomplete="off" />
-                  <datalist id="country-list-index" data-role="countries"></datalist>
+                  <div class="country-auto">
+                    <input name="country" required class="field" placeholder="Почніть вводити назву країни" autocomplete="off" role="combobox" aria-expanded="false" aria-autocomplete="list" />
+                    <ul class="country-auto__list" role="listbox"></ul>
+                  </div>
                   <span class="field-error">Заповніть це поле</span>
                 </label>
               </div>
@@ -316,7 +318,7 @@
     <span>Запит надіслано. Інженерна команда зв'яжеться з вами.</span>
   </div>
 
-  <script src="countries.js?v=1"></script>
+  <script src="countries.js?v=2"></script>
   <script src="asymmetrica.js?v=11"></script>
 </body>
 </html>
