@@ -64,6 +64,10 @@
 
 .pc-footer-info b { font-weight: 600; color: var(--ink); }
 
+.pc-footer-link { font-weight: 600; color: var(--ink); text-decoration: none; transition: color .18s; }
+
+.pc-footer-link:hover { color: var(--accent); }
+
 .pc-socials { display: flex; align-items: center; gap: 12px; }
 
 .pc-social { width: 34px; height: 34px; border-radius: 8px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; background: rgba(255,255,255,.06); color: var(--ink); transition: transform .2s ease, opacity .2s ease, color .2s ease; }
