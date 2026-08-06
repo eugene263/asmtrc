@@ -354,6 +354,10 @@ a:hover { color: #fff; }
 
 .contact__info b { line-height: 1.5; }
 
+.footer-link { color: var(--panel); font-weight: 700; text-decoration: none; transition: color .18s; }
+
+.footer-link:hover { color: var(--accent); }
+
 .socials { display: flex; align-items: center; gap: 12px; }
 
 .social { width: 36px; height: 36px; border-radius: 8px; overflow: hidden; display: flex; align-items: center; justify-content: center; flex-shrink: 0; background: var(--panel); color: var(--ink); transition: transform .2s ease, opacity .2s ease; }

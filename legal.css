@@ -1,0 +1,57 @@
+/* =====================================================================
+   LEGAL PAGES (privacy.html, terms.html) — mobile-first
+   ===================================================================== */
+
+:root {
+  --bg: #070707;
+  --ink: #fefefe;
+  --ink-mute: #b4b4b4;
+  --accent: #FFCA08;
+  --pad: clamp(20px, 7.3vw, 140px);
+  --font: 'Montserrat', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body { background: var(--bg); color: var(--ink); font-family: var(--font); line-height: 1.6; -webkit-font-smoothing: antialiased; }
+
+a { color: inherit; }
+
+.legal-header { padding: 24px var(--pad); }
+
+.legal-back { display: inline-block; font-size: 12px; font-weight: 600; letter-spacing: .12em; color: var(--ink); text-transform: uppercase; text-decoration: none; transition: color .18s; }
+
+.legal-back:hover { color: var(--accent); }
+
+.legal { max-width: 760px; margin: 0 auto; padding: 12px var(--pad) 80px; }
+
+.legal h1 { font-size: 28px; font-weight: 800; letter-spacing: .01em; margin-bottom: 24px; }
+
+.legal h2 { font-size: 17px; font-weight: 700; margin: 32px 0 12px; }
+
+.legal p { font-size: 14px; color: var(--ink-mute); margin-bottom: 12px; }
+
+.legal ul { list-style: none; margin: 0 0 12px; padding: 0; }
+
+.legal li { font-size: 14px; color: var(--ink-mute); margin-bottom: 8px; padding-left: 18px; position: relative; }
+
+.legal li::before { content: '–'; position: absolute; left: 0; }
+
+.legal__updated { font-size: 12px; color: var(--ink-mute); margin-bottom: 32px; }
+
+.legal-footer-nav { display: flex; flex-direction: column; gap: 12px; margin-top: 48px; padding-top: 24px; border-top: 1px solid rgba(255,255,255,.12); font-size: 13px; font-weight: 600; letter-spacing: .04em; text-transform: uppercase; }
+
+.legal-footer-nav a { text-decoration: none; transition: color .18s; }
+
+.legal-footer-nav a:hover { color: var(--accent); }
+
+@media (min-width: 721px) {
+  .legal-header { padding: 32px var(--pad); }
+  .legal { padding: 24px var(--pad) 120px; }
+  .legal h1 { font-size: 40px; margin-bottom: 32px; }
+  .legal h2 { font-size: 20px; margin: 40px 0 14px; }
+  .legal p, .legal li { font-size: 15px; }
+  .legal-footer-nav { flex-direction: row; gap: 32px; }
+}
