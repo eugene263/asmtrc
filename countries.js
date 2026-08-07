@@ -5,7 +5,7 @@
 (function () {
   'use strict';
 
-  var COUNTRIES = [
+  var COUNTRIES_UK = [
     'Австралія', 'Австрія', 'Азербайджан', 'Албанія', 'Алжир', 'Ангола', 'Андорра',
     'Антигуа і Барбуда', 'Аргентина', 'Афганістан', 'Багамські Острови', 'Бангладеш',
     'Барбадос', 'Бахрейн', 'Беліз', 'Бельгія', 'Бенін', 'Білорусь', 'Болгарія', 'Болівія',
@@ -37,7 +37,49 @@
     'Чилі', 'Чорногорія', 'Швейцарія', 'Швеція', 'Шрі-Ланка', 'Ямайка', 'Японія'
   ];
 
-  window.SPEXTR_COUNTRIES = COUNTRIES;
+  // same order as COUNTRIES_UK above — index N in one list is index N in the other
+  var COUNTRIES_EN = [
+    'Australia', 'Austria', 'Azerbaijan', 'Albania', 'Algeria', 'Angola', 'Andorra',
+    'Antigua and Barbuda', 'Argentina', 'Afghanistan', 'Bahamas', 'Bangladesh',
+    'Barbados', 'Bahrain', 'Belize', 'Belgium', 'Benin', 'Belarus', 'Bulgaria', 'Bolivia',
+    'Bosnia and Herzegovina', 'Botswana', 'Brazil', 'Brunei', 'Burkina Faso', 'Burundi',
+    'Bhutan', 'Vanuatu', 'Vatican City', 'United Kingdom', 'Venezuela', 'Vietnam', 'Armenia',
+    'Gabon', 'Haiti', 'Guyana', 'Gambia', 'Ghana', 'Guatemala', 'Guinea', 'Guinea-Bissau',
+    'Honduras', 'Grenada', 'Greece', 'Georgia', 'Denmark', 'Djibouti', 'Dominica',
+    'Dominican Republic', 'Ecuador', 'Equatorial Guinea', 'Eritrea', 'Eswatini',
+    'Estonia', 'Ethiopia', 'Egypt', 'Yemen', 'Zambia', 'Zimbabwe', 'Israel', 'India',
+    'Indonesia', 'Iraq', 'Iran', 'Ireland', 'Iceland', 'Spain', 'Italy', 'Jordan',
+    'Cabo Verde', 'Kazakhstan', 'Cambodia', 'Cameroon', 'Canada', 'Qatar', 'Kenya',
+    'Kyrgyzstan', 'China', 'Cyprus', 'Kiribati', 'Colombia', 'Comoros',
+    'Democratic Republic of the Congo', 'Republic of the Congo', 'Costa Rica', 'Côte d’Ivoire',
+    'Cuba', 'Kuwait', 'Laos', 'Latvia', 'Lesotho', 'Lithuania', 'Liberia', 'Lebanon', 'Libya',
+    'Liechtenstein', 'Luxembourg', 'Mauritius', 'Mauritania', 'Madagascar', 'Malawi',
+    'Malaysia', 'Mali', 'Maldives', 'Malta', 'Morocco', 'Marshall Islands', 'Mexico',
+    'Mozambique', 'Moldova', 'Monaco', 'Mongolia', 'Myanmar', 'Namibia', 'Nauru', 'Nepal',
+    'Niger', 'Nigeria', 'Netherlands', 'Nicaragua', 'Germany', 'New Zealand', 'Norway',
+    'United Arab Emirates', 'Oman', 'Pakistan', 'Palau', 'Palestine', 'Panama',
+    'Papua New Guinea', 'Paraguay', 'Peru', 'South Korea', 'South Africa',
+    'South Sudan', 'North Korea', 'North Macedonia', 'Poland', 'Portugal', 'Russia',
+    'Rwanda', 'Romania', 'El Salvador', 'Samoa', 'San Marino', 'São Tomé and Príncipe',
+    'Saudi Arabia', 'Seychelles', 'Senegal', 'Saint Vincent and the Grenadines', 'Saint Kitts and Nevis',
+    'Saint Lucia', 'Serbia', 'Singapore', 'Syria', 'Slovakia', 'Slovenia', 'Solomon Islands',
+    'Somalia', 'Sudan', 'Suriname', 'United States', 'Sierra Leone', 'Tajikistan', 'Thailand', 'Taiwan',
+    'Tanzania', 'Togo', 'Tonga', 'Trinidad and Tobago', 'Tunisia', 'Turkey', 'Turkmenistan',
+    'Tuvalu', 'Uganda', 'Hungary', 'Uzbekistan', 'Ukraine', 'Uruguay', 'Fiji', 'Philippines',
+    'Finland', 'France', 'Croatia', 'Central African Republic', 'Chad', 'Czechia',
+    'Chile', 'Montenegro', 'Switzerland', 'Sweden', 'Sri Lanka', 'Jamaica', 'Japan'
+  ];
+
+  window.SPEXTR_COUNTRIES = COUNTRIES_UK;
+  window.SPEXTR_COUNTRIES_EN = COUNTRIES_EN;
+
+  function currentLang() {
+    return (window.SPEXTR_getLang ? window.SPEXTR_getLang() : 'uk');
+  }
+
+  function activeCountries() {
+    return currentLang() === 'en' ? COUNTRIES_EN : COUNTRIES_UK;
+  }
 
   /* ---- custom country autocomplete ------------------------------------
      Native <datalist> dropdowns render inconsistently across browsers
@@ -99,7 +141,7 @@
       if (suppressSearch) { suppressSearch = false; return; }
       var q = input.value.trim().toLowerCase();
       if (!q) { close(); return; }
-      var matches = COUNTRIES.filter(function (c) {
+      var matches = activeCountries().filter(function (c) {
         return c.toLowerCase().indexOf(q) !== -1;
       }).slice(0, 8);
       open(matches);
@@ -132,27 +174,34 @@
   /* ---- shared "заявка" form validation --------------------------------
      Used by both asymmetrica.js (index.html) and contact-form.js
      (kryla/k2/gstation) so the rules only live in one place. Every
-     [required] field must be non-empty ("Заповніть це поле"); some
-     fields additionally have to match a format. */
-  var COUNTRIES_LOWER = COUNTRIES.map(function (c) { return c.toLowerCase(); });
+     [required] field must be non-empty; some fields additionally have
+     to match a format. Messages are {uk, en} pairs so the visible error
+     text always matches whichever language the toggle is on. */
+  var COUNTRIES_UK_LOWER = COUNTRIES_UK.map(function (c) { return c.toLowerCase(); });
+  var COUNTRIES_EN_LOWER = COUNTRIES_EN.map(function (c) { return c.toLowerCase(); });
   var errorIdSeq = 0;
+
+  var REQUIRED_MSG = { uk: 'Заповніть це поле', en: 'Fill in this field' };
 
   var RULES = {
     name: {
       re: /^[A-Za-zА-Яа-яЁёІіЇїЄєҐґ'-]+(?:\s+[A-Za-zА-Яа-яЁёІіЇїЄєҐґ'-]+)+$/,
-      msg: 'Вкажіть прізвище та ім’я'
+      msg: { uk: 'Вкажіть прізвище та ім’я', en: 'Enter your first and last name' }
     },
     email: {
       re: /^[^\s@]+@[^\s@]+\.[a-zA-Z]{2,}$/,
-      msg: 'Некоректний email'
+      msg: { uk: 'Некоректний email', en: 'Invalid email address' }
     },
     message: {
       validate: function (v) { return v.replace(/\s+/g, '').length >= 8; },
-      msg: 'Опишіть задачу детальніше (мінімум 8 символів)'
+      msg: { uk: 'Опишіть задачу детальніше (мінімум 8 символів)', en: 'Please describe your task in more detail (minimum 8 characters)' }
     },
     country: {
-      validate: function (v) { return COUNTRIES_LOWER.indexOf(v.toLowerCase()) !== -1; },
-      msg: 'Оберіть країну зі списку'
+      validate: function (v) {
+        var q = v.toLowerCase();
+        return COUNTRIES_UK_LOWER.indexOf(q) !== -1 || COUNTRIES_EN_LOWER.indexOf(q) !== -1;
+      },
+      msg: { uk: 'Оберіть країну зі списку', en: 'Choose a country from the list' }
     }
   };
 
@@ -164,6 +213,7 @@
   /* Validates one field and updates its error UI + aria attributes.
      Returns true if the field is valid. */
   window.SPEXTR_validateField = function (field) {
+    var lang = currentLang();
     var value = field.value.trim();
     var rule = RULES[field.name];
     var errorEl = fieldError(field);
@@ -172,10 +222,10 @@
 
     if (!value) {
       valid = false;
-      msg = 'Заповніть це поле';
+      msg = REQUIRED_MSG[lang];
     } else if (rule) {
-      if (rule.re && !rule.re.test(value)) { valid = false; msg = rule.msg; }
-      else if (rule.validate && !rule.validate(value)) { valid = false; msg = rule.msg; }
+      if (rule.re && !rule.re.test(value)) { valid = false; msg = rule.msg[lang]; }
+      else if (rule.validate && !rule.validate(value)) { valid = false; msg = rule.msg[lang]; }
     }
 
     field.classList.toggle('is-error', !valid);
@@ -206,5 +256,14 @@
       firstInvalid.scrollIntoView({ behavior: 'smooth', block: 'center' });
     }
     return ok;
+  };
+
+  /* Re-runs validation on any field currently showing an error, so a
+     language switch mid-form updates visible messages immediately
+     instead of waiting for the next blur/input. */
+  window.SPEXTR_relocalizeErrors = function () {
+    document.querySelectorAll('.field.is-error, .pc-field.is-error').forEach(function (field) {
+      window.SPEXTR_validateField(field);
+    });
   };
 })();

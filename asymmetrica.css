@@ -19,6 +19,36 @@ a { color: var(--accent); text-decoration: none; }
 
 a:hover { color: #fff; }
 
+/* =====================================================================
+   LANGUAGE TOGGLE (EN/UK)
+   ===================================================================== */
+
+[data-lang="en"] { display: none; }
+
+html.lang-en [data-lang="uk"] { display: none; }
+
+html.lang-en [data-lang="en"] { display: inline; }
+
+.lang-switch { display: flex; align-items: center; gap: 6px; }
+
+.lang-switch--header { display: none; }
+
+.lang-switch--mobile { margin: 4px 0 12px; }
+
+.lang-switch__btn { display: flex; align-items: center; gap: 4px; padding: 6px 10px; font-family: var(--font); font-size: 11px; font-weight: 700; letter-spacing: .04em; color: var(--ink-dim); background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.16); border-radius: 999px; cursor: pointer; transition: background .18s ease, color .18s ease, border-color .18s ease; }
+
+.lang-switch__btn:hover { color: var(--ink); border-color: rgba(255,255,255,.32); }
+
+.lang-switch__btn[aria-pressed="true"] { background: var(--accent); color: #000; border-color: var(--accent); }
+
+.lang-switch__btn:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+@media (min-width: 721px) {
+
+  .lang-switch--header { display: flex; }
+
+}
+
 #about, #products, #contact { scroll-margin-top: 96px; }
 
 .site { position: relative; width: 100%; }
@@ -67,6 +97,8 @@ a:hover { color: #fff; }
 
 .brandbar__logo:hover { opacity: .8; }
 
+.hero__nav-group { display: contents; }
+
 .menu { display: none; align-items: center; justify-content: flex-end; gap: 32px; }
 
 .menu a { position: relative; color: var(--ink); font-size: 14px; font-weight: 500; line-height: 24px; text-shadow: 0 2px 4px rgba(0,0,0,.35); transition: color .18s; }
@@ -101,6 +133,10 @@ a:hover { color: #fff; }
 
 .intro__text { flex: 1; min-width: 0; z-index: 1; display: flex; flex-direction: column; justify-content: space-between; gap: 32px; padding: 72px var(--pad) 0; padding-top: 56px; }
 
+.intro__block { display: flex; flex-direction: column; gap: 10px; }
+
+.intro__heading { font-size: 18px; line-height: 1.2; font-weight: 800; text-transform: uppercase; color: var(--accent); }
+
 .intro__text p { max-width: 1220px; font-size: 13px; font-weight: 500; line-height: 22px; }
 
 .intro__scene { position: absolute; right: 0; top: 0; z-index: 0; height: 100%; width: auto; object-fit: cover; opacity: .35; }
@@ -112,6 +148,8 @@ a:hover { color: #fff; }
    ===================================================================== */
 
 .products { padding: 40px var(--pad); display: flex; flex-direction: column; align-items: center; background: var(--bg); }
+
+.products__title { width: 100%; max-width: var(--maxw); margin-bottom: 4px; }
 
 .products__grid { width: 100%; max-width: var(--maxw); display: flex; align-items: flex-start; justify-content: flex-start; gap: 24px; flex-wrap: wrap; }
 
@@ -141,11 +179,25 @@ a:hover { color: #fff; }
    UGV WIREFRAME SCHEMES
    ===================================================================== */
 
-.schemes { padding: 48px var(--pad); display: flex; background: var(--bg); }
+.schemes { padding: 48px var(--pad); display: flex; flex-direction: column; gap: 16px; background: var(--bg); }
 
-.schemes__row { width: 100%; overflow: hidden; cursor: grab; touch-action: pan-y; -webkit-mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent); mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent); }
+.schemes__label { margin: 0; font-size: 12px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: rgba(255,255,255,.5); }
+
+.schemes__row { position: relative; width: 100%; overflow: hidden; cursor: grab; touch-action: pan-y; -webkit-mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent); mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent); }
 
 .schemes__row.is-dragging { cursor: grabbing; }
+
+.schemes__track.is-snapping, .partners__track.is-snapping, .media__track.is-snapping { transition: transform .38s cubic-bezier(.2,0,.1,1); }
+
+.ticker-nav { position: absolute; top: 50%; z-index: 3; transform: translateY(-50%); width: 36px; height: 36px; border-radius: 50%; border: 1px solid rgba(255,255,255,.25); background: rgba(7,7,7,.7); color: var(--ink); display: flex; align-items: center; justify-content: center; cursor: pointer; transition: background .2s ease, border-color .2s ease, color .2s ease; }
+
+.ticker-nav svg { width: 18px; height: 18px; }
+
+.ticker-nav:hover { background: rgba(7,7,7,.9); border-color: var(--accent); color: var(--accent); }
+
+.ticker-nav--prev { left: 8px; }
+
+.ticker-nav--next { right: 8px; }
 
 .schemes__track { display: flex; align-items: center; gap: 24px; width: max-content; user-select: none; }
 
@@ -168,9 +220,9 @@ a:hover { color: #fff; }
 
 .marquee--grid .marquee__track { align-items: center; }
 
-.marquee__cell { flex: none; height: 100%; position: relative; pointer-events: none; }
+.marquee__cell { flex: none; height: 100%; position: relative; cursor: zoom-in; }
 
-.marquee__cell img { width: 100%; height: 100%; object-fit: contain; -webkit-user-drag: none; }
+.marquee__cell img { width: 100%; height: 100%; object-fit: contain; -webkit-user-drag: none; pointer-events: none; }
 
 .marquee__track.is-snapping { transition: transform .4s cubic-bezier(.2,0,.1,1); }
 
@@ -183,6 +235,48 @@ a:hover { color: #fff; }
 .marquee__nav--prev { left: 16px; }
 
 .marquee__nav--next { right: 16px; }
+
+/* =====================================================================
+   LIGHTBOX (click-to-zoom for marquee carousel images)
+   ===================================================================== */
+
+body.is-lightbox-open { overflow: hidden; }
+
+.lightbox { position: fixed; inset: 0; z-index: 300; display: flex; align-items: center; justify-content: center; padding: 56px 64px; background: rgba(4,4,4,.94); opacity: 0; visibility: hidden; transition: opacity .22s ease; }
+
+.lightbox.is-open { opacity: 1; visibility: visible; }
+
+.lightbox__img { max-width: 100%; max-height: 100%; object-fit: contain; box-shadow: 0 20px 60px rgba(0,0,0,.6); }
+
+.lightbox__close { position: absolute; top: 16px; right: 16px; z-index: 2; width: 44px; height: 44px; border-radius: 50%; border: 1px solid rgba(255,255,255,.25); background: rgba(7,7,7,.7); color: var(--ink); display: flex; align-items: center; justify-content: center; cursor: pointer; transition: background .2s ease, border-color .2s ease, color .2s ease; }
+
+.lightbox__close svg { width: 20px; height: 20px; }
+
+.lightbox__close:hover { background: rgba(7,7,7,.9); border-color: var(--accent); color: var(--accent); }
+
+.lightbox__nav { position: absolute; top: 50%; z-index: 2; transform: translateY(-50%); width: 48px; height: 48px; border-radius: 50%; border: 1px solid rgba(255,255,255,.25); background: rgba(7,7,7,.7); color: var(--ink); display: flex; align-items: center; justify-content: center; cursor: pointer; transition: background .2s ease, border-color .2s ease, color .2s ease; }
+
+.lightbox__nav svg { width: 22px; height: 22px; }
+
+.lightbox__nav:hover { background: rgba(7,7,7,.9); border-color: var(--accent); color: var(--accent); }
+
+.lightbox__nav--prev { left: 16px; }
+
+.lightbox__nav--next { right: 16px; }
+
+:where(.lightbox__close, .lightbox__nav):focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+
+@media (min-width: 721px) {
+
+  .lightbox { padding: 64px 96px; }
+
+  .lightbox__close { top: 24px; right: 24px; }
+
+  .lightbox__nav--prev { left: 24px; }
+
+  .lightbox__nav--next { right: 24px; }
+
+}
 
 /* =====================================================================
    MANIFESTO
@@ -200,7 +294,11 @@ a:hover { color: #fff; }
 
 .manifesto__icon { flex: none; width: 150px; max-width: 50%; object-fit: contain; animation: drift 6.5s ease-in-out infinite; }
 
-.manifesto__uav { position: relative; z-index: 1; margin-top: 24px; width: 1642px; max-width: 100%; object-fit: contain; animation: drift 5.4s ease-in-out infinite; animation-delay: -1.6s; }
+.manifesto__uav-wrap { position: relative; z-index: 1; width: 100%; margin-top: 24px; }
+
+.manifesto__uav-label { position: absolute; top: 0; left: 0; z-index: 2; font-size: 11px; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; color: rgba(255,255,255,.55); }
+
+.manifesto__uav { width: 1642px; max-width: 100%; object-fit: contain; animation: drift 5.4s ease-in-out infinite; animation-delay: -1.6s; }
 
 /* =====================================================================
    WHY US + TRAINING
@@ -232,13 +330,13 @@ a:hover { color: #fff; }
 
 .partners { display: flex; flex-direction: column; align-items: flex-start; gap: 32px; padding: 16px var(--pad) 64px; background: var(--bg-alt); }
 
-.partners__row { width: 100%; overflow: hidden; cursor: grab; touch-action: pan-y; -webkit-mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent); mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent); }
+.partners__row { position: relative; width: 100%; overflow: hidden; cursor: grab; touch-action: pan-y; -webkit-mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent); mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent); }
 
 .partners__row.is-dragging { cursor: grabbing; }
 
 .partners__track { display: flex; align-items: center; gap: 16px; width: max-content; user-select: none; }
 
-.partner { width: 140px; height: auto; flex: none; border-radius: 16px; overflow: hidden; cursor: pointer; filter: grayscale(1) brightness(1.3); transition: transform .25s cubic-bezier(.2,0,.1,1), filter .25s ease; aspect-ratio: 1 / 1; }
+.partner { display: block; width: 140px; height: auto; flex: none; border-radius: 16px; overflow: hidden; cursor: pointer; filter: grayscale(1) brightness(1.3); transition: transform .25s cubic-bezier(.2,0,.1,1), filter .25s ease; aspect-ratio: 1 / 1; }
 
 .partner--round { border-radius: 50%; }
 
@@ -258,7 +356,7 @@ a:hover { color: #fff; }
 
 .media { display: flex; flex-direction: column; align-items: flex-start; gap: 32px; padding: 48px var(--pad); background: var(--bg-alt); }
 
-.media__row { width: 100%; overflow: hidden; cursor: grab; touch-action: pan-y; -webkit-mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent); mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent); }
+.media__row { position: relative; width: 100%; overflow: hidden; cursor: grab; touch-action: pan-y; -webkit-mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent); mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent); }
 
 .media__row.is-dragging { cursor: grabbing; }
 
@@ -348,11 +446,15 @@ a:hover { color: #fff; }
 
 .cta:active { transform: translateY(1px); }
 
-.contact__footer { position: relative; z-index: 1; width: 100%; max-width: var(--maxw); display: flex; align-items: center; justify-content: space-between; gap: 20px; flex-wrap: wrap; font-size: 12px; color: var(--panel); }
+.contact__footer { position: relative; z-index: 1; width: 100%; max-width: var(--maxw); display: flex; flex-direction: column; gap: 16px; font-size: 12px; color: var(--panel); }
 
-.contact__info { display: flex; align-items: center; gap: 8px 24px; flex-wrap: wrap; }
+.contact__footer-row { width: 100%; display: flex; align-items: center; justify-content: space-between; gap: 20px; flex-wrap: wrap; }
+
+.contact__info, .contact__legal { display: flex; align-items: center; gap: 8px 24px; flex-wrap: wrap; }
 
 .contact__info b { line-height: 1.5; }
+
+.contact__copyright { opacity: .7; }
 
 .footer-link { color: var(--panel); font-weight: 700; text-decoration: none; transition: color .18s; }
 
@@ -370,7 +472,7 @@ a:hover { color: #fff; }
    FLOATING UI: back-to-top + toast
    ===================================================================== */
 
-.to-top { position: fixed; right: 18px; bottom: 18px; z-index: 70; width: 52px; height: 52px; background: var(--accent); color: #000; border: none; display: flex; align-items: center; justify-content: center; cursor: pointer; opacity: 0; transform: translateY(14px); pointer-events: none; transition: opacity .24s, transform .24s, background .18s; }
+.to-top { --to-top-gap: 18px; position: fixed; right: 18px; bottom: var(--to-top-gap); z-index: 70; width: 52px; height: 52px; background: var(--accent); color: #000; border: none; display: flex; align-items: center; justify-content: center; cursor: pointer; opacity: 0; transform: translateY(14px); pointer-events: none; transition: opacity .24s, transform .24s, background .18s, bottom .1s ease; }
 
 .to-top.is-show { opacity: 1; transform: none; pointer-events: auto; }
 
@@ -416,7 +518,9 @@ a:hover { color: #fff; }
 
   .brandbar__icon { height: 40px; width: 40px; }
 
-  .menu, .form__head { display: flex; }
+  .hero__nav-group { display: flex; align-items: center; gap: 28px; }
+
+  .menu { display: flex; }
 
   .burger { display: none; flex-direction: initial; justify-content: initial; position: initial; top: initial; right: initial; z-index: initial; transform: initial; width: initial; height: initial; background: initial; border: initial; cursor: initial; padding-top: initial; padding-right: initial; padding-bottom: initial; padding-left: initial; }
 
@@ -434,9 +538,13 @@ a:hover { color: #fff; }
 
   .intro__text p, .manifesto__lines p { font-size: 17px; line-height: 32px; }
 
+  .intro__heading { font-size: 22px; }
+
   .intro__uav { margin-top: 40px; margin-bottom: 72px; }
 
   .products { padding-top: 64px; padding-bottom: 64px; }
+
+  .products__title { margin-bottom: 8px; }
 
   .card { width: calc(50% - 12px); }
 
@@ -444,11 +552,13 @@ a:hover { color: #fff; }
 
   .schemes { padding-top: 80px; padding-bottom: 80px; }
 
+  .schemes__label { font-size: 13px; }
+
   .schemes__track { gap: 40px; }
 
   .schemes__track img { width: 340px; }
 
-  .marquee { height: min(70vh, 900px); }
+  .marquee { aspect-ratio: initial; width: 100%; height: min(70vh, 900px); }
 
   .marquee--grid { height: 800px; }
 
@@ -470,7 +580,9 @@ a:hover { color: #fff; }
 
   .manifesto__icon { width: 340px; max-width: 30%; }
 
-  .manifesto__uav { margin-top: 60px; }
+  .manifesto__uav-wrap { margin-top: 60px; }
+
+  .manifesto__uav-label { font-size: 13px; }
 
   .why__intro { padding-top: 80px; padding-bottom: 40px; }
 
@@ -510,13 +622,11 @@ a:hover { color: #fff; }
 
   .contact__panel:hover { transform: translateY(-3px); }
 
-  .form__heading { font-size: 24px; order: initial; }
+  .form__heading { font-size: 24px; }
 
-  .form__subheading { order: initial; font-size: 14px; }
+  .form__subheading { font-size: 14px; }
 
-  .form__cols { order: initial; }
-
-  .form__col { width: 672px; }
+  .form__col { flex: 1 1 320px; width: auto; }
 
   .form__label, .contact__info b { line-height: 44px; }
 
@@ -524,11 +634,11 @@ a:hover { color: #fff; }
 
   .form__col--msg .field--area { height: 100%; min-height: 372px; }
 
-  .cta { padding: 18px 40px; order: initial; width: initial; margin-top: initial; }
+  .cta { padding: 18px 40px; width: initial; margin-top: initial; }
 
   .contact__footer { font-size: 14px; }
 
-  .to-top { right: 32px; bottom: 32px; }
+  .to-top { --to-top-gap: 32px; right: 32px; }
 
   .toast { left: 50%; bottom: 34px; transform: translate(-50%, 20px); max-width: 460px; right: initial; }
 

@@ -151,29 +151,29 @@
             <div class="pc-form__cols">
               <div class="pc-form__col pc-form__col--msg">
                 <b class="pc-form__label">ЗАПИТ</b>
-                <textarea name="message" required class="pc-field pc-field--area" placeholder="Опишіть вашу задачу"></textarea>
+                <textarea name="message" required maxlength="2000" class="pc-field pc-field--area" placeholder="Опишіть вашу задачу"></textarea>
                 <span class="pc-field-error">Заповніть це поле</span>
               </div>
               <div class="pc-form__col">
                 <label class="pc-field-group">
                   <b class="pc-form__label">ПІБ</b>
-                  <input name="name" required class="pc-field" placeholder="Прізвище, ім'я" />
+                  <input name="name" required maxlength="80" class="pc-field" placeholder="Прізвище, ім'я" />
                   <span class="pc-field-error">Заповніть це поле</span>
                 </label>
                 <label class="pc-field-group">
                   <b class="pc-form__label">EMAIL</b>
-                  <input name="email" type="email" required class="pc-field" placeholder="name@email.com" />
+                  <input name="email" type="email" required maxlength="100" class="pc-field" placeholder="name@email.com" />
                   <span class="pc-field-error">Заповніть це поле</span>
                 </label>
                 <label class="pc-field-group">
                   <b class="pc-form__label">НАЗВА ОРГАНІЗАЦІЇ</b>
-                  <input name="org" required class="pc-field" placeholder="Компанія / підрозділ" />
+                  <input name="org" required maxlength="100" class="pc-field" placeholder="Компанія / підрозділ" />
                   <span class="pc-field-error">Заповніть це поле</span>
                 </label>
                 <label class="pc-field-group">
                   <b class="pc-form__label">КРАЇНА</b>
                   <div class="country-auto">
-                    <input name="country" required class="pc-field" placeholder="Почніть вводити назву країни" autocomplete="off" role="combobox" aria-expanded="false" aria-autocomplete="list" />
+                    <input name="country" required maxlength="60" class="pc-field" placeholder="Почніть вводити назву країни" autocomplete="off" role="combobox" aria-expanded="false" aria-autocomplete="list" />
                     <ul class="country-auto__list" role="listbox"></ul>
                   </div>
                   <span class="pc-field-error">Заповніть це поле</span>

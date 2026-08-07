@@ -94,19 +94,15 @@
 
   .pc-form__inner { gap: 28px; }
 
-  .pc-form__head { display: flex; }
+  .pc-form__heading { font-size: 24px; }
 
-  .pc-form__heading { font-size: 24px; order: initial; }
-
-  .pc-form__subheading { order: initial; font-size: 14px; }
-
-  .pc-form__cols { order: initial; }
+  .pc-form__subheading { font-size: 14px; }
 
   .pc-form__col { width: 380px; }
 
   .pc-field--area { height: 220px; }
 
-  .pc-cta { padding: 15px 32px; order: initial; width: initial; margin-top: initial; }
+  .pc-cta { padding: 15px 32px; width: initial; margin-top: initial; }
 
   .pc-footer { gap: 20px; font-size: 13px; }
 

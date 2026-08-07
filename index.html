@@ -3,12 +3,22 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>ASYMMETRICA — Безпілотні системи для реальних задач</title>
-  <meta name="description" content="Український виробник літаків та НРК: безпілотні літальні та наземні роботизовані апарати для розвідки, перехоплення, ударних і логістичних задач." />
+  <title data-en="ASYMMETRICA — Unmanned Systems for Real-World Missions">ASYMMETRICA — Безпілотні системи для реальних задач</title>
+  <meta name="description" content="Український виробник літаків та НРК: безпілотні літальні та наземні роботизовані апарати для розвідки, перехоплення, ударних і логістичних задач." data-en="Ukrainian manufacturer of aircraft and UGVs: unmanned aerial and ground robotic systems for reconnaissance, interception, strike and logistics missions." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700;800&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="asymmetrica.css?v=16" />
+  <link rel="stylesheet" href="asymmetrica.css?v=17" />
+  <script>
+    (function () {
+      try {
+        if (localStorage.getItem('spextr-lang') === 'en') {
+          document.documentElement.classList.add('lang-en');
+          document.documentElement.lang = 'en';
+        }
+      } catch (e) {}
+    })();
+  </script>
 </head>
 <body>
   <div class="site">
@@ -26,13 +36,19 @@
           <img class="brandbar__logo js-hover" src="assets/logo.webp" alt="Asymmetrica" />
           <img class="brandbar__icon js-hover" src="assets/header-icon-1.webp" alt="" />
           <img class="brandbar__icon js-hover" src="assets/header-icon-2.webp" alt="" />
-          <img class="brandbar__icon js-hover" src="assets/header-icon-3.webp" alt="" />
+          <img class="brandbar__icon js-hover" src="assets/header-icon-3.webp" alt="SPEXTR" />
         </div>
-        <nav class="menu" aria-label="Головна навігація">
-          <a class="js-nav" href="#about">ПРО НАС</a>
-          <a class="js-nav" href="#products">ПРОДУКТИ</a>
-          <a class="js-nav" href="#contact">КОНТАКТИ</a>
-        </nav>
+        <div class="hero__nav-group">
+          <nav class="menu" aria-label="Головна навігація" data-en-aria="Main navigation">
+            <a class="js-nav" href="#about"><span data-lang="uk">ПРО НАС</span><span data-lang="en" hidden>ABOUT US</span></a>
+            <a class="js-nav" href="#products"><span data-lang="uk">ПРОДУКТИ</span><span data-lang="en" hidden>PRODUCTS</span></a>
+            <a class="js-nav" href="#contact"><span data-lang="uk">КОНТАКТИ</span><span data-lang="en" hidden>CONTACTS</span></a>
+          </nav>
+          <div class="lang-switch lang-switch--header js-lang-switch" role="group" aria-label="Мова сайту / Site language">
+            <button type="button" class="lang-switch__btn js-lang-btn" data-lang-btn="uk" aria-pressed="true">🇺🇦 UA</button>
+            <button type="button" class="lang-switch__btn js-lang-btn" data-lang-btn="en" aria-pressed="false">🇬🇧 EN</button>
+          </div>
+        </div>
         <button class="burger js-burger" type="button" aria-label="Меню" aria-expanded="false" aria-controls="mobile-menu">
           <span></span><span></span><span></span>
         </button>
@@ -43,16 +59,20 @@
         <button class="mobile-menu__close js-menu-close" type="button" aria-label="Закрити меню">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 6l12 12M18 6L6 18" /></svg>
         </button>
-        <a class="mobile-menu__link js-nav" href="#about">ПРО НАС</a>
+        <div class="lang-switch lang-switch--mobile js-lang-switch" role="group" aria-label="Мова сайту / Site language">
+          <button type="button" class="lang-switch__btn js-lang-btn" data-lang-btn="uk" aria-pressed="true">🇺🇦 UA</button>
+          <button type="button" class="lang-switch__btn js-lang-btn" data-lang-btn="en" aria-pressed="false">🇬🇧 EN</button>
+        </div>
+        <a class="mobile-menu__link js-nav" href="#about"><span data-lang="uk">ПРО НАС</span><span data-lang="en" hidden>ABOUT US</span></a>
         <div class="mobile-menu__group">
-          <a class="mobile-menu__link js-nav" href="#products">ПРОДУКТИ</a>
+          <a class="mobile-menu__link js-nav" href="#products"><span data-lang="uk">ПРОДУКТИ</span><span data-lang="en" hidden>PRODUCTS</span></a>
           <div class="mobile-menu__sub">
-            <a class="mobile-menu__sublink" href="kryla.html">КРИЛА</a>
-            <a class="mobile-menu__sublink" href="k2.html">НРК</a>
-            <a class="mobile-menu__sublink" href="gstation.html">ДОДАТКОВО</a>
+            <a class="mobile-menu__sublink" href="kryla.html"><span data-lang="uk">КРИЛА</span><span data-lang="en" hidden>WINGS</span></a>
+            <a class="mobile-menu__sublink" href="k2.html"><span data-lang="uk">НРК</span><span data-lang="en" hidden>UGV</span></a>
+            <a class="mobile-menu__sublink" href="gstation.html"><span data-lang="uk">ДОДАТКОВО</span><span data-lang="en" hidden>ADD-ONS</span></a>
           </div>
         </div>
-        <a class="mobile-menu__link js-nav" href="#contact">КОНТАКТИ</a>
+        <a class="mobile-menu__link js-nav" href="#contact"><span data-lang="uk">КОНТАКТИ</span><span data-lang="en" hidden>CONTACTS</span></a>
       </nav>
 
       <div class="hero__center">
@@ -69,8 +89,14 @@
     <!-- ============ INTRO ============ -->
     <section id="about" class="intro">
       <div class="intro__text reveal">
-        <p>УКРАЇНСЬКИЙ ВИРОБНИК ЛІТАКІВ ТА НРК, ЩО РОЗРОБЛЯЄ ТА ВИГОТОВЛЯЄ БЕЗПІЛОТНІ ЛІТАЛЬНІ ТА НАЗЕМНІ РОБОТИЗОВАНІ АПАРАТИ ДЛЯ РОЗВІДУВАЛЬНИХ МІСІЙ, ПЕРЕХОПЛЕННЯ ВОРОЖИХ ЦІЛЕЙ, УДАРНИХ ТА ЛОГІСТИЧНИХ ЗАДАЧ, А ТАКОЖ НАЗЕМНІ СТАНЦІЇ КЕРУВАННЯ, АКУМУЛЯТОРИ ТА ІНШЕ СУПУТНЄ ОБЛАДНАННЯ.</p>
-        <p>ПОВНИЙ ЦИКЛ ВИРОБНИЦТВА, ТЕСТУВАННЯ ТА СЕРВІСУ ЗДІЙСНЮЄТЬСЯ В УКРАЇНІ, НАВЧАННЯ ПІЛОТІВ ПРОХОДИТЬ НА СПЕЦІАЛЬНО ОБЛАШТОВАНОМУ ПОЛІГОНІ ПІДПРИЄМСТВА</p>
+        <div class="intro__block">
+          <h1 class="intro__heading"><span data-lang="uk">Хто ми?</span><span data-lang="en" hidden>Who we are</span></h1>
+          <p><span data-lang="uk">УКРАЇНСЬКИЙ ВИРОБНИК ЛІТАКІВ ТА НРК, ЩО РОЗРОБЛЯЄ ТА ВИГОТОВЛЯЄ БЕЗПІЛОТНІ ЛІТАЛЬНІ ТА НАЗЕМНІ РОБОТИЗОВАНІ АПАРАТИ ДЛЯ РОЗВІДУВАЛЬНИХ МІСІЙ, ПЕРЕХОПЛЕННЯ ВОРОЖИХ ЦІЛЕЙ, УДАРНИХ ТА ЛОГІСТИЧНИХ ЗАДАЧ, А ТАКОЖ НАЗЕМНІ СТАНЦІЇ КЕРУВАННЯ, АКУМУЛЯТОРИ ТА ІНШЕ СУПУТНЄ ОБЛАДНАННЯ.</span><span data-lang="en" hidden>A UKRAINIAN MANUFACTURER OF AIRCRAFT AND UGVs, DEVELOPING AND BUILDING UNMANNED AERIAL AND GROUND ROBOTIC SYSTEMS FOR RECONNAISSANCE MISSIONS, INTERCEPTING ENEMY TARGETS, STRIKE AND LOGISTICS TASKS, AS WELL AS GROUND CONTROL STATIONS, BATTERIES AND OTHER SUPPORTING EQUIPMENT.</span></p>
+        </div>
+        <div class="intro__block">
+          <h2 class="intro__heading"><span data-lang="uk">Виробничі спроможності</span><span data-lang="en" hidden>Manufacturing capabilities</span></h2>
+          <p><span data-lang="uk">ПОВНИЙ ЦИКЛ ВИРОБНИЦТВА, ТЕСТУВАННЯ ТА СЕРВІСУ ЗДІЙСНЮЄТЬСЯ В УКРАЇНІ, НАВЧАННЯ ПІЛОТІВ ПРОХОДИТЬ НА СПЕЦІАЛЬНО ОБЛАШТОВАНОМУ ПОЛІГОНІ ПІДПРИЄМСТВА</span><span data-lang="en" hidden>THE FULL CYCLE OF PRODUCTION, TESTING AND SERVICE TAKES PLACE IN UKRAINE; PILOT TRAINING IS CONDUCTED AT THE COMPANY'S OWN SPECIALIZED TRAINING GROUND</span></p>
+        </div>
       </div>
       <img class="intro__scene" src="assets/intro-bg.webp" alt="" loading="lazy" decoding="async" />
       <img class="intro__uav" src="assets/intro-uav.webp" alt="Asymmetrica UAV" loading="lazy" decoding="async" />
@@ -78,25 +104,26 @@
 
     <!-- ============ PRODUCTS ============ -->
     <section id="products" class="products">
+      <h2 class="section-title products__title"><span data-lang="uk">Вироби</span><span data-lang="en" hidden>Products</span></h2>
       <div class="products__grid reveal">
         <a class="card card--link" href="kryla.html">
-          <h2 class="card__title">КРИЛА</h2>
+          <h2 class="card__title"><span data-lang="uk">КРИЛА</span><span data-lang="en" hidden>WINGS</span></h2>
           <div class="card__media">
-            <img src="assets/product-kryla.webp" alt="КРИЛА" loading="lazy" decoding="async" />
+            <img src="assets/product-kryla.webp" alt="КРИЛА" data-en-alt="WINGS" loading="lazy" decoding="async" />
             <svg class="card__arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 7l10 10" /><path d="M17 8v9h-9" /></svg>
           </div>
         </a>
         <a class="card card--link" href="k2.html">
-          <h2 class="card__title">НРК</h2>
+          <h2 class="card__title"><span data-lang="uk">НРК</span><span data-lang="en" hidden>UGV</span></h2>
           <div class="card__media">
-            <img src="assets/product-nrk.webp" alt="НРК" loading="lazy" decoding="async" />
+            <img src="assets/product-nrk.webp" alt="НРК" data-en-alt="UGV" loading="lazy" decoding="async" />
             <svg class="card__arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 7l10 10" /><path d="M17 8v9h-9" /></svg>
           </div>
         </a>
         <a class="card card--link" href="gstation.html">
-          <h2 class="card__title">ДОДАТКОВО</h2>
+          <h2 class="card__title"><span data-lang="uk">ДОДАТКОВО</span><span data-lang="en" hidden>ADD-ONS</span></h2>
           <div class="card__media">
-            <img src="assets/product-dodatkovo.webp" alt="ДОДАТКОВО" loading="lazy" decoding="async" />
+            <img src="assets/product-dodatkovo.webp" alt="ДОДАТКОВО" data-en-alt="ADD-ONS" loading="lazy" decoding="async" />
             <svg class="card__arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 7l10 10" /><path d="M17 8v9h-9" /></svg>
           </div>
         </a>
@@ -105,15 +132,22 @@
 
     <!-- ============ UGV WIREFRAMES ============ -->
     <section class="schemes reveal">
+      <p class="schemes__label"><span data-lang="uk">Наземна роботизована платформа «Spextr»</span><span data-lang="en" hidden>Ground robotic platform «Spextr»</span></p>
       <div class="schemes__row">
         <div class="schemes__track" data-role="track">
-          <img class="js-hover" src="assets/ugv-scheme-1.webp" alt="НРК схема 1" loading="lazy" decoding="async" />
-          <img class="js-hover" src="assets/ugv-scheme-2.webp" alt="НРК схема 2" loading="lazy" decoding="async" />
-          <img class="js-hover" src="assets/ugv-scheme-3.webp" alt="НРК схема 3" loading="lazy" decoding="async" />
+          <img class="js-hover" src="assets/ugv-scheme-1.webp" alt="НРК схема 1" data-en-alt="UGV scheme 1" loading="lazy" decoding="async" />
+          <img class="js-hover" src="assets/ugv-scheme-2.webp" alt="НРК схема 2" data-en-alt="UGV scheme 2" loading="lazy" decoding="async" />
+          <img class="js-hover" src="assets/ugv-scheme-3.webp" alt="НРК схема 3" data-en-alt="UGV scheme 3" loading="lazy" decoding="async" />
           <img class="js-hover" src="assets/ugv-scheme-1.webp" alt="" loading="lazy" decoding="async" aria-hidden="true" />
           <img class="js-hover" src="assets/ugv-scheme-2.webp" alt="" loading="lazy" decoding="async" aria-hidden="true" />
           <img class="js-hover" src="assets/ugv-scheme-3.webp" alt="" loading="lazy" decoding="async" aria-hidden="true" />
         </div>
+        <button class="ticker-nav ticker-nav--prev js-ticker-prev" type="button" aria-label="Попереднє зображення" data-en-aria="Previous image">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 6l-6 6 6 6" /></svg>
+        </button>
+        <button class="ticker-nav ticker-nav--next js-ticker-next" type="button" aria-label="Наступне зображення" data-en-aria="Next image">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 6l6 6-6 6" /></svg>
+        </button>
       </div>
     </section>
 
@@ -122,10 +156,10 @@
       <div class="marquee__track" data-role="track">
         <!-- track content injected by script.js -->
       </div>
-      <button class="marquee__nav marquee__nav--prev js-marquee-prev" type="button" aria-label="Попередній слайд">
+      <button class="marquee__nav marquee__nav--prev js-marquee-prev" type="button" aria-label="Попередній слайд" data-en-aria="Previous slide">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 6l-6 6 6 6" /></svg>
       </button>
-      <button class="marquee__nav marquee__nav--next js-marquee-next" type="button" aria-label="Наступний слайд">
+      <button class="marquee__nav marquee__nav--next js-marquee-next" type="button" aria-label="Наступний слайд" data-en-aria="Next slide">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 6l6 6-6 6" /></svg>
       </button>
     </section>
@@ -135,29 +169,32 @@
       <img class="manifesto__bg" src="assets/manifesto-bg.webp" alt="" loading="lazy" decoding="async" />
       <div class="manifesto__row reveal">
         <div class="manifesto__lines">
-          <p>ТАМ, ДЕ НЕБЕЗПЕЧНО ДЛЯ ЛЮДИНИ, МАЄ ПРАЦЮВАТИ СИСТЕМА.</p>
-          <p>ТАМ, ДЕ РИЗИК ЗАНАДТО ВИСОКИЙ, ОПЕРАТОР МАЄ ЗАЛИШАТИСЯ НА ВІДСТАНІ.</p>
-          <p>ТАМ, ДЕ ВОРОГ НАВ'ЯЗУЄ СИЛУ, МИ ВІДПОВІДАЄМО ТОЧНІСТЮ, АДАПТАЦІЄЮ ТА ІНЖЕНЕРІЄЮ.</p>
+          <p><span data-lang="uk">ТАМ, ДЕ НЕБЕЗПЕЧНО ДЛЯ ЛЮДИНИ, МАЄ ПРАЦЮВАТИ СИСТЕМА.</span><span data-lang="en" hidden>WHERE IT'S DANGEROUS FOR A HUMAN, A SYSTEM MUST WORK.</span></p>
+          <p><span data-lang="uk">ТАМ, ДЕ РИЗИК ЗАНАДТО ВИСОКИЙ, ОПЕРАТОР МАЄ ЗАЛИШАТИСЯ НА ВІДСТАНІ.</span><span data-lang="en" hidden>WHERE THE RISK IS TOO HIGH, THE OPERATOR MUST STAY AT A DISTANCE.</span></p>
+          <p><span data-lang="uk">ТАМ, ДЕ ВОРОГ НАВ'ЯЗУЄ СИЛУ, МИ ВІДПОВІДАЄМО ТОЧНІСТЮ, АДАПТАЦІЄЮ ТА ІНЖЕНЕРІЄЮ.</span><span data-lang="en" hidden>WHERE THE ENEMY IMPOSES FORCE, WE RESPOND WITH PRECISION, ADAPTATION AND ENGINEERING.</span></p>
         </div>
         <img class="manifesto__icon" src="assets/manifesto-icon.webp" alt="" loading="lazy" decoding="async" />
       </div>
-      <img class="manifesto__uav" src="assets/manifesto-uav.webp" alt="Asymmetrica UAV" loading="lazy" decoding="async" />
+      <div class="manifesto__uav-wrap">
+        <span class="manifesto__uav-label">Grey Widow Interceptor</span>
+        <img class="manifesto__uav" src="assets/manifesto-uav.webp" alt="Grey Widow Interceptor" loading="lazy" decoding="async" />
+      </div>
     </section>
 
     <!-- ============ WHY US + TRAINING ============ -->
     <section class="why">
       <div class="why__intro reveal">
-        <h2 class="why__title">ЧОМУ ВАРТО ОБРАТИ НАС?</h2>
+        <h2 class="why__title"><span data-lang="uk">ЧОМУ ВАРТО ОБРАТИ НАС?</span><span data-lang="en" hidden>WHY CHOOSE US?</span></h2>
         <p class="why__body">
-          <b>МИ БЛИЖЧЕ ДО ЗАДАЧІ. </b>АСИМЕТРИКА ПОЄДНУЄ РОЗРОБКУ, ВИРОБНИЦТВО, ТЕСТУВАННЯ ТА АДАПТАЦІЮ В ОДНОМУ ПРОЦЕСІ. МИ СТВОРЮЄМО СИСТЕМИ ДЛЯ РЕАЛЬНИХ УМОВ, ШВИДКО ЗМІНЮЄМО ПРОДУКТ ПІД ЗАПИТИ ЗАСТОСУВАННЯ МИСЛИМО НЕ ОКРЕМИМИ ВИРОБАМИ, А ПОВНИМ КОНТУРОМ: <b>ЗЕМЛЯ, ПОВІТРЯ, ЗВ'ЯЗОК</b>. ДИСТАНЦІЯ ЗБЕРІГАЄ ЖИТТЯ. ІНЖЕНЕРІЯ СТВОРЮЄ ПЕРЕВАГУ. АСИМЕТРИКА ВТІЛЮЄ ЦЕ У ЖИТТЯ.
+          <span data-lang="uk"><b>МИ БЛИЖЧЕ ДО ЗАДАЧІ. </b>АСИМЕТРИКА ПОЄДНУЄ РОЗРОБКУ, ВИРОБНИЦТВО, ТЕСТУВАННЯ ТА АДАПТАЦІЮ В ОДНОМУ ПРОЦЕСІ. МИ СТВОРЮЄМО СИСТЕМИ ДЛЯ РЕАЛЬНИХ УМОВ, ШВИДКО ЗМІНЮЄМО ПРОДУКТ ПІД ЗАПИТИ ЗАСТОСУВАННЯ МИСЛИМО НЕ ОКРЕМИМИ ВИРОБАМИ, А ПОВНИМ КОНТУРОМ: <b>ЗЕМЛЯ, ПОВІТРЯ, ЗВ'ЯЗОК</b>. ДИСТАНЦІЯ ЗБЕРІГАЄ ЖИТТЯ. ІНЖЕНЕРІЯ СТВОРЮЄ ПЕРЕВАГУ. АСИМЕТРИКА ВТІЛЮЄ ЦЕ У ЖИТТЯ.</span><span data-lang="en" hidden><b>WE'RE CLOSER TO THE MISSION. </b>ASYMMETRICA COMBINES DEVELOPMENT, PRODUCTION, TESTING AND ADAPTATION IN ONE PROCESS. WE BUILD SYSTEMS FOR REAL CONDITIONS AND QUICKLY ADAPT THE PRODUCT TO THE MISSION AT HAND. WE THINK NOT IN TERMS OF INDIVIDUAL PRODUCTS, BUT AS A FULL LOOP: <b>LAND, AIR, COMMUNICATIONS</b>. DISTANCE SAVES LIVES. ENGINEERING CREATES THE ADVANTAGE. ASYMMETRICA MAKES IT REAL.</span>
         </p>
         <img class="why__icon" src="assets/why-icon.webp" alt="" loading="lazy" decoding="async" />
       </div>
       <div class="training reveal">
         <img class="training__bg" src="assets/training-bg.webp" alt="" loading="lazy" decoding="async" />
         <div class="training__text">
-          <h2 class="training__title">НАВЧАННЯ</h2>
-          <p>МИ ЗАБЕЗПЕЧУЄМО ПОВНИЙ ЦИКЛ ПІДГОТОВКИ ПІЛОТІВ. ТРЕНУВАННЯ ВІДБУВАЮТЬСЯ НА ВЛАСНОМУ СПЕЦІАЛІЗОВАНОМУ ПОЛІГОНІ ПІДПРИЄМСТВА, ЩО ДОЗВОЛЯЄ ЕФЕКТИВНО ОПАНОВУВАТИ СУЧАСНІ МЕТОДИ РОБОТИ З БЕЗПІЛОТНИМИ СИСТЕМАМИ.</p>
+          <h2 class="training__title"><span data-lang="uk">НАВЧАННЯ</span><span data-lang="en" hidden>TRAINING</span></h2>
+          <p><span data-lang="uk">МИ ЗАБЕЗПЕЧУЄМО ПОВНИЙ ЦИКЛ ПІДГОТОВКИ ПІЛОТІВ. ТРЕНУВАННЯ ВІДБУВАЮТЬСЯ НА ВЛАСНОМУ СПЕЦІАЛІЗОВАНОМУ ПОЛІГОНІ ПІДПРИЄМСТВА, ЩО ДОЗВОЛЯЄ ЕФЕКТИВНО ОПАНОВУВАТИ СУЧАСНІ МЕТОДИ РОБОТИ З БЕЗПІЛОТНИМИ СИСТЕМАМИ.</span><span data-lang="en" hidden>WE PROVIDE A FULL CYCLE OF PILOT TRAINING. TRAINING TAKES PLACE AT THE COMPANY'S OWN SPECIALIZED TRAINING GROUND, ALLOWING PILOTS TO EFFECTIVELY MASTER MODERN METHODS OF WORKING WITH UNMANNED SYSTEMS.</span></p>
         </div>
         <img class="training__badge" src="assets/training-badge.webp" alt="" loading="lazy" decoding="async" />
       </div>
@@ -168,64 +205,76 @@
       <div class="marquee__track" data-role="track">
         <!-- track content injected by script.js -->
       </div>
-      <button class="marquee__nav marquee__nav--prev js-marquee-prev" type="button" aria-label="Попередній слайд">
+      <button class="marquee__nav marquee__nav--prev js-marquee-prev" type="button" aria-label="Попередній слайд" data-en-aria="Previous slide">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 6l-6 6 6 6" /></svg>
       </button>
-      <button class="marquee__nav marquee__nav--next js-marquee-next" type="button" aria-label="Наступний слайд">
+      <button class="marquee__nav marquee__nav--next js-marquee-next" type="button" aria-label="Наступний слайд" data-en-aria="Next slide">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 6l6 6-6 6" /></svg>
       </button>
     </section>
 
     <!-- ============ PARTNERS ============ -->
     <section class="partners">
-      <h2 class="section-title">НАШІ ПАРТНЕРИ ТА СПОНСОРИ</h2>
+      <h2 class="section-title"><span data-lang="uk">НАШІ ПАРТНЕРИ ТА СПОНСОРИ</span><span data-lang="en" hidden>OUR PARTNERS &amp; SPONSORS</span></h2>
       <div class="partners__row reveal">
         <div class="partners__track" data-role="track">
-          <div class="partner"><img src="assets/partner-zsu.webp" alt="ЗСУ" loading="lazy" decoding="async" /></div>
-          <div class="partner"><img src="assets/partner-gur.webp" alt="ГУР" loading="lazy" decoding="async" /></div>
-          <div class="partner"><img src="assets/partner-rozvidka.webp" alt="Військова розвідка України" loading="lazy" decoding="async" /></div>
-          <div class="partner partner--round"><img src="assets/partner-syly-oborony.webp" alt="Сили оборони" loading="lazy" decoding="async" /></div>
-          <div class="partner partner--round"><img src="assets/partner-brave1.webp" alt="BRAVE1" loading="lazy" decoding="async" /></div>
-          <div class="partner partner--round"><img src="assets/partner-army-of-drones.webp" alt="Army of Drones" loading="lazy" decoding="async" /></div>
-          <div class="partner" aria-hidden="true"><img src="assets/partner-zsu.webp" alt="" loading="lazy" decoding="async" /></div>
-          <div class="partner" aria-hidden="true"><img src="assets/partner-gur.webp" alt="" loading="lazy" decoding="async" /></div>
-          <div class="partner" aria-hidden="true"><img src="assets/partner-rozvidka.webp" alt="" loading="lazy" decoding="async" /></div>
-          <div class="partner partner--round" aria-hidden="true"><img src="assets/partner-syly-oborony.webp" alt="" loading="lazy" decoding="async" /></div>
-          <div class="partner partner--round" aria-hidden="true"><img src="assets/partner-brave1.webp" alt="" loading="lazy" decoding="async" /></div>
-          <div class="partner partner--round" aria-hidden="true"><img src="assets/partner-army-of-drones.webp" alt="" loading="lazy" decoding="async" /></div>
+          <a class="partner" href="https://www.zsu.gov.ua/" target="_blank" rel="noopener noreferrer"><img src="assets/partner-zsu.webp" alt="ЗСУ" data-en-alt="Armed Forces of Ukraine" loading="lazy" decoding="async" /></a>
+          <a class="partner" href="https://gur.gov.ua/" target="_blank" rel="noopener noreferrer"><img src="assets/partner-gur.webp" alt="ГУР" data-en-alt="Defence Intelligence of Ukraine (GUR)" loading="lazy" decoding="async" /></a>
+          <a class="partner" href="https://gur.gov.ua/" target="_blank" rel="noopener noreferrer"><img src="assets/partner-rozvidka.webp" alt="Військова розвідка України" data-en-alt="Military Intelligence of Ukraine" loading="lazy" decoding="async" /></a>
+          <a class="partner partner--round" href="https://army.gov.ua/" target="_blank" rel="noopener noreferrer"><img src="assets/partner-syly-oborony.webp" alt="Сили оборони" data-en-alt="Defense Forces of Ukraine" loading="lazy" decoding="async" /></a>
+          <a class="partner partner--round" href="https://brave1.gov.ua/" target="_blank" rel="noopener noreferrer"><img src="assets/partner-brave1.webp" alt="BRAVE1" loading="lazy" decoding="async" /></a>
+          <a class="partner partner--round" href="https://u24.gov.ua/uk/dronation" target="_blank" rel="noopener noreferrer"><img src="assets/partner-army-of-drones.webp" alt="Army of Drones" loading="lazy" decoding="async" /></a>
+          <a class="partner" href="https://www.zsu.gov.ua/" target="_blank" rel="noopener noreferrer" aria-hidden="true" tabindex="-1"><img src="assets/partner-zsu.webp" alt="" loading="lazy" decoding="async" /></a>
+          <a class="partner" href="https://gur.gov.ua/" target="_blank" rel="noopener noreferrer" aria-hidden="true" tabindex="-1"><img src="assets/partner-gur.webp" alt="" loading="lazy" decoding="async" /></a>
+          <a class="partner" href="https://gur.gov.ua/" target="_blank" rel="noopener noreferrer" aria-hidden="true" tabindex="-1"><img src="assets/partner-rozvidka.webp" alt="" loading="lazy" decoding="async" /></a>
+          <a class="partner partner--round" href="https://army.gov.ua/" target="_blank" rel="noopener noreferrer" aria-hidden="true" tabindex="-1"><img src="assets/partner-syly-oborony.webp" alt="" loading="lazy" decoding="async" /></a>
+          <a class="partner partner--round" href="https://brave1.gov.ua/" target="_blank" rel="noopener noreferrer" aria-hidden="true" tabindex="-1"><img src="assets/partner-brave1.webp" alt="" loading="lazy" decoding="async" /></a>
+          <a class="partner partner--round" href="https://u24.gov.ua/uk/dronation" target="_blank" rel="noopener noreferrer" aria-hidden="true" tabindex="-1"><img src="assets/partner-army-of-drones.webp" alt="" loading="lazy" decoding="async" /></a>
         </div>
+        <button class="ticker-nav ticker-nav--prev js-ticker-prev" type="button" aria-label="Попередній партнер" data-en-aria="Previous partner">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 6l-6 6 6 6" /></svg>
+        </button>
+        <button class="ticker-nav ticker-nav--next js-ticker-next" type="button" aria-label="Наступний партнер" data-en-aria="Next partner">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 6l6 6-6 6" /></svg>
+        </button>
       </div>
     </section>
 
     <!-- ============ FULL IMAGE ============ -->
     <section class="showcase">
-      <img class="showcase__img reveal" src="assets/showcase-drone.webp" alt="Дрон-камікадзе на схематичній сітці" loading="lazy" decoding="async" />
+      <img class="showcase__img reveal" src="assets/showcase-drone.webp" alt="Дрон-камікадзе на схематичній сітці" data-en-alt="Kamikaze drone on a schematic grid" loading="lazy" decoding="async" />
     </section>
 
     <!-- ============ MEDIA MENTIONS ============ -->
     <section class="media">
-      <h2 class="section-title section-title--lg">згадки в медіа:</h2>
+      <h2 class="section-title section-title--lg"><span data-lang="uk">згадки в медіа:</span><span data-lang="en" hidden>media mentions:</span></h2>
       <div class="media__row reveal">
         <div class="media__track" data-role="track">
-          <div class="media__item" style="background:#0f2a5c"><img src="assets/media-guardian.webp" alt="The Guardian" loading="lazy" decoding="async" /></div>
-          <div class="media__item"><img src="assets/media-apostrof.webp" alt="Апостроф" loading="lazy" decoding="async" /></div>
-          <div class="media__item"><img src="assets/media-nyt.webp" alt="The New York Times" loading="lazy" decoding="async" /></div>
-          <div class="media__item media__item--text">Міноборони України</div>
-          <div class="media__item" style="background:#0aa8e0"><img src="assets/media-france24.webp" alt="FRANCE 24" loading="lazy" decoding="async" /></div>
-          <div class="media__item" style="background:#0e1b3a"><img src="assets/media-militarnyi.webp" alt="Militarnyi" loading="lazy" decoding="async" /></div>
-          <div class="media__item"><img src="assets/media-focus.webp" alt="ФОКУС" loading="lazy" decoding="async" /></div>
-          <div class="media__item" style="background:#fefefe"><img src="assets/media-kyivpost.webp" alt="Kyiv Post" loading="lazy" decoding="async" /></div>
-          <div class="media__item media__item--text">KOLO</div>
-          <div class="media__item" style="background:#0f2a5c" aria-hidden="true"><img src="assets/media-guardian.webp" alt="" loading="lazy" decoding="async" /></div>
-          <div class="media__item" aria-hidden="true"><img src="assets/media-apostrof.webp" alt="" loading="lazy" decoding="async" /></div>
-          <div class="media__item" aria-hidden="true"><img src="assets/media-nyt.webp" alt="" loading="lazy" decoding="async" /></div>
-          <div class="media__item media__item--text" aria-hidden="true">Міноборони України</div>
-          <div class="media__item" style="background:#0aa8e0" aria-hidden="true"><img src="assets/media-france24.webp" alt="" loading="lazy" decoding="async" /></div>
-          <div class="media__item" style="background:#0e1b3a" aria-hidden="true"><img src="assets/media-militarnyi.webp" alt="" loading="lazy" decoding="async" /></div>
-          <div class="media__item" aria-hidden="true"><img src="assets/media-focus.webp" alt="" loading="lazy" decoding="async" /></div>
-          <div class="media__item" style="background:#fefefe" aria-hidden="true"><img src="assets/media-kyivpost.webp" alt="" loading="lazy" decoding="async" /></div>
-          <div class="media__item media__item--text" aria-hidden="true">KOLO</div>
+          <a class="media__item" style="background:#0f2a5c" href="https://www.theguardian.com/" target="_blank" rel="noopener noreferrer"><img src="assets/media-guardian.webp" alt="The Guardian" loading="lazy" decoding="async" /></a>
+          <a class="media__item" href="https://apostrophe.ua/" target="_blank" rel="noopener noreferrer"><img src="assets/media-apostrof.webp" alt="Апостроф" data-en-alt="Apostrophe" loading="lazy" decoding="async" /></a>
+          <a class="media__item" href="https://www.nytimes.com/" target="_blank" rel="noopener noreferrer"><img src="assets/media-nyt.webp" alt="The New York Times" loading="lazy" decoding="async" /></a>
+          <a class="media__item media__item--text" href="https://www.mil.gov.ua/" target="_blank" rel="noopener noreferrer"><span data-lang="uk">Міноборони України</span><span data-lang="en" hidden>Ministry of Defense of Ukraine</span></a>
+          <a class="media__item" style="background:#0aa8e0" href="https://www.france24.com/" target="_blank" rel="noopener noreferrer"><img src="assets/media-france24.webp" alt="FRANCE 24" loading="lazy" decoding="async" /></a>
+          <a class="media__item" style="background:#0e1b3a" href="https://militarnyi.com/" target="_blank" rel="noopener noreferrer"><img src="assets/media-militarnyi.webp" alt="Militarnyi" loading="lazy" decoding="async" /></a>
+          <a class="media__item" href="https://focus.ua/" target="_blank" rel="noopener noreferrer"><img src="assets/media-focus.webp" alt="ФОКУС" data-en-alt="Focus" loading="lazy" decoding="async" /></a>
+          <a class="media__item" style="background:#fefefe" href="https://www.kyivpost.com/" target="_blank" rel="noopener noreferrer"><img src="assets/media-kyivpost.webp" alt="Kyiv Post" loading="lazy" decoding="async" /></a>
+          <a class="media__item media__item--text" href="https://kolo.news/" target="_blank" rel="noopener noreferrer">KOLO</a>
+          <a class="media__item" style="background:#0f2a5c" href="https://www.theguardian.com/" target="_blank" rel="noopener noreferrer" aria-hidden="true" tabindex="-1"><img src="assets/media-guardian.webp" alt="" loading="lazy" decoding="async" /></a>
+          <a class="media__item" href="https://apostrophe.ua/" target="_blank" rel="noopener noreferrer" aria-hidden="true" tabindex="-1"><img src="assets/media-apostrof.webp" alt="" loading="lazy" decoding="async" /></a>
+          <a class="media__item" href="https://www.nytimes.com/" target="_blank" rel="noopener noreferrer" aria-hidden="true" tabindex="-1"><img src="assets/media-nyt.webp" alt="" loading="lazy" decoding="async" /></a>
+          <a class="media__item media__item--text" href="https://www.mil.gov.ua/" target="_blank" rel="noopener noreferrer" aria-hidden="true" tabindex="-1"><span data-lang="uk">Міноборони України</span><span data-lang="en" hidden>Ministry of Defense of Ukraine</span></a>
+          <a class="media__item" style="background:#0aa8e0" href="https://www.france24.com/" target="_blank" rel="noopener noreferrer" aria-hidden="true" tabindex="-1"><img src="assets/media-france24.webp" alt="" loading="lazy" decoding="async" /></a>
+          <a class="media__item" style="background:#0e1b3a" href="https://militarnyi.com/" target="_blank" rel="noopener noreferrer" aria-hidden="true" tabindex="-1"><img src="assets/media-militarnyi.webp" alt="" loading="lazy" decoding="async" /></a>
+          <a class="media__item" href="https://focus.ua/" target="_blank" rel="noopener noreferrer" aria-hidden="true" tabindex="-1"><img src="assets/media-focus.webp" alt="" loading="lazy" decoding="async" /></a>
+          <a class="media__item" style="background:#fefefe" href="https://www.kyivpost.com/" target="_blank" rel="noopener noreferrer" aria-hidden="true" tabindex="-1"><img src="assets/media-kyivpost.webp" alt="" loading="lazy" decoding="async" /></a>
+          <a class="media__item media__item--text" href="https://kolo.news/" target="_blank" rel="noopener noreferrer" aria-hidden="true" tabindex="-1">KOLO</a>
         </div>
+        <button class="ticker-nav ticker-nav--prev js-ticker-prev" type="button" aria-label="Попередня згадка" data-en-aria="Previous mention">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 6l-6 6 6 6" /></svg>
+        </button>
+        <button class="ticker-nav ticker-nav--next js-ticker-next" type="button" aria-label="Наступна згадка" data-en-aria="Next mention">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 6l6 6-6 6" /></svg>
+        </button>
       </div>
     </section>
 
@@ -233,7 +282,7 @@
     <section class="credo reveal">
       <img class="credo__bg" src="assets/footer-bg.webp" alt="" loading="lazy" decoding="async" />
       <img class="credo__wordmark" src="assets/footer-wordmark.webp" alt="ASYMMETRICA" loading="lazy" decoding="async" />
-      <p class="credo__line">СТВОРЮЄМО ІНСТРУМЕНТИ ДЛЯ РЕАЛЬНИХ ЗАДАЧ, РЕАЛЬНИХ УМОВ І РЕАЛЬНОЇ ВІЙНИ.</p>
+      <p class="credo__line"><span data-lang="uk">СТВОРЮЄМО ІНСТРУМЕНТИ ДЛЯ РЕАЛЬНИХ ЗАДАЧ, РЕАЛЬНИХ УМОВ І РЕАЛЬНОЇ ВІЙНИ.</span><span data-lang="en" hidden>WE BUILD TOOLS FOR REAL TASKS, REAL CONDITIONS, AND REAL WAR.</span></p>
     </section>
 
     <!-- ============ CONTACT + FOOTER ============ -->
@@ -245,39 +294,39 @@
         <form class="form js-form" novalidate>
           <div class="form__inner">
             <div class="form__head">
-              <b class="form__heading">ЗВ'ЯЗАТИСЬ З НАМИ</b>
-              <button type="submit" class="cta">НАДІСЛАТИ</button>
+              <b class="form__heading"><span data-lang="uk">ЗВ'ЯЗАТИСЬ З НАМИ</span><span data-lang="en" hidden>CONTACT US</span></b>
+              <button type="submit" class="cta"><span data-lang="uk">НАДІСЛАТИ</span><span data-lang="en" hidden>SEND</span></button>
             </div>
-            <p class="form__subheading">Заповніть всі поля</p>
+            <p class="form__subheading"><span data-lang="uk">Заповніть всі поля</span><span data-lang="en" hidden>Fill in all fields</span></p>
             <div class="form__cols">
               <div class="form__col form__col--msg">
-                <b class="form__label">ЗАПИТ</b>
-                <textarea name="message" required class="field field--area" placeholder="Опишіть вашу задачу"></textarea>
-                <span class="field-error">Заповніть це поле</span>
+                <b class="form__label"><span data-lang="uk">ЗАПИТ</span><span data-lang="en" hidden>REQUEST</span></b>
+                <textarea name="message" required maxlength="2000" class="field field--area" placeholder="Опишіть вашу задачу" data-en-placeholder="Describe your task"></textarea>
+                <span class="field-error js-field-error" data-en="Fill in this field">Заповніть це поле</span>
               </div>
               <div class="form__col">
                 <label class="field-group">
-                  <b class="form__label">ПІБ</b>
-                  <input name="name" required class="field" placeholder="Прізвище, ім'я" />
-                  <span class="field-error">Заповніть це поле</span>
+                  <b class="form__label"><span data-lang="uk">ПІБ</span><span data-lang="en" hidden>FULL NAME</span></b>
+                  <input name="name" required maxlength="80" class="field" placeholder="Прізвище, ім'я" data-en-placeholder="Last name, first name" />
+                  <span class="field-error js-field-error" data-en="Fill in this field">Заповніть це поле</span>
                 </label>
                 <label class="field-group">
                   <b class="form__label">EMAIL</b>
-                  <input name="email" type="email" required class="field" placeholder="name@email.com" />
-                  <span class="field-error">Заповніть це поле</span>
+                  <input name="email" type="email" required maxlength="100" class="field" placeholder="name@email.com" />
+                  <span class="field-error js-field-error" data-en="Fill in this field">Заповніть це поле</span>
                 </label>
                 <label class="field-group">
-                  <b class="form__label">НАЗВА ОРГАНІЗАЦІЇ</b>
-                  <input name="org" required class="field" placeholder="Компанія / підрозділ" />
-                  <span class="field-error">Заповніть це поле</span>
+                  <b class="form__label"><span data-lang="uk">НАЗВА ОРГАНІЗАЦІЇ</span><span data-lang="en" hidden>ORGANIZATION NAME</span></b>
+                  <input name="org" required maxlength="100" class="field" placeholder="Компанія / підрозділ" data-en-placeholder="Company / unit" />
+                  <span class="field-error js-field-error" data-en="Fill in this field">Заповніть це поле</span>
                 </label>
                 <label class="field-group">
-                  <b class="form__label">КРАЇНА</b>
+                  <b class="form__label"><span data-lang="uk">КРАЇНА</span><span data-lang="en" hidden>COUNTRY</span></b>
                   <div class="country-auto">
-                    <input name="country" required class="field" placeholder="Почніть вводити назву країни" autocomplete="off" role="combobox" aria-expanded="false" aria-autocomplete="list" />
+                    <input name="country" required maxlength="60" class="field" placeholder="Почніть вводити назву країни" data-en-placeholder="Start typing a country name" autocomplete="off" role="combobox" aria-expanded="false" aria-autocomplete="list" />
                     <ul class="country-auto__list" role="listbox"></ul>
                   </div>
-                  <span class="field-error">Заповніть це поле</span>
+                  <span class="field-error js-field-error" data-en="Fill in this field">Заповніть це поле</span>
                 </label>
               </div>
             </div>
@@ -286,41 +335,61 @@
       </div>
 
       <div class="contact__footer">
-        <div class="contact__info">
-          <b>ТЕЛЕФОН: +38 000 0000 000</b>
-          <b>GMAIL:</b>
-          <a class="footer-link" href="privacy.html">Політика конфіденційності</a>
-          <a class="footer-link" href="terms.html">Умови використання</a>
+        <div class="contact__footer-row">
+          <div class="contact__info">
+            <b><span data-lang="uk">ТЕЛЕФОН: +38 000 0000 000</span><span data-lang="en" hidden>PHONE: +38 000 0000 000</span></b>
+            <a class="footer-link" href="mailto:info@asymmetrica.com.ua">info@asymmetrica.com.ua</a>
+          </div>
+          <div class="socials">
+            <a class="social" href="#contact" aria-label="TikTok">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M16.5 3c.3 2.1 1.5 3.6 3.5 3.9v2.4c-1.2.1-2.3-.2-3.5-.8v5.6c0 3.2-2.3 5.9-5.6 5.9-2.9 0-5.1-2.1-5.1-4.9 0-3 2.5-5 5.7-4.6v2.6c-.5-.2-1-.2-1.5-.1-1.1.2-1.8 1-1.7 2.2.1 1.1 1 1.9 2.1 1.9 1.3 0 2.2-1 2.2-2.5V3h3.4z"/></svg>
+            </a>
+            <a class="social" href="#contact" aria-label="Threads">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.3 11.2c-.1 0-.2-.1-.3-.1-.2-3-1.8-4.7-4.5-4.7-1.6 0-3 .7-3.8 2l1.5 1c.6-.9 1.5-1.1 2.3-1.1 1 0 1.8.3 2.2 1 .3.4.5 1 .5 1.7-.7-.1-1.4-.2-2.2-.1-2.4.1-3.9 1.5-3.8 3.4.1 1 .6 1.8 1.4 2.3.7.4 1.6.6 2.5.6 1.2-.1 2.2-.5 2.8-1.4.5-.6.8-1.4.9-2.4.6.4 1.1.9 1.3 1.5.5 1.1.5 2.8-.9 4.2-1.2 1.2-2.7 1.8-4.9 1.8-2.4 0-4.2-.8-5.4-2.3C4.6 17 4 15 4 12.5s.6-4.5 1.7-5.9C6.9 5.1 8.7 4.3 11.1 4.3c2.4 0 4.3.8 5.4 2.4.6.8 1 1.8 1.2 3l1.9-.5c-.3-1.5-.8-2.8-1.6-3.8C17.5 3.1 14.9 2 11.9 2h-.8C8.1 2 5.8 3 4.3 4.9 2.9 6.6 2.2 9 2.1 11.9v.2c0 2.9.7 5.3 2.2 7 1.5 1.9 3.8 2.9 6.8 2.9h.8c2.7 0 4.6-.7 6.2-2.3 2.1-2.1 2-4.7 1.3-6.3-.5-1.1-1.4-2-2.6-2.7l-.5-.4z"/></svg>
+            </a>
+            <a class="social" href="#contact" aria-label="Instagram">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1.2" fill="currentColor" stroke="none"/></svg>
+            </a>
+            <a class="social" href="#contact" aria-label="Facebook">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M14 8.5V7c0-.7.5-1 1.2-1H17V3h-2.5C11.9 3 11 4.6 11 6.4v2.1H9v3h2V21h3v-9.5h2.3l.4-3H14z"/></svg>
+            </a>
+          </div>
         </div>
-        <div class="socials">
-          <a class="social" href="#contact" aria-label="TikTok">
-            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M16.5 3c.3 2.1 1.5 3.6 3.5 3.9v2.4c-1.2.1-2.3-.2-3.5-.8v5.6c0 3.2-2.3 5.9-5.6 5.9-2.9 0-5.1-2.1-5.1-4.9 0-3 2.5-5 5.7-4.6v2.6c-.5-.2-1-.2-1.5-.1-1.1.2-1.8 1-1.7 2.2.1 1.1 1 1.9 2.1 1.9 1.3 0 2.2-1 2.2-2.5V3h3.4z"/></svg>
-          </a>
-          <a class="social" href="#contact" aria-label="Threads">
-            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.3 11.2c-.1 0-.2-.1-.3-.1-.2-3-1.8-4.7-4.5-4.7-1.6 0-3 .7-3.8 2l1.5 1c.6-.9 1.5-1.1 2.3-1.1 1 0 1.8.3 2.2 1 .3.4.5 1 .5 1.7-.7-.1-1.4-.2-2.2-.1-2.4.1-3.9 1.5-3.8 3.4.1 1 .6 1.8 1.4 2.3.7.4 1.6.6 2.5.6 1.2-.1 2.2-.5 2.8-1.4.5-.6.8-1.4.9-2.4.6.4 1.1.9 1.3 1.5.5 1.1.5 2.8-.9 4.2-1.2 1.2-2.7 1.8-4.9 1.8-2.4 0-4.2-.8-5.4-2.3C4.6 17 4 15 4 12.5s.6-4.5 1.7-5.9C6.9 5.1 8.7 4.3 11.1 4.3c2.4 0 4.3.8 5.4 2.4.6.8 1 1.8 1.2 3l1.9-.5c-.3-1.5-.8-2.8-1.6-3.8C17.5 3.1 14.9 2 11.9 2h-.8C8.1 2 5.8 3 4.3 4.9 2.9 6.6 2.2 9 2.1 11.9v.2c0 2.9.7 5.3 2.2 7 1.5 1.9 3.8 2.9 6.8 2.9h.8c2.7 0 4.6-.7 6.2-2.3 2.1-2.1 2-4.7 1.3-6.3-.5-1.1-1.4-2-2.6-2.7l-.5-.4z"/></svg>
-          </a>
-          <a class="social" href="#contact" aria-label="Instagram">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1.2" fill="currentColor" stroke="none"/></svg>
-          </a>
-          <a class="social" href="#contact" aria-label="Facebook">
-            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M14 8.5V7c0-.7.5-1 1.2-1H17V3h-2.5C11.9 3 11 4.6 11 6.4v2.1H9v3h2V21h3v-9.5h2.3l.4-3H14z"/></svg>
-          </a>
+        <div class="contact__footer-row">
+          <div class="contact__legal">
+            <a class="footer-link" href="privacy.html"><span data-lang="uk">Політика конфіденційності</span><span data-lang="en" hidden>Privacy Policy</span></a>
+            <a class="footer-link" href="terms.html"><span data-lang="uk">Умови використання</span><span data-lang="en" hidden>Terms of Use</span></a>
+          </div>
+          <p class="contact__copyright"><span data-lang="uk">Asymmetrica Ltd. 2026. Всі права захищені.</span><span data-lang="en" hidden>Asymmetrica Ltd. 2026. All rights reserved.</span></p>
         </div>
       </div>
     </section>
 
   </div>
 
-  <button class="to-top js-top" aria-label="Нагору">
+  <button class="to-top js-top" aria-label="Нагору" data-en-aria="Back to top">
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M18 15l-6-6-6 6" /></svg>
   </button>
 
   <div class="toast js-toast" role="status" aria-live="polite">
     <svg viewBox="0 0 24 24" fill="none" stroke="#FFCA08" stroke-width="2.2"><path d="M20 6L9 17l-5-5" /></svg>
-    <span>Запит надіслано. Інженерна команда зв'яжеться з вами.</span>
+    <span class="js-toast-text" data-en="Request sent. Our engineering team will contact you.">Запит надіслано. Інженерна команда зв'яжеться з вами.</span>
   </div>
 
-  <script src="countries.js?v=3"></script>
-  <script src="asymmetrica.js?v=11"></script>
+  <div class="lightbox js-lightbox" aria-hidden="true">
+    <button class="lightbox__close js-lightbox-close" type="button" aria-label="Закрити" data-en-aria="Close">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 6l12 12M18 6L6 18" /></svg>
+    </button>
+    <button class="lightbox__nav lightbox__nav--prev js-lightbox-prev" type="button" aria-label="Попереднє зображення" data-en-aria="Previous image">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 6l-6 6 6 6" /></svg>
+    </button>
+    <img class="lightbox__img" src="" alt="" />
+    <button class="lightbox__nav lightbox__nav--next js-lightbox-next" type="button" aria-label="Наступне зображення" data-en-aria="Next image">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 6l6 6-6 6" /></svg>
+    </button>
+  </div>
+
+  <script src="countries.js?v=4"></script>
+  <script src="asymmetrica.js?v=12"></script>
 </body>
 </html>
