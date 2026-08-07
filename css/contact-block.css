@@ -98,7 +98,7 @@
 
   .pc-form__subheading { font-size: 14px; }
 
-  .pc-form__col { width: 380px; }
+  .pc-form__col { flex: 1 1 260px; width: auto; }
 
   .pc-field--area { height: 220px; }
 
