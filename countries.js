@@ -70,6 +70,11 @@
     'Chile', 'Montenegro', 'Switzerland', 'Sweden', 'Sri Lanka', 'Jamaica', 'Japan'
   ];
 
+  // COUNTRIES_EN is written in the same order as COUNTRIES_UK above (so the
+  // two were easy to keep in sync while translating); re-sort just this
+  // copy into English alphabetical order for display/browsing.
+  COUNTRIES_EN.sort(function (a, b) { return a.localeCompare(b); });
+
   window.SPEXTR_COUNTRIES = COUNTRIES_UK;
   window.SPEXTR_COUNTRIES_EN = COUNTRIES_EN;
 
@@ -140,15 +145,21 @@
     function search() {
       if (suppressSearch) { suppressSearch = false; return; }
       var q = input.value.trim().toLowerCase();
-      if (!q) { close(); return; }
-      var matches = activeCountries().filter(function (c) {
+      // no query yet: show the full alphabetical list to browse, rather
+      // than waiting for the visitor to start typing
+      var matches = !q ? activeCountries().slice() : activeCountries().filter(function (c) {
         return c.toLowerCase().indexOf(q) !== -1;
-      }).slice(0, 8);
+      });
       open(matches);
     }
 
     input.addEventListener('input', search);
-    input.addEventListener('focus', function () { if (input.value.trim()) search(); });
+    input.addEventListener('focus', search);
+    input.addEventListener('mousedown', function () {
+      // if the field is already focused (e.g. reopened after Escape),
+      // 'focus' won't fire again on click — cover that case too
+      if (document.activeElement === input) search();
+    });
     input.addEventListener('blur', function () { setTimeout(close, 120); });
     input.addEventListener('keydown', function (e) {
       if (!root.classList.contains('is-open')) return;
