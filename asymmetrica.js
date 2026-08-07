@@ -4,6 +4,89 @@
 (function () {
   'use strict';
 
+  /* ---- EN/UK language toggle ------------------------------------------
+     Visible text lives in the markup twice, as sibling <span data-lang="uk">
+     / <span data-lang="en"> pairs — CSS does the actual showing/hiding
+     (see asymmetrica.css), so there's no flash-of-wrong-language while
+     this script loads. This module only handles: attributes that can't
+     hold two values at once (alt/aria-label/placeholder, via data-en-*),
+     the toggle buttons themselves, and persisting the choice. */
+  var LANG_KEY = 'spextr-lang';
+
+  function getLang() {
+    try { return localStorage.getItem(LANG_KEY) === 'en' ? 'en' : 'uk'; } catch (e) { return 'uk'; }
+  }
+
+  var I18N_ATTRS = [
+    { attr: 'alt', dataAttr: 'data-en-alt' },
+    { attr: 'aria-label', dataAttr: 'data-en-aria' },
+    { attr: 'placeholder', dataAttr: 'data-en-placeholder' }
+  ];
+
+  var i18nAttrCache = [];
+  I18N_ATTRS.forEach(function (spec) {
+    document.querySelectorAll('[' + spec.dataAttr + ']').forEach(function (el) {
+      i18nAttrCache.push({
+        el: el,
+        attr: spec.attr,
+        uk: el.getAttribute(spec.attr) || '',
+        en: el.getAttribute(spec.dataAttr)
+      });
+    });
+  });
+
+  var i18nTextCache = [];
+  document.querySelectorAll('[data-en]').forEach(function (el) {
+    if (el.tagName === 'TITLE') return; // handled separately below
+    i18nTextCache.push({ el: el, uk: el.textContent, en: el.getAttribute('data-en') });
+  });
+
+  var titleEl = document.querySelector('title');
+  var metaDescEl = document.querySelector('meta[name="description"]');
+
+  function applyLang(lang) {
+    document.documentElement.classList.toggle('lang-en', lang === 'en');
+    document.documentElement.lang = lang;
+
+    if (titleEl && titleEl.getAttribute('data-en')) {
+      // document.title's setter rewrites titleEl's textContent, so the uk
+      // original has to be captured once before the first en switch
+      if (!titleEl.dataset.ukCache) titleEl.dataset.ukCache = titleEl.textContent;
+      document.title = lang === 'en' ? titleEl.getAttribute('data-en') : titleEl.dataset.ukCache;
+    }
+    if (metaDescEl && metaDescEl.getAttribute('data-en')) {
+      // the uk copy only needs capturing once, before it's overwritten
+      if (!metaDescEl.dataset.ukCache) metaDescEl.dataset.ukCache = metaDescEl.getAttribute('content') || '';
+      metaDescEl.setAttribute('content', lang === 'en' ? metaDescEl.getAttribute('data-en') : metaDescEl.dataset.ukCache);
+    }
+
+    i18nAttrCache.forEach(function (item) {
+      item.el.setAttribute(item.attr, lang === 'en' ? item.en : item.uk);
+    });
+    i18nTextCache.forEach(function (item) {
+      item.el.textContent = lang === 'en' ? item.en : item.uk;
+    });
+
+    document.querySelectorAll('.js-lang-btn').forEach(function (btn) {
+      btn.setAttribute('aria-pressed', btn.getAttribute('data-lang-btn') === lang ? 'true' : 'false');
+    });
+
+    if (window.SPEXTR_relocalizeErrors) window.SPEXTR_relocalizeErrors();
+  }
+
+  function setLang(lang) {
+    try { localStorage.setItem(LANG_KEY, lang); } catch (e) {}
+    applyLang(lang);
+  }
+
+  window.SPEXTR_getLang = getLang;
+
+  document.querySelectorAll('.js-lang-btn').forEach(function (btn) {
+    btn.addEventListener('click', function () { setLang(btn.getAttribute('data-lang-btn')); });
+  });
+
+  applyLang(getLang());
+
   var GAP = 24;   // matches .marquee__track gap
 
   /* ---- carousel data --------------------------------------------------
@@ -95,10 +178,19 @@
       snapTo(candidate);
     }
 
+    var startClientX = 0, startClientY = 0, moved = false, downCell = null;
+
     section.addEventListener('pointerdown', function (e) {
       if (e.target.closest('.marquee__nav')) return;
       dragging = true;
+      moved = false;
+      // captured here, not read off the pointerup event: once setPointerCapture
+      // below takes effect, later events on this pointer get retargeted to
+      // `section` regardless of what's actually under the cursor
+      downCell = e.target.closest('.marquee__cell');
       startX = e.clientX;
+      startClientX = e.clientX;
+      startClientY = e.clientY;
       startOffset = offset;
       track.classList.remove('is-snapping');
       section.style.cursor = 'grabbing';
@@ -106,11 +198,18 @@
     });
     section.addEventListener('pointermove', function (e) {
       if (!dragging) return;
+      if (!moved && (Math.abs(e.clientX - startClientX) > 4 || Math.abs(e.clientY - startClientY) > 4)) moved = true;
       offset = startOffset - (e.clientX - startX);
       apply();
     });
     function release() {
       if (!dragging) return;
+      // a genuine click (no drag movement) opens the lightbox on whichever
+      // cell was under the pointer instead of re-snapping the carousel
+      if (!moved && downCell) {
+        var cellIndex = Array.prototype.indexOf.call(cells, downCell) % items.length;
+        openLightbox(items, cellIndex);
+      }
       dragging = false;
       section.style.cursor = 'grab';
       // snap to whichever item boundary ended up closest to the drop point
@@ -127,7 +226,7 @@
       snapTo(candidate);
     }
     section.addEventListener('pointerup', release);
-    section.addEventListener('pointerleave', release);
+    section.addEventListener('pointerleave', function () { release(); });
 
     var prevBtn = section.querySelector('.js-marquee-prev');
     var nextBtn = section.querySelector('.js-marquee-next');
@@ -148,6 +247,69 @@
     });
   }
 
+  /* ---- lightbox: click-to-zoom for marquee carousel images ----------- */
+  var lightbox = document.querySelector('.js-lightbox');
+  var lightboxImg = lightbox && lightbox.querySelector('.lightbox__img');
+  var lightboxItems = [];
+  var lightboxIndex = 0;
+  var lightboxReturnFocus = null;
+
+  function updateLightboxImg() {
+    var it = lightboxItems[lightboxIndex];
+    if (!it || !lightboxImg) return;
+    lightboxImg.src = it.src;
+    lightboxImg.alt = it.alt;
+  }
+
+  function openLightbox(items, idx) {
+    if (!lightbox) return;
+    lightboxItems = items;
+    lightboxIndex = idx;
+    lightboxReturnFocus = document.activeElement;
+    updateLightboxImg();
+    lightbox.classList.add('is-open');
+    lightbox.setAttribute('aria-hidden', 'false');
+    document.body.classList.add('is-lightbox-open');
+    var closeBtn = lightbox.querySelector('.js-lightbox-close');
+    if (closeBtn) closeBtn.focus();
+  }
+
+  function closeLightbox() {
+    if (!lightbox) return;
+    lightbox.classList.remove('is-open');
+    lightbox.setAttribute('aria-hidden', 'true');
+    document.body.classList.remove('is-lightbox-open');
+    if (lightboxReturnFocus && lightboxReturnFocus.focus) lightboxReturnFocus.focus();
+  }
+
+  function lightboxNext() {
+    lightboxIndex = (lightboxIndex + 1) % lightboxItems.length;
+    updateLightboxImg();
+  }
+
+  function lightboxPrev() {
+    lightboxIndex = (lightboxIndex - 1 + lightboxItems.length) % lightboxItems.length;
+    updateLightboxImg();
+  }
+
+  if (lightbox) {
+    var lightboxClose = lightbox.querySelector('.js-lightbox-close');
+    var lightboxPrevBtn = lightbox.querySelector('.js-lightbox-prev');
+    var lightboxNextBtn = lightbox.querySelector('.js-lightbox-next');
+    if (lightboxClose) lightboxClose.addEventListener('click', closeLightbox);
+    if (lightboxPrevBtn) lightboxPrevBtn.addEventListener('click', lightboxPrev);
+    if (lightboxNextBtn) lightboxNextBtn.addEventListener('click', lightboxNext);
+    lightbox.addEventListener('click', function (e) {
+      if (e.target === lightbox) closeLightbox();
+    });
+    document.addEventListener('keydown', function (e) {
+      if (!lightbox.classList.contains('is-open')) return;
+      if (e.key === 'Escape') closeLightbox();
+      else if (e.key === 'ArrowRight') lightboxNext();
+      else if (e.key === 'ArrowLeft') lightboxPrev();
+    });
+  }
+
   document.querySelectorAll('.js-drag').forEach(setupMarquee);
 
   /* ---- auto-scrolling logo/illustration tickers ----------------------
@@ -163,20 +325,43 @@
     if (!track) return;
     if (prefersReducedMotion) speed = 0;
 
-    var setWidth = 0;
-    function measure() { setWidth = track.getBoundingClientRect().width / 2; }
+    var setWidth = 0, step = 0;
+    function measure() {
+      setWidth = track.getBoundingClientRect().width / 2;
+      var first = track.children[0];
+      var second = track.children[1];
+      if (first && second) {
+        step = second.getBoundingClientRect().left - first.getBoundingClientRect().left;
+      } else if (first) {
+        step = first.getBoundingClientRect().width;
+      }
+    }
 
     var offset = 0, dragging = false, paused = false, startX = 0, startOffset = 0;
+    var snapTimer;
 
     function apply() {
       var x = ((offset % setWidth) + setWidth) % setWidth;
       track.style.transform = 'translateX(' + (-x) + 'px)';
     }
 
+    function snapTo(newOffset) {
+      track.classList.add('is-snapping');
+      offset = newOffset;
+      apply();
+      clearTimeout(snapTimer);
+      snapTimer = setTimeout(function () { track.classList.remove('is-snapping'); }, 380);
+    }
+
+    function next() { snapTo(offset + step); }
+    function prev() { snapTo(offset - step); }
+
     row.addEventListener('pointerdown', function (e) {
+      if (e.target.closest('.ticker-nav')) return;
       dragging = true;
       startX = e.clientX;
       startOffset = offset;
+      track.classList.remove('is-snapping');
       row.classList.add('is-dragging');
       if (row.setPointerCapture) row.setPointerCapture(e.pointerId);
     });
@@ -189,6 +374,11 @@
     row.addEventListener('pointerup', release);
     row.addEventListener('pointerleave', function () { release(); paused = false; });
     row.addEventListener('pointerenter', function () { paused = true; });
+
+    var prevBtn = row.querySelector('.js-ticker-prev');
+    var nextBtn = row.querySelector('.js-ticker-next');
+    if (prevBtn) prevBtn.addEventListener('click', prev);
+    if (nextBtn) nextBtn.addEventListener('click', next);
 
     measure();
     apply();
@@ -285,10 +475,24 @@
   /* ---- back-to-top button ------------------------------------------- */
   var toTop = document.querySelector('.js-top');
   if (toTop) {
+    var footer = document.querySelector('.contact__footer');
+    // keeps the fixed button from ever drifting on top of the footer's
+    // own links/social icons: once the footer's top edge rises within
+    // `gap` of the viewport bottom, the button stops tracking the
+    // viewport and instead holds `gap` above the footer content.
+    var repositionToTop = function () {
+      if (!footer) return;
+      var gap = parseFloat(getComputedStyle(toTop).getPropertyValue('--to-top-gap')) || 18;
+      var footerTop = footer.getBoundingClientRect().top;
+      var overlap = window.innerHeight - footerTop + gap;
+      toTop.style.bottom = Math.max(gap, overlap) + 'px';
+    };
     var onScroll = function () {
       toTop.classList.toggle('is-show', window.scrollY > 600);
+      repositionToTop();
     };
     window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', repositionToTop);
     onScroll();
     toTop.addEventListener('click', function () {
       window.scrollTo({ top: 0, behavior: 'smooth' });
