@@ -94,14 +94,14 @@
      (via CSS aspect-ratio) instead of a fixed box that crops the photo. */
   var TRACKS = {
     pano: [
-      { src: 'assets/pano-1.webp', alt: 'НРК на мховій купині', ratio: 1133 / 780 },
-      { src: 'assets/pano-2.webp', alt: 'НРК в ангарі',        ratio: 1133 / 780 },
-      { src: 'assets/pano-3.webp', alt: 'НРК у струмку',        ratio: 1121 / 779 }
+      { src: '../assets/pano-1.webp', alt: 'НРК на мховій купині', ratio: 1133 / 780 },
+      { src: '../assets/pano-2.webp', alt: 'НРК в ангарі',        ratio: 1133 / 780 },
+      { src: '../assets/pano-3.webp', alt: 'НРК у струмку',        ratio: 1121 / 779 }
     ],
     grid: [
-      { src: 'assets/grid-1.webp', alt: 'Пульт FPV',            ratio: 1400 / 800 },
-      { src: 'assets/grid-2.webp', alt: 'Пілоти на полігоні',   ratio: 1400 / 800 },
-      { src: 'assets/grid-3.webp', alt: 'FPV-літак на стенді',  ratio: 1400 / 800 }
+      { src: '../assets/grid-1.webp', alt: 'Пульт FPV',            ratio: 1400 / 800 },
+      { src: '../assets/grid-2.webp', alt: 'Пілоти на полігоні',   ratio: 1400 / 800 },
+      { src: '../assets/grid-3.webp', alt: 'FPV-літак на стенді',  ratio: 1400 / 800 }
     ]
   };
 
