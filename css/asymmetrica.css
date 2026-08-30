@@ -153,11 +153,35 @@ html.lang-en [data-lang="en"] { display: inline; }
 
 .products__grid { width: 100%; max-width: var(--maxw); display: grid; grid-template-columns: repeat(auto-fit, minmax(min(280px, 100%), 1fr)); gap: 24px; }
 
-.card { width: 100%; max-width: 100%; display: flex; flex-direction: column; align-items: flex-start; gap: 20px; cursor: pointer; transition: transform .22s cubic-bezier(.2,0,.1,1); }
+.card { position: relative; width: 100%; max-width: 100%; display: flex; flex-direction: column; align-items: flex-start; gap: 20px; cursor: pointer; transition: transform .22s cubic-bezier(.2,0,.1,1), opacity .3s ease; }
 
 .card:hover { transform: translateY(-6px); }
 
-.card__title { font-size: 20px; line-height: 1; font-weight: 800; color: #fff; text-transform: uppercase; }
+.products__grid:hover .card:not(:hover) { opacity: .4; }
+
+.card__media-wrap { position: relative; width: 100%; }
+
+.card__grid { position: absolute; inset: -14px; z-index: -1; background-image: linear-gradient(rgba(255,202,8,.55) 1px, transparent 1px), linear-gradient(90deg, rgba(255,202,8,.55) 1px, transparent 1px); background-size: 32px 32px; opacity: 0; transition: opacity .3s ease; pointer-events: none; }
+
+.card__grid::before, .card__grid::after { content: '+'; position: absolute; font-size: 20px; line-height: 1; font-weight: 700; color: var(--accent); }
+
+.card__grid::before { left: -6px; top: -6px; }
+
+.card__grid::after { right: -6px; bottom: -6px; }
+
+.card:hover .card__grid { opacity: 1; }
+
+.card__title { font-size: 20px; line-height: 1; font-weight: 800; color: #fff; text-transform: uppercase; transition: color .18s ease; }
+
+/* hover popup with category description ------------------------------ */
+
+.card__popup { position: absolute; left: 0; right: 40px; bottom: calc(100% + 18px); z-index: 5; padding: 16px 18px; background: #0d0d0d; border: 1px solid rgba(255,202,8,.4); border-radius: 14px; opacity: 0; visibility: hidden; transform: translateY(8px); transition: opacity .22s ease, transform .22s ease, visibility .22s; pointer-events: none; }
+
+.card:hover .card__popup { opacity: 1; visibility: visible; transform: translateY(0); }
+
+.card__popup::after { content: ''; position: absolute; left: 28px; top: 100%; width: 12px; height: 12px; margin-top: -6px; background: #0d0d0d; border-right: 1px solid rgba(255,202,8,.4); border-bottom: 1px solid rgba(255,202,8,.4); transform: rotate(45deg); }
+
+.card__popup p { font-size: 12px; line-height: 1.6; font-weight: 500; letter-spacing: .01em; color: var(--ink-dim); text-align: left; }
 
 .card__media { position: relative; width: 100%; height: auto; max-width: 100%; border-radius: 20px; overflow: hidden; background: #111; aspect-ratio: 1 / 1; }
 
