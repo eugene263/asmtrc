@@ -268,7 +268,7 @@ html.lang-en [data-lang="en"] { display: inline; }
    LIGHTBOX (click-to-zoom for marquee carousel images)
    ===================================================================== */
 
-body.is-lightbox-open { overflow: hidden; }
+body.is-lightbox-open, body.is-menu-open { overflow: hidden; }
 
 .lightbox { position: fixed; inset: 0; z-index: 300; display: flex; align-items: center; justify-content: center; padding: 56px 64px; background: rgba(4,4,4,.94); opacity: 0; visibility: hidden; transition: opacity .22s ease; }
 

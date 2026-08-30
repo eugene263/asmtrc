@@ -437,12 +437,14 @@
       burger.setAttribute('aria-expanded', 'false');
       mobileMenu.classList.remove('is-open');
       if (menuBackdrop) menuBackdrop.classList.remove('is-open');
+      document.body.classList.remove('is-menu-open');
     };
     var toggleMenu = function () {
       var open = burger.getAttribute('aria-expanded') === 'true';
       burger.setAttribute('aria-expanded', open ? 'false' : 'true');
       mobileMenu.classList.toggle('is-open', !open);
       if (menuBackdrop) menuBackdrop.classList.toggle('is-open', !open);
+      document.body.classList.toggle('is-menu-open', !open);
     };
     burger.addEventListener('click', toggleMenu);
     if (menuBackdrop) menuBackdrop.addEventListener('click', closeMenu);
