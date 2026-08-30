@@ -426,7 +426,7 @@ body.is-lightbox-open { overflow: hidden; }
 
 .form__cols { width: 100%; display: flex; align-items: stretch; gap: 16px; flex-wrap: wrap; font-size: 14px; color: #fff; order: 3; }
 
-.form__col { display: flex; flex-direction: column; gap: 16px; width: 100%; max-width: 100%; }
+.form__col { display: flex; flex-direction: column; gap: 14px; width: 100%; max-width: 100%; }
 
 .form__col--msg { max-width: 100%; }
 
@@ -434,11 +434,11 @@ body.is-lightbox-open { overflow: hidden; }
 
 .field-group { display: flex; flex-direction: column; align-items: flex-start; gap: 6px; }
 
-.field { width: 100%; height: 60px; padding: 0 16px; background: #000; border: 2px solid var(--field-bd); outline: none; color: #fff; font-family: var(--font); font-size: 14px; transition: border-color .18s; }
+.field { width: 100%; height: 52px; padding: 0 14px; background: #000; border: 2px solid var(--field-bd); outline: none; color: #fff; font-family: var(--font); font-size: 14px; transition: border-color .18s; }
 
-.field--area { height: 200px; padding: 16px; resize: none; min-height: 200px; }
+.field--area { height: 160px; padding: 14px; resize: none; min-height: 160px; }
 
-.form__col--msg .field--area { height: 200px; min-height: 200px; }
+.form__col--msg .field--area { height: 160px; min-height: 160px; }
 
 .field::placeholder { color: #5a5a5a; }
 
@@ -454,13 +454,13 @@ body.is-lightbox-open { overflow: hidden; }
 
 .country-auto.is-open .country-auto__list { display: block; }
 
-.country-auto__option { padding: 10px 16px; font-size: 14px; color: #fff; cursor: pointer; }
+.country-auto__option { padding: 10px 14px; font-size: 14px; color: #fff; cursor: pointer; }
 
 .country-auto__option.is-active, .country-auto__option:hover { background: var(--accent); color: #000; }
 
 .field-error.is-show { display: block; }
 
-.cta { background: var(--accent); color: #000; border: none; font-family: var(--font); font-weight: 700; font-size: 14px; letter-spacing: .08em; text-transform: uppercase; padding: 16px 24px; cursor: pointer; transition: background .18s, transform .12s; order: 4; width: 100%; margin-top: 4px; }
+.cta { background: var(--accent); color: #000; border: none; font-family: var(--font); font-weight: 700; font-size: 13px; letter-spacing: .08em; text-transform: uppercase; padding: 14px 24px; cursor: pointer; transition: background .18s, transform .12s; order: 4; width: 100%; margin-top: 4px; }
 
 .cta:hover, .to-top:hover { background: #fff; }
 
@@ -532,7 +532,9 @@ body.is-lightbox-open { overflow: hidden; }
 
   .hero__topbar { gap: 20px; position: relative; z-index: 3; max-width: var(--maxw); align-items: center; flex-direction: initial; top: initial; left: initial; right: initial; background: initial; backdrop-filter: initial; -webkit-backdrop-filter: initial; border-bottom: initial; padding-top: initial; padding-right: initial; padding-bottom: initial; padding-left: initial; }
 
-  .brandbar, .form__inner { gap: 32px; }
+  .brandbar { gap: 32px; }
+
+  .form__inner { gap: 28px; }
 
   .brandbar__logo { height: 40px; }
 
@@ -644,13 +646,13 @@ body.is-lightbox-open { overflow: hidden; }
 
   .form__col { flex: 1 1 260px; width: auto; }
 
-  .form__label, .contact__info b { line-height: 44px; }
+  .contact__info b { line-height: 44px; }
 
-  .field--area { height: 372px; min-height: initial; }
+  .field--area { height: 220px; min-height: initial; }
 
-  .form__col--msg .field--area { height: 100%; min-height: 372px; }
+  .form__col--msg .field--area { height: 100%; min-height: 220px; }
 
-  .cta { padding: 18px 40px; width: initial; margin-top: initial; }
+  .cta { padding: 15px 32px; width: initial; margin-top: initial; }
 
   .contact__footer { font-size: 14px; }
 
@@ -705,8 +707,6 @@ body.is-lightbox-open { overflow: hidden; }
   .schemes__track img { width: 420px; }
 
   .why__icon { position: absolute; right: var(--pad); top: 220px; width: 420px; max-width: 34%; margin-top: initial; }
-
-  .form__heading { font-size: 32px; }
 
 }
 
