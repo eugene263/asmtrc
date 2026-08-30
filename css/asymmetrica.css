@@ -145,7 +145,7 @@ html.lang-en [data-lang="en"] { display: inline; }
 
 .products { padding: 40px var(--pad); display: flex; flex-direction: column; align-items: center; background: var(--bg); }
 
-.products__title { width: 100%; max-width: var(--maxw); margin-bottom: 4px; }
+.products__title { width: 100%; max-width: var(--maxw); margin-bottom: 24px; }
 
 .products__grid { width: 100%; max-width: var(--maxw); display: grid; grid-template-columns: repeat(auto-fit, minmax(min(280px, 100%), 1fr)); gap: 24px; }
 
@@ -157,15 +157,23 @@ html.lang-en [data-lang="en"] { display: inline; }
 
 .card__media-wrap { position: relative; width: 100%; }
 
-.card__grid { position: absolute; inset: -14px; z-index: -1; background-image: linear-gradient(rgba(255,202,8,.55) 1px, transparent 1px), linear-gradient(90deg, rgba(255,202,8,.55) 1px, transparent 1px); background-size: 32px 32px; opacity: 0; transition: opacity .3s ease; pointer-events: none; }
+.card__grid { position: absolute; inset: -14px; z-index: -1; background-size: 32px 32px; pointer-events: none; }
 
-.card__grid::before, .card__grid::after { content: '+'; position: absolute; font-size: 20px; line-height: 1; font-weight: 700; color: var(--accent); }
+.card__grid::before, .card__grid::after { content: '+'; position: absolute; font-size: 20px; line-height: 1; font-weight: 700; }
 
 .card__grid::before { left: -6px; top: -6px; }
 
 .card__grid::after { right: -6px; bottom: -6px; }
 
-.card:hover .card__grid { opacity: 1; }
+.card__grid--base { background-image: linear-gradient(rgba(255,255,255,.35) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.35) 1px, transparent 1px); }
+
+.card__grid--base::before, .card__grid--base::after { color: rgba(255,255,255,.6); }
+
+.card__grid--hover { background-image: linear-gradient(rgba(255,202,8,.55) 1px, transparent 1px), linear-gradient(90deg, rgba(255,202,8,.55) 1px, transparent 1px); opacity: 0; transition: opacity .3s ease; }
+
+.card__grid--hover::before, .card__grid--hover::after { color: var(--accent); }
+
+.card:hover .card__grid--hover { opacity: 1; }
 
 .card__title { font-size: 20px; line-height: 1; font-weight: 800; color: #fff; text-transform: uppercase; transition: color .18s ease; }
 
@@ -564,7 +572,7 @@ body.is-lightbox-open { overflow: hidden; }
 
   .products { padding-top: 64px; padding-bottom: 64px; }
 
-  .products__title { margin-bottom: 8px; }
+  .products__title { margin-bottom: 40px; }
 
   .card__title { font-size: 24px; }
 
