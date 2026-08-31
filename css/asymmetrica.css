@@ -500,7 +500,7 @@ body.is-lightbox-open, body.is-menu-open { overflow: hidden; }
    FLOATING UI: back-to-top + toast
    ===================================================================== */
 
-.to-top { --to-top-gap: 18px; position: fixed; right: 18px; bottom: var(--to-top-gap); z-index: 70; width: 52px; height: 52px; background: var(--accent); color: #000; border: none; display: flex; align-items: center; justify-content: center; cursor: pointer; opacity: 0; transform: translateY(14px); pointer-events: none; transition: opacity .24s, transform .24s, background .18s, bottom .1s ease; }
+.to-top { --to-top-gap: 18px; position: fixed; right: 18px; bottom: var(--to-top-gap); z-index: 70; width: 52px; height: 52px; background: var(--accent); color: #000; border: none; box-shadow: 0 6px 18px rgba(0,0,0,.45); display: flex; align-items: center; justify-content: center; cursor: pointer; opacity: 0; transform: translateY(14px); pointer-events: none; transition: opacity .24s, transform .24s, background .18s, bottom .1s ease; }
 
 .to-top.is-show { opacity: 1; transform: none; pointer-events: auto; }
 
