@@ -101,6 +101,16 @@ a:hover { color: #fff; }
 
 .gs-spec__rule { flex: 1; height: 0; background: rgba(255,255,255,.32); flex-basis: 100%; }
 
+.gs-desc { padding-top: 32px; max-width: 720px; }
+
+.gs-desc p { font-size: 13px; line-height: 1.7; font-weight: 500; letter-spacing: .02em; color: var(--ink-mute); text-align: left; text-wrap: pretty; }
+
+.gs-optional { padding-top: 28px; max-width: 720px; display: flex; flex-direction: column; gap: 14px; }
+
+.gs-optional__row { display: flex; flex-direction: column; gap: 4px; font-size: 12px; line-height: 1.6; letter-spacing: .02em; color: var(--ink-spec); }
+
+.gs-optional__row b { font-weight: 600; letter-spacing: .06em; color: var(--ink); }
+
 /* =====================================================================
    05 GALLERY
    ===================================================================== */
