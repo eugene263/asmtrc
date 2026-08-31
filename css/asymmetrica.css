@@ -157,7 +157,7 @@ html.lang-en [data-lang="en"] { display: inline; }
 
 .card__media-wrap { position: relative; width: 100%; }
 
-.card__grid { position: absolute; inset: -14px; z-index: -1; background-size: 32px 32px; pointer-events: none; }
+.card__grid { position: absolute; inset: -8px; z-index: -1; background-size: 32px 32px; pointer-events: none; }
 
 .card__grid::before, .card__grid::after { content: '+'; position: absolute; font-size: 20px; line-height: 1; font-weight: 700; }
 
