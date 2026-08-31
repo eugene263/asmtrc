@@ -382,16 +382,29 @@
 
     measure();
     apply();
-    var resizeQueued = false;
-    window.addEventListener('resize', function () {
-      if (resizeQueued) return;
-      resizeQueued = true;
+    var remeasureQueued = false;
+    var remeasure = function () {
+      if (remeasureQueued) return;
+      remeasureQueued = true;
       requestAnimationFrame(function () {
-        resizeQueued = false;
+        remeasureQueued = false;
         measure();
         apply();
       });
-    });
+    };
+    window.addEventListener('resize', remeasure);
+    // Lazy-loaded images finish loading after the initial measure(), which
+    // would otherwise leave setWidth/step stale and break the seamless
+    // wrap-around (visible as the track jumping or stalling instead of
+    // looping smoothly). Re-measure whenever the track's own size changes.
+    if ('ResizeObserver' in window) {
+      new ResizeObserver(remeasure).observe(track);
+    } else {
+      track.querySelectorAll('img').forEach(function (img) {
+        if (!img.complete) img.addEventListener('load', remeasure, { once: true });
+      });
+      window.addEventListener('load', remeasure);
+    }
 
     return {
       tick: function () { if (!dragging && !paused) { offset += speed; apply(); } }
