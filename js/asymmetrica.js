@@ -478,16 +478,35 @@
   var toTop = document.querySelector('.js-top');
   if (toTop) {
     var footer = document.querySelector('.contact__footer');
+    // any other fixed-corner control that lives in the same bottom-right
+    // spot: the carousel/ticker "next" arrows sit at the right edge,
+    // vertically centered in their section, so whenever a section that
+    // tall is scrolled to roughly fill the viewport, its arrow lands right
+    // where this button rests too.
+    var DODGE_SELECTOR = '.marquee__nav--next, .ticker-nav--next';
     // keeps the fixed button from ever drifting on top of the footer's
-    // own links/social icons: once the footer's top edge rises within
-    // `gap` of the viewport bottom, the button stops tracking the
-    // viewport and instead holds `gap` above the footer content.
+    // own links/social icons, or a carousel's own "next" arrow: once
+    // either one's top edge rises within `gap` of the viewport bottom,
+    // the button stops tracking the viewport and instead holds `gap`
+    // above whichever one is intruding furthest.
     var repositionToTop = function () {
-      if (!footer) return;
       var gap = parseFloat(getComputedStyle(toTop).getPropertyValue('--to-top-gap')) || 18;
-      var footerTop = footer.getBoundingClientRect().top;
-      var overlap = window.innerHeight - footerTop + gap;
-      toTop.style.bottom = Math.max(gap, overlap) + 'px';
+      var bottom = gap;
+      if (footer) {
+        var footerTop = footer.getBoundingClientRect().top;
+        bottom = Math.max(bottom, window.innerHeight - footerTop + gap);
+      }
+      var btnSize = toTop.offsetWidth || 52;
+      document.querySelectorAll(DODGE_SELECTOR).forEach(function (el) {
+        var r = el.getBoundingClientRect();
+        if (r.width === 0 && r.height === 0) return; // not rendered right now
+        var btnTop = window.innerHeight - bottom - btnSize;
+        var btnBottom = window.innerHeight - bottom;
+        if (r.top < btnBottom && r.bottom > btnTop) {
+          bottom = Math.max(bottom, window.innerHeight - r.top + gap);
+        }
+      });
+      toTop.style.bottom = bottom + 'px';
     };
     var onScroll = function () {
       toTop.classList.toggle('is-show', window.scrollY > 600);
