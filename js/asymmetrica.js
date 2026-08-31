@@ -327,13 +327,25 @@
 
     var setWidth = 0, step = 0;
     function measure() {
-      setWidth = track.getBoundingClientRect().width / 2;
-      var first = track.children[0];
-      var second = track.children[1];
+      var children = track.children;
+      var half = children.length / 2;
+      var first = children[0];
+      var second = children[1];
       if (first && second) {
         step = second.getBoundingClientRect().left - first.getBoundingClientRect().left;
       } else if (first) {
         step = first.getBoundingClientRect().width;
+      }
+      // The track holds two identical sets back to back (2*half items,
+      // 2*half-1 gaps total). Dividing the whole track width by 2 is
+      // therefore half a gap short of the real loop period, which made the
+      // seam between the last and the first (duplicated) item lose its
+      // spacing on every wrap. Measure the actual distance between an item
+      // and its duplicate instead.
+      if (half >= 1 && children[half]) {
+        setWidth = children[half].getBoundingClientRect().left - (first ? first.getBoundingClientRect().left : 0);
+      } else {
+        setWidth = track.getBoundingClientRect().width / 2;
       }
     }
 
@@ -382,16 +394,29 @@
 
     measure();
     apply();
-    var resizeQueued = false;
-    window.addEventListener('resize', function () {
-      if (resizeQueued) return;
-      resizeQueued = true;
+    var remeasureQueued = false;
+    var remeasure = function () {
+      if (remeasureQueued) return;
+      remeasureQueued = true;
       requestAnimationFrame(function () {
-        resizeQueued = false;
+        remeasureQueued = false;
         measure();
         apply();
       });
-    });
+    };
+    window.addEventListener('resize', remeasure);
+    // Lazy-loaded images finish loading after the initial measure(), which
+    // would otherwise leave setWidth/step stale and break the seamless
+    // wrap-around (visible as the track jumping or stalling instead of
+    // looping smoothly). Re-measure whenever the track's own size changes.
+    if ('ResizeObserver' in window) {
+      new ResizeObserver(remeasure).observe(track);
+    } else {
+      track.querySelectorAll('img').forEach(function (img) {
+        if (!img.complete) img.addEventListener('load', remeasure, { once: true });
+      });
+      window.addEventListener('load', remeasure);
+    }
 
     return {
       tick: function () { if (!dragging && !paused) { offset += speed; apply(); } }
