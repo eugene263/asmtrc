@@ -8,7 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700;800&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="../css/asymmetrica.css?v=26" />
+  <link rel="stylesheet" href="../css/asymmetrica.css?v=27" />
   <script>
     (function () {
       try {
@@ -321,9 +321,11 @@
             <p class="form__subheading"><span data-lang="uk">Заповніть всі поля</span><span data-lang="en" hidden>Fill in all fields</span></p>
             <div class="form__cols">
               <div class="form__col form__col--msg">
-                <b class="form__label"><span data-lang="uk">ЗАПИТ</span><span data-lang="en" hidden>REQUEST</span></b>
-                <textarea name="message" required maxlength="2000" class="field field--area" placeholder="Опишіть вашу задачу" data-en-placeholder="Describe your task"></textarea>
-                <span class="field-error js-field-error" data-en="Fill in this field">Заповніть це поле</span>
+                <label class="field-group field-group--grow">
+                  <b class="form__label"><span data-lang="uk">ЗАПИТ</span><span data-lang="en" hidden>REQUEST</span></b>
+                  <textarea name="message" required maxlength="2000" class="field field--area" placeholder="Опишіть вашу задачу" data-en-placeholder="Describe your task"></textarea>
+                  <span class="field-error js-field-error" data-en="Fill in this field">Заповніть це поле</span>
+                </label>
               </div>
               <div class="form__col">
                 <label class="field-group">

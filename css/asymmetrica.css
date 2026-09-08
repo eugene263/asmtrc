@@ -450,11 +450,18 @@ body.is-lightbox-open, body.is-menu-open { overflow: hidden; }
 
 .field-group { display: flex; flex-direction: column; align-items: flex-start; gap: 6px; }
 
+/* the message field is wrapped in the same .field-group as every other
+   field so its label sits the same 6px above its input on every column;
+   --grow additionally lets the textarea stretch to fill the column's
+   full height instead of a hardcoded one, keeping it foot-aligned with
+   the other columns' last field. */
+.field-group--grow { flex: 1; align-items: stretch; }
+
 .field { width: 100%; height: 52px; padding: 0 14px; background: #000; border: 2px solid var(--field-bd); outline: none; color: #fff; font-family: var(--font); font-size: 14px; transition: border-color .18s; }
 
-.field--area { height: 160px; padding: 14px; resize: none; min-height: 160px; }
+.field--area { padding: 14px; resize: none; min-height: 160px; }
 
-.form__col--msg .field--area { height: 160px; min-height: 160px; }
+.field-group--grow .field--area { flex: 1; height: auto; }
 
 .field::placeholder { color: #5a5a5a; }
 
@@ -664,9 +671,7 @@ body.is-lightbox-open, body.is-menu-open { overflow: hidden; }
 
   .contact__info b { line-height: 44px; }
 
-  .field--area { height: 220px; min-height: initial; }
-
-  .form__col--msg .field--area { height: 100%; min-height: 220px; }
+  .field--area { min-height: 220px; }
 
   .cta { padding: 15px 32px; width: initial; margin-top: initial; }
 
