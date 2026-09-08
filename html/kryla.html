@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="../css/kryla.css?v=8" />
-  <link rel="stylesheet" href="../css/contact-block.css?v=9" />
+  <link rel="stylesheet" href="../css/contact-block.css?v=10" />
 </head>
 <body>
   <div class="wg">
@@ -221,34 +221,45 @@
             <div class="pc-form__cols">
               <div class="pc-form__col pc-form__col--msg">
                 <label class="pc-field-group pc-field-group--grow">
-                  <b class="pc-form__label">ЗАПИТ</b>
+                  <div class="pc-field-group__head">
+                    <b class="pc-form__label">ЗАПИТ</b>
+                    <span class="pc-field-error">Заповніть це поле</span>
+                  </div>
                   <textarea name="message" required maxlength="2000" class="pc-field pc-field--area" placeholder="Опишіть вашу задачу"></textarea>
-                  <span class="pc-field-error">Заповніть це поле</span>
                 </label>
               </div>
               <div class="pc-form__col">
                 <label class="pc-field-group">
-                  <b class="pc-form__label">ІМ'Я</b>
+                  <div class="pc-field-group__head">
+                    <b class="pc-form__label">ІМ'Я</b>
+                    <span class="pc-field-error">Заповніть це поле</span>
+                  </div>
                   <input name="name" required maxlength="80" class="pc-field" placeholder="Ім'я" />
-                  <span class="pc-field-error">Заповніть це поле</span>
                 </label>
                 <label class="pc-field-group">
-                  <b class="pc-form__label">EMAIL</b>
+                  <div class="pc-field-group__head">
+                    <b class="pc-form__label">EMAIL</b>
+                    <span class="pc-field-error">Заповніть це поле</span>
+                  </div>
                   <input name="email" type="email" required maxlength="100" class="pc-field" placeholder="name@email.com" />
-                  <span class="pc-field-error">Заповніть це поле</span>
                 </label>
                 <label class="pc-field-group">
-                  <b class="pc-form__label">НАЗВА ОРГАНІЗАЦІЇ</b>
+                  <div class="pc-field-group__head">
+                    <b class="pc-form__label">НАЗВА ОРГАНІЗАЦІЇ</b>
+                    <span class="pc-field-error">Заповніть це поле</span>
+                  </div>
                   <input name="org" required maxlength="100" class="pc-field" placeholder="Компанія / підрозділ" />
-                  <span class="pc-field-error">Заповніть це поле</span>
                 </label>
                 <label class="pc-field-group">
-                  <b class="pc-form__label">КРАЇНА</b>
+                  <div class="pc-field-group__head">
+                    <b class="pc-form__label">КРАЇНА</b>
+                    <span class="pc-field-error">Заповніть це поле</span>
+                  </div>
                   <div class="country-auto">
                     <input name="country" required maxlength="60" class="pc-field" placeholder="Почніть вводити назву країни" autocomplete="off" role="combobox" aria-expanded="false" aria-autocomplete="list" />
+                    <svg class="country-auto__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M6 9l6 6 6-6" /></svg>
                     <ul class="country-auto__list" role="listbox"></ul>
                   </div>
-                  <span class="pc-field-error">Заповніть це поле</span>
                 </label>
               </div>
             </div>
