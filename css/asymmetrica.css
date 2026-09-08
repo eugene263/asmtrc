@@ -149,13 +149,17 @@ html.lang-en [data-lang="en"] { display: inline; }
 
 .products__grid { width: 100%; max-width: var(--maxw); display: grid; grid-template-columns: repeat(auto-fit, minmax(min(280px, 100%), 1fr)); gap: 24px; }
 
-.card { position: relative; width: 100%; max-width: 100%; display: flex; flex-direction: column; align-items: flex-start; gap: 20px; cursor: pointer; transition: transform .22s cubic-bezier(.2,0,.1,1), opacity .3s ease; }
+.card { position: relative; width: 100%; max-width: 100%; display: flex; flex-direction: column; align-items: flex-start; gap: 20px; cursor: pointer; transition: transform .22s cubic-bezier(.2,0,.1,1); }
 
 .card:hover { transform: translateY(-6px); }
 
-.products__grid:hover .card:not(:hover) { opacity: .4; }
+/* dim only the product photo/title on unfocused cards, not the grid
+   decor behind them: it stays white on every card by default, hovered
+   or not, and applying opacity to the whole .card would fade it out too */
+.products__grid:hover .card:not(:hover) .card__media,
+.products__grid:hover .card:not(:hover) .card__title { opacity: .4; }
 
-.card__media-wrap { position: relative; width: 100%; }
+.card__media-wrap { position: relative; width: 100%; isolation: isolate; }
 
 .card__grid { position: absolute; inset: -8px; z-index: -1; background-size: 32px 32px; pointer-events: none; }
 
@@ -175,7 +179,7 @@ html.lang-en [data-lang="en"] { display: inline; }
 
 .card:hover .card__grid--hover { opacity: 1; }
 
-.card__title { font-size: 20px; line-height: 1; font-weight: 800; color: #fff; text-transform: uppercase; transition: color .18s ease; }
+.card__title { font-size: 20px; line-height: 1; font-weight: 800; color: #fff; text-transform: uppercase; transition: color .18s ease, opacity .3s ease; }
 
 /* hover popup with category description ------------------------------ */
 
@@ -187,7 +191,7 @@ html.lang-en [data-lang="en"] { display: inline; }
 
 .card__popup p { font-size: 12px; line-height: 1.6; font-weight: 500; letter-spacing: .01em; color: var(--ink-dim); text-align: left; }
 
-.card__media { position: relative; width: 100%; height: auto; max-width: 100%; border-radius: 20px; overflow: hidden; background: transparent; aspect-ratio: 1 / 1; }
+.card__media { position: relative; width: 100%; height: auto; max-width: 100%; border-radius: 20px; overflow: hidden; background: transparent; aspect-ratio: 1 / 1; transition: opacity .3s ease; }
 
 .card__media img { width: 100%; height: 100%; object-fit: contain; padding: 12px; transition: transform .55s cubic-bezier(.2,0,.1,1); }
 
