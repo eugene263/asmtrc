@@ -505,21 +505,17 @@ body.is-lightbox-open, body.is-menu-open { overflow: hidden; }
 
 .cta:active { transform: translateY(1px); }
 
-.contact__footer { position: relative; z-index: 1; width: 100%; max-width: var(--maxw); display: flex; flex-direction: column; gap: 24px; padding-top: 24px; border-top: 1px solid rgba(10,10,10,.12); font-size: 12px; color: var(--panel); }
+.contact__footer { position: relative; z-index: 1; width: 100%; max-width: var(--maxw); display: flex; flex-direction: column; align-items: flex-start; gap: 14px; padding-top: 24px; border-top: 1px solid rgba(10,10,10,.12); font-size: 12px; color: var(--panel); }
 
-.contact__footer-row { width: 100%; display: flex; align-items: center; justify-content: space-between; gap: 16px 20px; flex-wrap: wrap; }
+.contact__footer b { line-height: 1.5; }
 
-.contact__info, .contact__legal { display: flex; align-items: center; gap: 12px 24px; flex-wrap: wrap; }
-
-.contact__info b { line-height: 1.5; }
-
-.contact__copyright { opacity: .7; }
+.contact__copyright { opacity: .7; margin-top: 6px; }
 
 .footer-link { color: var(--panel); font-weight: 700; text-decoration: none; transition: color .18s; }
 
 .footer-link:hover { color: var(--accent); }
 
-.socials { display: flex; align-items: center; gap: 12px; }
+.socials { display: flex; align-items: center; gap: 12px; margin: 2px 0; }
 
 .social { width: 36px; height: 36px; border-radius: 8px; overflow: hidden; display: flex; align-items: center; justify-content: center; flex-shrink: 0; background: var(--panel); color: var(--ink); transition: transform .2s ease, opacity .2s ease; }
 
@@ -635,7 +631,7 @@ body.is-lightbox-open, body.is-menu-open { overflow: hidden; }
 
   .manifesto__row { gap: 40px; flex-direction: initial; }
 
-  .manifesto__lines, .contact__info { gap: 40px; }
+  .manifesto__lines { gap: 40px; }
 
   .manifesto__icon { width: 340px; max-width: 30%; }
 
@@ -687,13 +683,11 @@ body.is-lightbox-open, body.is-menu-open { overflow: hidden; }
 
   .form__col { flex: 1 1 260px; width: auto; }
 
-  .contact__info b { line-height: 44px; }
-
   .field--area { min-height: 220px; }
 
   .cta { padding: 15px 32px; width: initial; margin-top: initial; }
 
-  .contact__footer { gap: 28px; padding-top: 28px; font-size: 14px; }
+  .contact__footer { gap: 16px; padding-top: 28px; font-size: 14px; }
 
   .to-top { --to-top-gap: 32px; right: 32px; }
 
