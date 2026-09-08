@@ -8,7 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="../css/gstation.css?v=5" />
+  <link rel="stylesheet" href="../css/gstation.css?v=6" />
   <link rel="stylesheet" href="../css/contact-block.css?v=5" />
 </head>
 <body>
@@ -22,6 +22,10 @@
       <span class="gs-hero__tick gs-hero__tick--right"></span>
 
       <a class="gs-back" href="index.html#products">← НА ГОЛОВНУ</a>
+
+      <button class="burger js-burger" type="button" aria-label="Меню" aria-expanded="false" aria-controls="mobile-menu">
+        <span></span><span></span><span></span>
+      </button>
 
       <div class="gs-hero__row">
         <p class="gs-hero__tagline">
@@ -48,6 +52,23 @@
         </div>
       </div>
     </section>
+
+    <span class="menu-backdrop js-menu-backdrop"></span>
+    <nav id="mobile-menu" class="mobile-menu js-mobile-menu" aria-label="Мобільна навігація">
+      <button class="mobile-menu__close js-menu-close" type="button" aria-label="Закрити меню">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 6l12 12M18 6L6 18" /></svg>
+      </button>
+      <a class="mobile-menu__link" href="index.html#about">ПРО НАС</a>
+      <div class="mobile-menu__group">
+        <a class="mobile-menu__link" href="index.html#products">ПРОДУКТИ</a>
+        <div class="mobile-menu__sub">
+          <a class="mobile-menu__sublink" href="kryla.html">КРИЛА</a>
+          <a class="mobile-menu__sublink" href="k2.html">НРК</a>
+          <a class="mobile-menu__sublink" href="gstation.html" aria-current="page">ДОДАТКОВО</a>
+        </div>
+      </div>
+      <a class="mobile-menu__link" href="#contact">КОНТАКТИ</a>
+    </nav>
 
     <!-- ============ 02 INTRO ============ -->
     <section class="gs-intro">
@@ -195,5 +216,6 @@
 
   <script src="../js/countries.js?v=5"></script>
   <script src="../js/contact-form.js?v=3"></script>
+  <script src="../js/mobile-menu.js?v=1"></script>
 </body>
 </html>
