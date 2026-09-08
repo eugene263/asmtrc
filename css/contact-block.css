@@ -100,7 +100,9 @@
 
   .pc-form__col { flex: 1 1 260px; width: auto; }
 
-  .pc-field--area { height: 220px; }
+  .pc-field--area { height: 220px; min-height: initial; }
+
+  .pc-form__col--msg .pc-field--area { height: 100%; min-height: 220px; }
 
   .pc-cta { padding: 15px 32px; width: initial; margin-top: initial; }
 
