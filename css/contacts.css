@@ -1,0 +1,151 @@
+/* =====================================================================
+   SPEXTR CONTACTS — "Соцмережі та контакти" page
+   Same design system as k2.css / kryla.css / gstation.css. Reference canvas: 1920px wide.
+   ===================================================================== */
+
+:root { --bg: #070707; --bg-deep: #070707; --ink: #fefefe; --ink-mute: #c9c9c9; --ink-spec: #e8e8e8; --accent: #FFCA08; --gutter: clamp(20px, 7.3vw, 140px); /* standard side padding, shared site-wide */
+  --font: 'Montserrat', -apple-system, BlinkMacSystemFont, sans-serif; }
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body { background: var(--bg); color: var(--ink); font-family: var(--font); overflow-x: hidden; }
+
+a { color: var(--accent); text-decoration: none; }
+
+a:hover { color: #fff; }
+
+.ct { position: relative; width: 100%; overflow: hidden; background: var(--bg); }
+
+:where(a, button):focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+
+/* =====================================================================
+   01 HERO
+   ===================================================================== */
+
+.ct-hero { position: relative; display: flex; align-items: center; justify-content: center; min-height: 60vh; padding: 120px var(--gutter) 80px; overflow: hidden; }
+
+.ct-hero__bg { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: .5; }
+
+.ct-hero__scrim { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(7,7,7,.55) 0%, rgba(7,7,7,.75) 60%, var(--bg) 100%); }
+
+.ct-back { position: absolute; z-index: 3; left: var(--gutter); top: 70px; font-size: 12px; font-weight: 600; letter-spacing: .12em; color: var(--ink); text-transform: uppercase; text-shadow: 0 2px 6px rgba(0,0,0,.5); transition: color .18s; }
+
+.ct-back:hover { color: var(--accent); }
+
+.ct-hero__mark { position: relative; z-index: 2; display: flex; flex-direction: column; align-items: center; gap: 24px; text-align: center; }
+
+.ct-hero__logo { width: 420px; max-width: 80vw; object-fit: contain; }
+
+.ct-hero__title { font-size: 24px; line-height: 1.25; font-weight: 800; letter-spacing: .02em; text-transform: uppercase; color: var(--accent); }
+
+/* mobile burger + dropdown menu (hidden on desktop) ------------------ */
+
+.burger { display: flex; flex-direction: column; justify-content: space-between; position: absolute; z-index: 4; right: var(--gutter); top: 70px; width: 30px; height: 22px; padding: 0; background: none; border: none; cursor: pointer; }
+
+.burger span { display: block; width: 100%; height: 2px; background: var(--ink); transition: transform .25s ease, opacity .2s ease; }
+
+.burger[aria-expanded="true"] span:nth-child(1) { transform: translateY(10px) rotate(45deg); }
+
+.burger[aria-expanded="true"] span:nth-child(2) { opacity: 0; }
+
+.burger[aria-expanded="true"] span:nth-child(3) { transform: translateY(-10px) rotate(-45deg); }
+
+.menu-backdrop { display: none; position: fixed; inset: 0; z-index: 88; background: rgba(0,0,0,.55); opacity: 0; pointer-events: none; transition: opacity .25s ease; }
+
+.menu-backdrop.is-open { display: block; opacity: 1; pointer-events: auto; }
+
+.mobile-menu { display: flex; flex-direction: column; gap: 4px; position: fixed; top: 0; right: 0; bottom: 0; z-index: 89; width: min(78vw, 320px); padding: 88px 28px 32px; background: #0a0a0a; border-left: 1px solid rgba(255,255,255,.1); transform: translateX(100%); transition: transform .3s cubic-bezier(.2,0,.1,1); overflow-y: auto; }
+
+.mobile-menu.is-open { transform: translateX(0); }
+
+.mobile-menu__close { position: absolute; top: 20px; right: 20px; width: 36px; height: 36px; display: flex; align-items: center; justify-content: center; background: none; border: none; color: var(--ink); cursor: pointer; transition: color .18s; }
+
+.mobile-menu__close svg { width: 22px; height: 22px; }
+
+.mobile-menu__close:hover, .mobile-menu__link:hover, .mobile-menu__sublink:hover { color: var(--accent); }
+
+.mobile-menu__link { display: block; padding: 14px 0; color: var(--ink); font-size: 16px; font-weight: 700; letter-spacing: .04em; text-transform: uppercase; border-bottom: 1px solid rgba(255,255,255,.1); }
+
+.mobile-menu__link[aria-current="page"] { color: var(--accent); }
+
+.mobile-menu__sub { display: flex; flex-direction: column; padding: 2px 0 10px 16px; }
+
+.mobile-menu__sublink { padding: 10px 0; color: var(--ink-mute); font-size: 13px; font-weight: 600; letter-spacing: .04em; text-transform: uppercase; }
+
+body.is-menu-open { overflow: hidden; }
+
+@media (min-width: 721px) {
+
+  .burger, .mobile-menu, .menu-backdrop { display: none; }
+
+}
+
+/* =====================================================================
+   02 CONTACT CHANNELS
+   ===================================================================== */
+
+.ct-channels { position: relative; background: var(--bg-deep); padding: 8px var(--gutter) 56px; display: flex; flex-direction: column; gap: 40px; }
+
+.ct-channel { width: 100%; display: flex; flex-direction: column; gap: 28px; padding-top: 32px; border-top: 1px solid rgba(255,255,255,.12); }
+
+.ct-channel:first-child { border-top: none; }
+
+.ct-channel__left { display: flex; flex-direction: column; align-items: flex-start; gap: 12px; }
+
+.ct-channel__msg { display: flex; align-items: center; gap: 10px; }
+
+.ct-icon-btn { width: 40px; height: 40px; border-radius: 10px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; background: var(--ink); color: #000; transition: transform .2s ease, opacity .2s ease; }
+
+.ct-icon-btn svg { width: 22px; height: 22px; }
+
+.ct-icon-btn:hover { transform: translateY(-3px) scale(1.06); opacity: .85; }
+
+.ct-channel__label { font-size: 16px; line-height: 1.3; font-weight: 800; letter-spacing: .04em; text-transform: uppercase; color: var(--ink); }
+
+.ct-channel__phone { font-size: 20px; font-weight: 700; letter-spacing: .02em; color: var(--accent); }
+
+.ct-channel__phone:hover { color: #fff; }
+
+.ct-channel__right { display: flex; align-items: center; gap: 20px; flex-wrap: wrap; }
+
+.ct-channel__socials { display: flex; align-items: center; gap: 12px; }
+
+.ct-social { width: 40px; height: 40px; border-radius: 10px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; background: rgba(255,255,255,.06); color: var(--ink); transition: transform .2s ease, opacity .2s ease, color .2s ease; }
+
+.ct-social svg { width: 22px; height: 22px; }
+
+.ct-social:hover { transform: translateY(-3px) scale(1.06); color: var(--accent); }
+
+.ct-badge { width: 56px; height: 56px; border-radius: 50%; overflow: hidden; flex-shrink: 0; display: flex; align-items: center; justify-content: center; background: #000; border: 1px solid rgba(255,255,255,.16); }
+
+.ct-badge img { width: 100%; height: 100%; object-fit: cover; }
+
+.ct-badge--pending { background: rgba(255,255,255,.04); border-style: dashed; border-color: rgba(255,255,255,.3); }
+
+.ct-badge--pending span { font-size: 8px; line-height: 1.2; font-weight: 700; letter-spacing: .04em; text-align: center; color: var(--ink-mute); text-transform: uppercase; }
+
+@media (min-width: 721px) {
+
+  .ct-hero { min-height: 72vh; padding: 160px var(--gutter) 100px; }
+
+  .ct-hero__logo { width: 620px; }
+
+  .ct-hero__title { font-size: 34px; }
+
+  .ct-channels { padding: 16px var(--gutter) 80px; gap: 0; }
+
+  .ct-channel { flex-direction: row; align-items: center; justify-content: space-between; gap: 32px; padding: 40px 0; }
+
+  .ct-channel__left { flex-direction: row; align-items: center; gap: 24px; }
+
+  .ct-channel__label { font-size: 15px; }
+
+  .ct-channel__phone { font-size: 22px; }
+
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * { animation: none !important; scroll-behavior: auto !important; }
+}
