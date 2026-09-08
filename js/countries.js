@@ -196,8 +196,8 @@
 
   var RULES = {
     name: {
-      re: /^[A-Za-zА-Яа-яЁёІіЇїЄєҐґ'-]+(?:\s+[A-Za-zА-Яа-яЁёІіЇїЄєҐґ'-]+)+$/,
-      msg: { uk: 'Вкажіть прізвище та ім’я', en: 'Enter your first and last name' }
+      re: /^[A-Za-zА-Яа-яЁёІіЇїЄєҐґ'-]+(?:\s+[A-Za-zА-Яа-яЁёІіЇїЄєҐґ'-]+)*$/,
+      msg: { uk: 'Вкажіть ім’я', en: 'Enter your name' }
     },
     email: {
       re: /^[^\s@]+@[^\s@]+\.[a-zA-Z]{2,}$/,
