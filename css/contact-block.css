@@ -28,9 +28,18 @@
 
 .pc-field-group { display: flex; flex-direction: column; align-items: flex-start; gap: 6px; }
 
+/* the message field is wrapped in the same .pc-field-group as every other
+   field so its label sits the same 6px above its input on every column;
+   --grow additionally lets the textarea stretch to fill the column's
+   full height instead of a hardcoded one, keeping it foot-aligned with
+   the other columns' last field. */
+.pc-field-group--grow { flex: 1; align-items: stretch; }
+
 .pc-field { width: 100%; height: 52px; padding: 0 14px; background: #000; border: 2px solid var(--field-bd); outline: none; color: var(--ink); font-family: var(--font); font-size: 14px; transition: border-color .18s; }
 
-.pc-field--area { height: 160px; padding: 14px; resize: none; }
+.pc-field--area { padding: 14px; resize: none; min-height: 160px; }
+
+.pc-field-group--grow .pc-field--area { flex: 1; height: auto; }
 
 .pc-field::placeholder { color: #5a5a5a; }
 
@@ -100,9 +109,7 @@
 
   .pc-form__col { flex: 1 1 260px; width: auto; }
 
-  .pc-field--area { height: 220px; min-height: initial; }
-
-  .pc-form__col--msg .pc-field--area { height: 100%; min-height: 220px; }
+  .pc-field--area { min-height: 220px; }
 
   .pc-cta { padding: 15px 32px; width: initial; margin-top: initial; }
 

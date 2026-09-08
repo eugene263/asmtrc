@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="../css/k2.css?v=6" />
-  <link rel="stylesheet" href="../css/contact-block.css?v=6" />
+  <link rel="stylesheet" href="../css/contact-block.css?v=7" />
 </head>
 <body>
   <div class="k2">
@@ -180,9 +180,11 @@
             <p class="pc-form__subheading">Заповніть всі поля</p>
             <div class="pc-form__cols">
               <div class="pc-form__col pc-form__col--msg">
-                <b class="pc-form__label">ЗАПИТ</b>
-                <textarea name="message" required maxlength="2000" class="pc-field pc-field--area" placeholder="Опишіть вашу задачу"></textarea>
-                <span class="pc-field-error">Заповніть це поле</span>
+                <label class="pc-field-group pc-field-group--grow">
+                  <b class="pc-form__label">ЗАПИТ</b>
+                  <textarea name="message" required maxlength="2000" class="pc-field pc-field--area" placeholder="Опишіть вашу задачу"></textarea>
+                  <span class="pc-field-error">Заповніть це поле</span>
+                </label>
               </div>
               <div class="pc-form__col">
                 <label class="pc-field-group">
