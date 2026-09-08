@@ -47,8 +47,6 @@ html.lang-en [data-lang="en"] { display: inline; }
 
   .lang-switch--header { display: flex; }
 
-  .hero__bg-video { display: none; }
-
 }
 
 #about, #products, #contact { scroll-margin-top: 96px; }
