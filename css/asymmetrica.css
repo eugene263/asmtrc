@@ -509,7 +509,11 @@ body.is-lightbox-open, body.is-menu-open { overflow: hidden; }
 
 .contact__footer b { line-height: 1.5; }
 
-.contact__copyright { opacity: .7; margin-top: 6px; }
+.contact__footer-row { width: 100%; display: flex; align-items: center; justify-content: space-between; gap: 8px 24px; flex-wrap: wrap; margin-top: 6px; }
+
+.contact__legal { display: flex; align-items: center; gap: 8px 24px; flex-wrap: wrap; }
+
+.contact__copyright { opacity: .7; }
 
 .footer-link { color: var(--panel); font-weight: 700; text-decoration: none; transition: color .18s; }
 
