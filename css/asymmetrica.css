@@ -456,6 +456,10 @@ body.is-lightbox-open, body.is-menu-open { overflow: hidden; }
 
 .field-group { display: flex; flex-direction: column; align-items: flex-start; gap: 6px; }
 
+/* label and its "Fill in this field" error share one row — label left,
+   error right — instead of the error sitting below the input. */
+.field-group__head { width: 100%; display: flex; align-items: baseline; justify-content: space-between; gap: 10px; }
+
 /* the message field is wrapped in the same .field-group as every other
    field so its label sits the same 6px above its input on every column;
    --grow additionally lets the textarea stretch to fill the column's
@@ -478,6 +482,12 @@ body.is-lightbox-open, body.is-menu-open { overflow: hidden; }
 .field-error { display: none; font-size: 12px; color: var(--danger); line-height: 1.3; }
 
 .country-auto { position: relative; width: 100%; }
+
+.country-auto .field { padding-right: 40px; }
+
+.country-auto__icon { position: absolute; right: 14px; top: 50%; transform: translateY(-50%); width: 16px; height: 16px; color: var(--ink-dim); pointer-events: none; transition: transform .18s ease; }
+
+.country-auto.is-open .country-auto__icon { transform: translateY(-50%) rotate(180deg); }
 
 .country-auto__list { position: absolute; left: 0; right: 0; top: calc(100% + 4px); z-index: 20; max-height: 240px; overflow-y: auto; margin: 0; padding: 6px 0; list-style: none; background: #000; border: 2px solid var(--field-bd); display: none; }
 
